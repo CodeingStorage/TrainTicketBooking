@@ -19,7 +19,7 @@
         .login-container {
             max-width: 400px;
             margin: auto;
-            margin-top: 250px;
+            margin-top: 20px;
             
         }
 	    
@@ -49,7 +49,6 @@
 
 
 </body>
-</html>
 
 <script type="text/javascript">
 (function () {
@@ -72,3 +71,6 @@
 	    })
 	})()
 </script>
+
+</html>
+
