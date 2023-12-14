@@ -29,6 +29,10 @@
           <a class="nav-link active " aria-current="page" href="#">查詢/修改訂位</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active " aria-current="page" href="#">列車時刻/車次查詢</a>
+        </li>
+        
+        <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         
