@@ -4,4 +4,4 @@
 
 55
 
-<%@ include file="/WEB-INF/view/include/footer.jsp" %> 
+<%@ include file="/WEB-INF/view/include/footer.jsp" %>
