@@ -8,11 +8,15 @@
 <title>歡迎來到灣鐵</title>
 </head>
 <body>
+<div>
 
-<div class="d-grid gap-2 d-md-block">
-  <button class="btn btn-primary bnt-lg" type="button">Button</button>
-  <button class="btn btn-primary bnt-lg" type="button">Button</button>
 </div>
+
+<div class="d-grid gap-2 d-md-flex justify-content-center ">
+	 <button class="btn btn-primary btn-lg gap-2" type="button">Button</button>
+	 <button class="btn btn-primary btn-lg" type="button">Button</button>
+</div>
+
 
 </body>
 <%@ include file="/WEB-INF/view/include/footer.jspf" %>
