@@ -12,9 +12,9 @@
 
 </div>
 
-<div class="d-grid gap-2 d-md-flex justify-content-center ">
-	 <button class="btn btn-primary btn-lg gap-2" type="button">Button</button>
-	 <button class="btn btn-primary btn-lg" type="button">Button</button>
+<div class="d-grid gap-2 mx-auto d-flex justify-content-center pt-5">
+    <button class="btn btn-primary btn-lg gap-2" type="button">Button</button>
+    <button class="btn btn-primary btn-lg" type="button">Button</button>
 </div>
 
 
