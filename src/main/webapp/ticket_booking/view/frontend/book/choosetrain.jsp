@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="/WEB-INF/view/include/header_front.jspf" %>
+
 <title>Insert title here</title>
 </head>
 <body>
