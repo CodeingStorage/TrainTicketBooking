@@ -9,16 +9,13 @@
 </head>
 <body>
 <div class="container mt-5 pt-5 d-flex justify-content-center"><h1>兩個大按鈕</h1></div>
+
 <div class="container mt-5 pt-5">
- 
+   
+  <div class="mb-3 d-flex justify-content-center">
+    <button class="btn btn-primary btn-lg me-md-5"><h1>一二</h1></button>
   
-
-  <div class="mb-3">
-    <button class="btn btn-primary btn-lg"><h1>按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1</h1></button>
-  </div>
-
-  <div>
-    <button class="btn btn-danger btn-lg"><h1>按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1按鈕 1</h1></button>
+    <button class="btn btn-danger btn-lg"><h1>三四</h1></button>
   </div>
 </div>
 
