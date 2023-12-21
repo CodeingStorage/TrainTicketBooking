@@ -29,7 +29,7 @@
       Please select a valid state.
     </div>
   </div>
-        
+       
     
  
   <div class="col-12">
@@ -46,6 +46,25 @@
   <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
+  
+  <section class="container">
+  <h2 class="py-2">Datepicker in Bootstrap 5</h2>
+  <form class="row">
+    <label for="date" class="col-1 col-form-label">Date</label>
+    <div class="col-5">
+      <div class="input-group date" id="datepicker">
+        <input type="text" class="form-control" id="date"/>
+        <span class="input-group-append">
+          <span class="input-group-text bg-light d-block">
+            <i class="fa fa-calendar"></i>
+          </span>
+        </span>
+      </div>
+    </div>
+  </form>
+</section>
+  
+  
 </form>
 
 <script>
@@ -68,6 +87,11 @@
       }, false)
     })
 })()
+
+$(function(){
+  $('#datepicker').datepicker();
+});
+
 </script>
 </body>
 <%@ include file="/WEB-INF/view/include/footer.jspf" %>
