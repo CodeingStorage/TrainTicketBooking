@@ -9,7 +9,7 @@
 </head>
 <body>
 <form class="row g-3 needs-validation" novalidate>
-   <div class="col-md-3">
+   <div class="col-md-3" type="date">
     <label for="validationCustom04" class="form-label">出發站</label>
     <select class="form-select" id="validationCustom04" required>
       <option selected disabled value="">Choose...</option>
