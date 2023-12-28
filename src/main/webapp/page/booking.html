@@ -2,97 +2,219 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>預訂車票</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>預訂車票</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html">灣鐵</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="schedule.html">列車時刻/車次查詢</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="booking.html">預訂車票</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="ticket.html">查詢/修改車票</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="vh-100">
-    <div class="d-flex flex-column mx-auto" style="height:800px;width:1600px">
-    <h4>預訂車票</h4>     
-    <div class="mx-auto border-1 border shadow mt-5">
-    <form class="row g-3 needs-validation p-md-2" novalidate>
-        <div class="col-md-3" type="date">
-         <label for="validationCustom04" class="form-label">出發站</label>
-         <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">請選擇出發站</option>
-            <option>站點一</option>
-           <option >站點二</option>
-           <option >站點三</option>
-           <option >站點四</option>
-           <option >站點五</option>
-           
-         </select>
-         <div class="invalid-feedback">
-           Please select a valid state.
-         </div>
-       </div>    
-         <div class="col-md-3">
-         <label for="validationCustom04" class="form-label">抵達站</label>
-         <select class="form-select" id="validationCustom04" required>
-            <option selected disabled value="">請選擇抵達站</option> 
-           <option>站點一</option>
-           <option>站點二</option>
-           <option>站點三</option>
-           <option>站點四</option>
-           <option>站點五</option>
-         </select>
-         <div class="invalid-feedback">
-           Please select a valid state.
-         </div>
-       </div>
-            
-         
-      
-       <div class="col-12">
-         <div class="form-check">
-           <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-           <label class="form-check-label" for="invalidCheck">
-             Agree to terms and conditions
-           </label>
-           <div class="invalid-feedback">
-             You must agree before submitting.
-           </div>
-         </div>
-       </div>
-       <div class="col-12">
-         <button class="btn btn-primary" type="submit">Submit form</button>
-       </div>
-       
-      
-       
-       
-     </form>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index.html">灣鐵</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="schedule.html">列車時刻/車次查詢</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="booking.html">預訂車票</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="ticket.html">查詢/修改車票</a>
+          </li>
+        </ul>
+      </div>
     </div>
-     </div>
-     </div>
+  </nav>
+
+  <div class="vh-100">
+    <div class="d-flex flex-column mx-auto" style="height:800px;width:1000px">
+      <h4 class="mt-3 p-md-3 fw-bold">預訂車票</h4>
+      <div class="mx-auto border-1 border shadow mt-3">
+        <form class="row g-3 needs-validation p-md-2" novalidate>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">出發站</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">請選擇出發站</option>
+              <option>站點一</option>
+              <option>站點二</option>
+              <option>站點三</option>
+              <option>站點四</option>
+              <option>站點五</option>
+
+            </select>
+            <div class="invalid-feedback">
+              請選擇出發站
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">抵達站</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">請選擇抵達站</option>
+              <option>站點一</option>
+              <option>站點二</option>
+              <option>站點三</option>
+              <option>站點四</option>
+              <option>站點五</option>
+            </select>
+            <div class="invalid-feedback">
+              請選擇抵達站
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="start" class="d-block ">出發日期</label>
+            <input class="mt-2" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+              style="width: 233px; height: 37px;" required />
+          </div>
+          <div class="col-md-3">
+            <label for="end" class="d-block ">抵達日期</label>
+            <input class="mt-2" type="date" id="end" name="trip-end" value="2018-07-22" min="2018-01-01"
+              style="width: 233px; height: 37px;" required />
+          </div>
+
+          <div class="col-md-1">
+            <label for="validationCustom04" class="form-label">全票</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <label for="validationCustom04" class="form-label">孩童票</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <label for="validationCustom04" class="form-label">愛心票</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <label for="validationCustom04" class="form-label">敬老票</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <div class="col-md-1">
+            <label for="validationCustom04" class="form-label">大學生票</label>
+            <select class="form-select" id="validationCustom04" required>
+              <option selected disabled value="">0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+          <div class="col-7">
+
+          </div>
+
+
+
+          <div class="col-8">
+
+          </div>
+          <div class=" col-4">
+            <div class="p-3 m-1 d-flex ">
+              <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
+              <input type="text" class="form-control" id="captcha" name="captcha" required>
+              <i class="bi bi-arrow-repeat fs-2 ms-2"></i>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center align-items-center col-12">
+            <button class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>
+
+<style>
+  #queryBtn {
+    background-color: #db5009 !important;
+    border: none;
+  }
+
+  #queryBtn:hover {
+    background-color: #e5680a !important;
+  }
+</style>
+<script>
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
