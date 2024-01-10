@@ -4,8 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>火車時刻表 修改/新增</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <!-- 引入 DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <!-- 引入 jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- 引入 DataTables 創造出多種排序功能之表單-->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.table').DataTable({
+                //設定語言為繁體中文
+                "language": {
+                    "url": "/js/datatables_zh_tw.json"
+                }                
+            });
+        });
+    </script>
+
 </head>
+
 <body>
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">灣鐵後端</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="ticketinfo.html">購票紀錄查詢</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="traintable.html">火車時刻表查詢/修改</a>
+              </li>
+           
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+
+    <h2>火車時刻表查詢/修改</h2>
+    <div style="padding: 15px;">
+    <table id="myTable" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>車次</th>
+                <th>台北</th>
+                <th>台中</th>
+                <th>高雄</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>E408</td>
+                <td>9:00</td>
+                <td>10:00</td>
+                <td>11:00</td>
+                
+            </tr>
+            <tr>
+                <td>G502</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>14:00</td>
+            </tr>
+            <!--<tr th:each="score, state : ${ scores }">
+                <td>0</td>
+                <td th:text="${ticket.id}"></td>
+                <td th:text="${score.name}"></td>
+                <td th:text="${score.chineseScore}"></td>
+                <td th:text="${score.englishScore}"></td>
+                <td th:text="${score.mathScore}"></td>
+                <td th:text="${score.totalScore}"></td>
+                <td th:text="${#numbers.formatDecimal(score.averageScore, 1, 1)}"></td>
+            </tr>-->
+        </tbody>
+    </table>
+</div>
 </body>
+
 </html>

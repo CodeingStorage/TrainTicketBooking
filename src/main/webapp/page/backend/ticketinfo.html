@@ -22,24 +22,10 @@
                 //設定語言為繁體中文
                 "language": {
                     "url": "/js/datatables_zh_tw.json"
-                },
-                //設定匯出功能
-                dom: 'lBfrtip',
-                //buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-                buttons: [{ extend: 'copy', text: '複製', className: 'pure-button pure-button-primary' },
-                { extend: 'csv', text: 'CSV檔', className: 'pure-button pure-button-warning' },
-                { extend: 'excel', text: 'excel檔', className: 'pure-button pure-button-primary' },
-                { extend: 'print', text: '列印/PDF檔', className: 'pure-button pure-button-error' }]
+                }                
             });
         });
     </script>
-    <script>
-        $(document).ready(function () {
-            $('#myTable').DataTable();
-        });
-    </script>
-
-    
 
 </head>
 
@@ -53,10 +39,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">購票紀錄查詢</a>
+                <a class="nav-link active" aria-current="page" href="ticketinfo.html">購票紀錄查詢</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">火車時刻表查詢/修改</a>
+                <a class="nav-link active" aria-current="page" href="traintable.html">火車時刻表查詢/修改</a>
               </li>
            
             </ul>
