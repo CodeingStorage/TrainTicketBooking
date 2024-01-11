@@ -31,11 +31,30 @@
                     <li class="nav-item">
                         <a class="nav-link active " aria-current="page" href="ticket.html">查詢/修改車票</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="backend/ticketinfo.html">後端</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="vh-100"></div>
+    <div class="vh-100">
+        <div class="container d-flex justify-content-around pt-5">
+            <div class="row justify-content-center mt-5">
+                <a href="booking.html">
+                    <button class="btn btn-primary custom-button" id="queryBtn">前往訂票</button>
+                </a>
+            </div>
+
+            <div class="row justify-content-center mt-5">
+                <a href="ticketquery.html">
+                    <button class="btn btn-primary custom-button" id="queryBtn">訂位查詢/修改</button>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
 
 </body>
 
@@ -48,9 +67,26 @@
 </html>
 
 <style>
-    #footer {
-      background-color: #db5009 !important;
-      border: none;
+    /* 自定義按鈕樣式，設置寬度和高度 */
+
+    .custom-button {
+        width: 500px;
+        height: 200px;
+        font-size: 24px;
+        /* 可自行調整字體大小 */
     }
 
-  </style>
+    #queryBtn {
+        background-color: #9e9a98 !important;
+        border: none;
+    }
+
+    #queryBtn:hover {
+        background-color: #db5009 !important;
+    }
+
+    #footer {
+        background-color: #db5009 !important;
+        border: none;
+    }
+</style>
