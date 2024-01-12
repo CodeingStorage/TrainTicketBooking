@@ -27,15 +27,12 @@ Entity 就是一種 POJO
 
 
 
-3. 購物車主檔(Master)
+2. 車票
 +--------+----------+-----------+------------+--------------+
-| cartId |  userId  | cartItems | isCheckout | checkoutTime |
+| userId | trainId  | date | departTime | arriveTime | startStationName | endStationName | trainCarId | price | bookTime |
 +--------+----------+-----------+------------+--------------+
 |  201   |   101    | [1, 2]    |    true    | /-/-/  0:0:0 |
-|  202   |   102    | [3]       |    false   |              |
-|  203   |   103    | [4, 5]    |    true    | /-/-/  0:0:0 |
-|  204   |   103    | []        |    false   |              |
-|  205   |   101    | [6]       |    true    | /-/-/  0:0:0 |
+
 +--------+----------+-----------+------------+--------------+
 
 4. 購物車明細檔(Detail)
