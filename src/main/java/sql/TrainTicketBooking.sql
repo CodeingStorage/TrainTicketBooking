@@ -35,7 +35,7 @@ directionName varchar(10)-- 行車方向名稱
 
 -- 建立火車時刻表
 create table if not exists traintable(
-trainId int not null,  -- 火車代號(4碼
+trainId int not null primary key,  -- 火車代號(4碼
 directionId varchar(5),-- 行車方向
 station01departTime TIME,-- 台北站出發時間
 station02departTime TIME,-- 台中站出發時間
