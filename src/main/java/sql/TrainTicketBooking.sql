@@ -95,13 +95,18 @@ INSERT INTO station(stationId,stationName) values(03,'高雄');
 
 --火車代號
 INSERT INTO train(trainId) values(0001);
-INSERT INTO train(trainId) values(0002);
+INSERT INTO train(trainId) values(1001);
 
--- traintable 時刻表
-INSERT INTO traintable(trainId,station01Time,station02Time,station03Time) values(0123,'9:00','10:00','11:00');
-INSERT INTO traintable(trainId,station01Time,station02Time,station03Time) values(0456,'14:00','13:00','12:00');
+-- traintable 時刻表(南下)
+INSERT INTO traintable(trainId,station01Time,station02Time,station03Time) values(0001,'9:00','10:00','11:00');
+
+-- traintable 時刻表(北上)
+INSERT INTO traintable(trainId,station03Time,station02Time,station01Time) values(1001,'12:00','13:00','14:00');
 
 
--- ticket 車票資訊
-INSERT INTO ticket () 
-			  value()
+-- ticket 車票資訊(南下)
+INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
+                    023456789,'A88951435',1001,'2023-12-20','12:00:00','13:00:00',03,'高雄',02,'台中',02,'A20',150,'2023-12-10 18:00:00')
+                    
+                    INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
+                    01234567,'F77458966',0001,'2023-12-31','09:00:00','10:00:00',01,'台北',02,'台中',01,'A12',150,'2023-12-15 14:30:00')
