@@ -27,8 +27,8 @@ alter table station auto_increment = 01;
 
 -- 建立火車行車方向
 create table if not exists direction(
-directionId varchar(5) primary key,
-directionName varchar(10)
+directionId varchar(5) primary key,-- 行車方向代號
+directionName varchar(10)-- 行車方向名稱
 );
 
 
@@ -36,7 +36,7 @@ directionName varchar(10)
 -- 建立火車時刻表
 create table if not exists traintable(
 trainId int not null,  -- 火車代號(4碼
-directionId varchar(5),
+directionId varchar(5),-- 行車方向
 station01departTime TIME,-- 台北站出發時間
 station02departTime TIME,-- 台中站出發時間
 station03departTime TIME-- 高雄站出發時間
