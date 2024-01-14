@@ -3,16 +3,15 @@
 
 drop table if exists station;
 drop table if exists traintable;
+drop table if exists train;
 drop table if exists ticket;
 drop table if exists user;
 
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-id int auto_increment primary key--為每筆訂單生產相應代號
 userId varchar(15)--身分證字號
 );
--- 設置 AUTO_INCREMENT = 00000001
-alter table user auto_increment = 00000001;
+
 
 -- 建立站點
 create table if not exists station(
@@ -20,14 +19,41 @@ stationId int not null primary key,--站點代號
 stationName varchar(20)--站點名稱
 );
 
+-- 設置 station AUTO_INCREMENT = 01
+alter table station auto_increment = 01;
 
--- 建立火車時刻表
-create table if not exists traintable(
-trainId int not null primary key--火車代號(4碼)
+
+--建立火車(南下)
+create table if not exists trainsouthbound(
+trainIdS int primary key
+);
+-- 設置 trainsouthbound AUTO_INCREMENT = 0001
+alter table trainsouthbound auto_increment = 0001;
+
+-- 建立火車時刻表(南下)
+create table if not exists traintablesouthbound(
+trainId int not null --火車代號(4碼)
 station01departTime TIME,--台北站出發時間
 station02departTime TIME,--台中站出發時間
 station03departTime TIME,--桃園站出發時間
+foreign key (trainId) references trainsouthbound (trainId)
+);
 
+
+--建立火車(北上)
+create table if not exists trainnorthbound(
+trainIdN int primary key
+);
+-- 設置 trainsouthbound AUTO_INCREMENT = 1001
+alter table trainnorthbound auto_increment = 1001;
+
+-- 建立火車時刻表(北上)
+create table if not exists traintablenorthbound(
+trainId int not null --火車代號(4碼)
+station03departTime TIME,--台北站出發時間
+station02departTime TIME,--台中站出發時間
+station01departTime TIME,--桃園站出發時間
+foreign key (trainId) references trainnorthbound (trainId)
 );
 
 
@@ -49,7 +75,7 @@ seatId varchar(10),--座位號碼
 price int not null,-- 價格
 bookTime datetime default current_timestamp,--定位日期
 foreign key (userId) references user (userId),
-foreign key (trainId) references traintable (trainId)
+foreign key (trainId) references train (trainId)
 );
 
 
@@ -58,8 +84,9 @@ foreign key (trainId) references traintable (trainId)
 --預設資料
 
 -- user 用戶資訊
-INSERT INTO user (id) values(0135489638);
 INSERT INTO user (userId) values('A88951435');
+INSERT INTO user (userId) values('F77458966');
+
 
 -- stations 站點
 INSERT INTO station(stationId,stationName) values(01,'台北');
@@ -67,10 +94,14 @@ INSERT INTO station(stationId,stationName) values(02,'台中');
 INSERT INTO station(stationId,stationName) values(03,'高雄');
 
 --火車代號
+INSERT INTO train(trainId) values(0001);
+INSERT INTO train(trainId) values(0002);
 
 -- traintable 時刻表
+INSERT INTO traintable(trainId,station01Time,station02Time,station03Time) values(0123,'9:00','10:00','11:00');
+INSERT INTO traintable(trainId,station01Time,station02Time,station03Time) values(0456,'14:00','13:00','12:00');
 
 
 -- ticket 車票資訊
 INSERT INTO ticket () 
-			  value('A88951435','B502','9:00')
+			  value()
