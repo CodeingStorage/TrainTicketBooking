@@ -83,7 +83,9 @@ INSERT INTO direction(directionId,directionName) values('S','南下');
 
 -- traintable火車時刻表
 INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1001, 'S', '08:00:00', '10:00:00', '12:00:00' );
-INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1002, 'N', '15:00:00', '14:00:00', '13:00:00' );
+INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1002, 'S', '10:00:00', '11:00:00', '12:00:00' );
+INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1003, 'N', '15:00:00', '14:00:00', '13:00:00' );
+INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1004, 'N', '18:00:00', '17:00:00', '16:00:00' );
 
 -- ticket 車票資訊(南下)
 INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
