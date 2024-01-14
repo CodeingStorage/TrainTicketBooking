@@ -59,7 +59,7 @@ endStationName varchar(20),-- 終點站名稱
 trainCarId int not null, -- 車廂代號   
 seatId varchar(10),-- 座位號碼
 price int not null,-- 價格
-bookTime datetime default current_timestamp,-- 定位日期
+bookTime datetime default current_timestamp,-- 訂位日期
 foreign key (userId) references user (userId)
 );
 
@@ -87,9 +87,9 @@ INSERT INTO traintable ( trainId, directionId, station01departTime, station02dep
 INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1003, 'N', '15:00:00', '14:00:00', '13:00:00' );
 INSERT INTO traintable ( trainId, directionId, station01departTime, station02departTime, station03departTime ) VALUES ( 1004, 'N', '18:00:00', '17:00:00', '16:00:00' );
 
--- ticket 車票資訊(南下)
+-- ticket 車票資訊
 INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
                     023456789,'A88951435',1001,'2023-12-20','12:00:00','13:00:00',03,'高雄',02,'台中',02,'A20',150,'2023-12-10 18:00:00');
--- ticket 車票資訊(北上)                 
+-- ticket 車票資訊                
                     INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
                     01234567,'F77458966',0001,'2023-12-31','09:00:00','10:00:00',01,'台北',02,'台中',01,'A12',150,'2023-12-15 14:30:00')
