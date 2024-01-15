@@ -39,7 +39,7 @@ F77458966
 
 2. 車票
 +--------+----------+------+------------+------------+------------------+----------------+------------+-------+----------+
-| userId | trainId  | date | departTime | arriveTime | startStationName | endStationName | trainCarId | price | bookTime |
+|ticketId| userId | trainId  | date | departTime | arriveTime | startStationName | endStationName | trainCarId | price | bookTime |
 +--------+----------+------+------------+------------+------------------+----------------+------------+-------+----------+
 |
 

@@ -41,7 +41,9 @@ station_02_Arrive_Time TIME,-- 台中站抵達時間
 station_02_Depart_Time TIME,-- 台中站出發時間
 station_03_Arrive_Time TIME,-- 高雄站抵達時間
 station_03_Depart_Time TIME-- 高雄站出發時間
+FOREIGN KEY (direction_Id) REFERENCES direction(direction_Id)
 );
+
 -- 設置 AUTO_INCREMENT = 501
 alter table traintable auto_increment = 1001;
 
