@@ -15,5 +15,6 @@ public class Ticket {
     private String seatId;
     private int price;
     private Date bookTime;
+    
 
 }
