@@ -86,6 +86,6 @@ F77458966
 
 
 Q-------------
-traintable 新增站點?
+traintable 新增站點?/正規畫
+抵達時間/出發時間:獨立資料表?
 ticket start/end station<-> stationId
-price 獨立資料表?/單一價格
