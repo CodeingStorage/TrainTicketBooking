@@ -11,7 +11,7 @@ drop table if exists user;
 
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-user_Id varchar(15) PRIMARY KEY-- 身分證字號
+user_Id varchar(15) primary key-- 身分證字號
 );
 
 
