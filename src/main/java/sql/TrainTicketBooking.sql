@@ -75,7 +75,6 @@ CREATE TABLE IF NOT EXISTS ticket (
   CONSTRAINT unique_userId_and_ticketId UNIQUE (user_Id, ticket_Id)
 );
 
--- 建立
 
 
 -- 預設資料
