@@ -39,7 +39,7 @@ alter table traintable auto_increment = 1001;
 
 -- 建立站點時刻表
 create table if not exists stationschedule(
-  schedule_Id int not null primary key,
+  schedule_Id int not null primary key ,
   train_Id int,
   station_Id int,
   arrive_Time TIME,
@@ -47,7 +47,8 @@ create table if not exists stationschedule(
   FOREIGN KEY (train_Id) REFERENCES traintable(train_Id),
   FOREIGN KEY (station_Id) REFERENCES station(station_Id)
 );
-
+-- 設置 AUTO_INCREMENT = 10
+alter table stationschedule auto_increment = 10;
 
 
 -- 建立車票資訊
@@ -101,9 +102,16 @@ INSERT INTO traintable (train_Id, direction_Id) VALUES
 
 -- 插入站點時刻表
 INSERT INTO stationschedule (schedule_Id, train_Id, station_Id, arrive_Time, depart_Time) VALUES
-(1, 1001, 1, '08:00:00', '08:10:00'),
-(2, 1001, 2, '09:30:00', '09:40:00'),
-(3, 1001, 3, '11:30:00', '11:40:00');
+(10, 1001, 1, '08:00:00', '08:10:00'),
+(11, 1001, 2, '09:30:00', '09:40:00'),
+(12, 1001, 3, '11:30:00', '11:40:00'),
+(13, 1002, 1, '08:00:00', '08:10:00'),
+(14, 1002, 2, '09:30:00', '09:40:00'),
+(15, 1002, 3, '11:30:00', '11:40:00'),
+(16, 1003, 1, '08:00:00', '08:10:00'),
+(17, 1003, 2, '09:30:00', '09:40:00'),
+(18, 1003, 3, '11:30:00', '11:40:00');
+
 -- 可以繼續插入其他時刻表資料
 
 -- 插入車票資訊
