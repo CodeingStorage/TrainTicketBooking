@@ -21,8 +21,6 @@ stationId int not null primary key,-- 站點代號
 stationName varchar(20)-- 站點名稱
 );
 
--- 設置 station AUTO_INCREMENT = 01
-alter table station auto_increment = 01;
 
 
 -- 建立火車行車方向
@@ -73,9 +71,9 @@ INSERT INTO user (userId) values('F77458966');
 
 
 -- stations 站點
-INSERT INTO station(stationId,stationName) values(01,'台北');
-INSERT INTO station(stationId,stationName) values(02,'台中');
-INSERT INTO station(stationId,stationName) values(03,'高雄');
+INSERT INTO station(stationId,stationName) values(1,'台北');
+INSERT INTO station(stationId,stationName) values(2,'台中');
+INSERT INTO station(stationId,stationName) values(3,'高雄');
 
 -- direction行車方向
 INSERT INTO direction(directionId,directionName) values('N','北上');
