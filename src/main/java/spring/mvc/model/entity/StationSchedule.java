@@ -1,6 +1,6 @@
 package spring.mvc.model.entity;
 
-public class Station {
+public class StationSchedule {
 	private Integer stationId;
 	private String stationName;
 }
