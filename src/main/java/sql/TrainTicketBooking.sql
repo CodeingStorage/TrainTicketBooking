@@ -35,8 +35,11 @@ directionName varchar(10)-- 行車方向名稱
 create table if not exists traintable(
 trainId int not null primary key,  -- 火車代號(4碼
 directionId varchar(5),-- 行車方向
+station01arriveTime TIME,-- 台北站抵達時間
 station01departTime TIME,-- 台北站出發時間
+station02arriveTime TIME,-- 台中站抵達時間
 station02departTime TIME,-- 台中站出發時間
+station03arriveTime TIME,-- 高雄站抵達時間
 station03departTime TIME-- 高雄站出發時間
 );
 
