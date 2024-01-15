@@ -55,23 +55,24 @@ create table if not exists station_schedule(
 
 
 -- 建立車票資訊
-create table if not exists ticket(
-ticket_Id int primary key,-- 車票代碼(亂數隨機 8碼)
-user_Id varchar(15),-- 使用者ID
-train_Id int,-- 火車代號
-date TIMESTAMP,-- 乘車日期
-departure_Time TIME,-- 出發時間
-arrival_Time TIME,-- 抵達時間
-start_Station_Id int not null,-- 起始站代號
-start_Station_Name varchar(20),-- 起始站名稱
-end_Station_Id int not null,-- 終點站代號
-end_Station_Name varchar(20),-- 終點站名稱
-train_Car_Id int not null, -- 車廂代號   
-seat_Id varchar(10),-- 座位號碼
-price int not null,-- 價格
-book_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- 訂位日期
-foreign key (userId) references user (userId),
-constraint unique_userId_and_ticketId unique(userId,ticketId)
+CREATE TABLE IF NOT EXISTS ticket (
+  ticket_Id INT PRIMARY KEY AUTO_INCREMENT, -- 車票代碼(自動遞增)
+  user_Id VARCHAR(15), -- 使用者ID
+  train_Id INT, -- 火車代號
+  date DATE, -- 乘車日期
+  departure_Time TIME, -- 出發時間
+  arrival_Time TIME, -- 抵達時間
+  start_Station_Id INT, -- 起始站代號
+  end_Station_Id INT, -- 終點站代號
+  train_Car_Id INT, -- 車廂代號   
+  seat_Id VARCHAR(10), -- 座位號碼
+  price INT NOT NULL, -- 價格
+  book_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 訂位日期
+  FOREIGN KEY (user_Id) REFERENCES user(user_Id),
+  FOREIGN KEY (train_Id) REFERENCES traintable(train_Id),
+  FOREIGN KEY (start_Station_Id) REFERENCES station(station_Id),
+  FOREIGN KEY (end_Station_Id) REFERENCES station(station_Id),
+  CONSTRAINT unique_userId_and_ticketId UNIQUE (user_Id, ticket_Id)
 );
 
 -- 建立
