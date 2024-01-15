@@ -11,56 +11,56 @@ drop table if exists user;
 
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-userId varchar(15) PRIMARY KEY-- 身分證字號
+user_Id varchar(15) PRIMARY KEY-- 身分證字號
 );
 
 
 -- 建立站點
 create table if not exists station(
-stationId int not null primary key,-- 站點代號
-stationName varchar(20)-- 站點名稱
+station_Id int not null primary key,-- 站點代號
+station_Name varchar(20)-- 站點名稱
 );
 
 
 
 -- 建立火車行車方向
 create table if not exists direction(
-directionId varchar(5) primary key,-- 行車方向代號
-directionName varchar(10)-- 行車方向名稱
+direction_Id varchar(5) primary key,-- 行車方向代號
+direction_Name varchar(10)-- 行車方向名稱
 );
 
 
 
 -- 建立火車時刻表
 create table if not exists traintable(
-trainId int not null primary key,  -- 火車代號(4碼
-directionId varchar(5),-- 行車方向
-station01arriveTime TIME,-- 台北站抵達時間
-station01departTime TIME,-- 台北站出發時間
-station02arriveTime TIME,-- 台中站抵達時間
-station02departTime TIME,-- 台中站出發時間
-station03arriveTime TIME,-- 高雄站抵達時間
-station03departTime TIME-- 高雄站出發時間
+train_Id int not null primary key,  -- 火車代號(4碼
+direction_Id varchar(5),-- 行車方向
+station_01_Arrive_Time TIME,-- 台北站抵達時間
+station_01_Depart_Time TIME,-- 台北站出發時間
+station_02_Arrive_Time TIME,-- 台中站抵達時間
+station_02_Depart_Time TIME,-- 台中站出發時間
+station_03_Arrive_Time TIME,-- 高雄站抵達時間
+station_03_Depart_Time TIME-- 高雄站出發時間
 );
 
 
 
 -- 建立車票資訊
 create table if not exists ticket(
-ticketId int primary key,-- 車票代碼(亂數隨機 8碼)
-userId varchar(15),-- 使用者ID
-trainId int unique,-- 火車代號
+ticket_Id int primary key,-- 車票代碼(亂數隨機 8碼)
+user_Id varchar(15),-- 使用者ID
+train_Id int unique,-- 火車代號
 date TIMESTAMP,-- 乘車日期
-departureTime TIME,-- 出發時間
-arrivalTime TIME,-- 抵達時間
-startStationId int not null,-- 起始站代號
-startStationName varchar(20),-- 起始站名稱
-endStationId int not null,-- 終點站代號
-endStationName varchar(20),-- 終點站名稱
-trainCarId int not null, -- 車廂代號   
-seatId varchar(10),-- 座位號碼
+departure_Time TIME,-- 出發時間
+arrival_Time TIME,-- 抵達時間
+start_Station_Id int not null,-- 起始站代號
+start_Station_Name varchar(20),-- 起始站名稱
+end_Station_Id int not null,-- 終點站代號
+end_Station_Name varchar(20),-- 終點站名稱
+train_Car_Id int not null, -- 車廂代號   
+seat_Id varchar(10),-- 座位號碼
 price int not null,-- 價格
-bookTime datetime default current_timestamp,-- 訂位日期
+book_Time datetime default current_timestamp,-- 訂位日期
 foreign key (userId) references user (userId)
 );
 
