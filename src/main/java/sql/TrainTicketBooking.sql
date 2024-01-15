@@ -1,17 +1,13 @@
-drop table if exists station;
 drop table if exists train;
-drop table if exists traintablenorthbound;
-drop table if exists trainnorthbound;
-drop table if exists traintablesouthbound;
-drop table if exists trainsouthbound;
+drop table if exists stationschedule;
 drop table if exists ticket;
+drop table if exists station;
+drop table if exists user;
 drop table if exists traintable;
 drop table if exists direction;
-drop table if exists user;
-
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-user_Id varchar(15) primary key-- 身分證字號
+user_Id varchar(20) primary key-- 身分證字號
 );
 
 
@@ -42,7 +38,7 @@ create table if not exists traintable(
 alter table traintable auto_increment = 1001;
 
 -- 建立站點時刻表
-create table if not exists station_schedule(
+create table if not exists stationschedule(
   schedule_Id int not null primary key,
   train_Id int,
   station_Id int,
@@ -79,30 +75,39 @@ CREATE TABLE IF NOT EXISTS ticket (
 
 -- 預設資料
 
--- user 用戶資訊
-INSERT INTO user (userId) values('A88951435');
-INSERT INTO user (userId) values('F77458966');
+-- 插入用戶資訊
+INSERT INTO user (user_Id) VALUES
+('A123456789'),
+('B987654321'),
+('C111222333');
+
+-- 插入站點
+INSERT INTO station (station_Name) VALUES
+('台北'),
+('台中'),
+('高雄');
+
+-- 插入火車行車方向
+INSERT INTO direction (direction_Id, direction_Name) VALUES
+('N', '北'),
+('S', '南');
 
 
--- stations 站點
-INSERT INTO station(stationId,stationName) values(1,'台北');
-INSERT INTO station(stationId,stationName) values(2,'台中');
-INSERT INTO station(stationId,stationName) values(3,'高雄');
+-- 插入火車時刻表
+INSERT INTO traintable (train_Id, direction_Id) VALUES
+(1001, 'N'),
+(1002, 'S'),
+(1003, 'S');
 
--- direction行車方向
-INSERT INTO direction(directionId,directionName) values('N','北上');
-INSERT INTO direction(directionId,directionName) values('S','南下');
+-- 插入站點時刻表
+INSERT INTO stationschedule (schedule_Id, train_Id, station_Id, arrive_Time, depart_Time) VALUES
+(1, 1001, 1, '08:00:00', '08:10:00'),
+(2, 1001, 2, '09:30:00', '09:40:00'),
+(3, 1001, 3, '11:30:00', '11:40:00');
+-- 可以繼續插入其他時刻表資料
 
--- 插入火車時刻表範例資料
-INSERT INTO traintable (train_Id, direction_Id, station_01_Arrive_Time, station_01_Depart_Time, station_02_Arrive_Time, station_02_Depart_Time, station_03_Arrive_Time, station_03_Depart_Time)
-VALUES
-(1001, 'N', '08:00:00', '08:10:00', '09:30:00', '09:40:00', '11:30:00', '11:40:00'),
-(1002, 'N', '10:00:00', '10:10:00', '11:30:00', '11:40:00', '13:30:00', '13:40:00'),
-(1003, 'S', '12:00:00', '12:10:00', '13:30:00', '13:40:00', '15:30:00', '15:40:00');
-(1004, 'S', '12:00:00', '12:10:00', '13:30:00', '13:40:00', '15:30:00', '15:40:00');
--- ticket 車票資訊
-INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
-                    023456789,'A88951435',1001,'2023-12-20','12:00:00','13:00:00',03,'高雄',02,'台中',02,'A20',150,'2023-12-10 18:00:00');
--- ticket 車票資訊                
-                    INSERT INTO ticket ( ticketId, userId, trainId, date, departureTime, arrivalTime, startStationId, startStationName, endStationId, endStationName, trainCarId, seatId, price, bookTime ) VALUES (
-                    01234567,'F77458966',0001,'2023-12-31','09:00:00','10:00:00',01,'台北',02,'台中',01,'A12',150,'2023-12-15 14:30:00')
+-- 插入車票資訊
+INSERT INTO ticket (user_Id, train_Id, date, departure_Time, arrival_Time, start_Station_Id, end_Station_Id, train_Car_Id, seat_Id, price) VALUES
+('A123456789', 1001, '2024-01-15', '08:00:00', '11:40:00', 1, 3, 1, 'A01', 1000),
+('B987654321', 1002, '2024-01-16', '10:00:00', '13:40:00', 3, 1, 2, 'B02', 1000),
+('C111222333', 1003, '2024-01-17', '12:00:00', '15:40:00', 3, 2, 2, 'B03', 500);
