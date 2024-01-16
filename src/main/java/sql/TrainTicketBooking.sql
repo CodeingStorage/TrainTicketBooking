@@ -1,4 +1,5 @@
-drop table if exists train;
+drop table if exists trains;
+drop table if exists traintable;
 drop table if exists stationschedule;
 drop table if exists ticket;
 drop table if exists station;
@@ -7,7 +8,7 @@ drop table if exists traintable;
 drop table if exists direction;
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-user_Id int primary key -- 101
+user_Id int primary key, -- 101
 user_Name varchar(20)-- 身分證字號
 );
 -- 設置 AUTO_INCREMENT = 101
@@ -38,7 +39,7 @@ create table if not exists trains(
 );
 
 -- 設置 AUTO_INCREMENT = 1001
-alter table traintable auto_increment = 1001;
+alter table trains auto_increment = 1001;
 
 -- 建立站點時刻表
 create table if not exists stationschedule(
@@ -47,7 +48,7 @@ create table if not exists stationschedule(
   station_Id int,
   arrive_Time TIME,
   depart_Time TIME,
-  FOREIGN KEY (train_Id) REFERENCES traintable(train_Id),
+  FOREIGN KEY (train_Id) REFERENCES trains(train_Id),
   FOREIGN KEY (station_Id) REFERENCES station(station_Id)
 );
 -- 設置 AUTO_INCREMENT = 10
@@ -57,7 +58,8 @@ alter table stationschedule auto_increment = 10;
 -- 建立車票資訊
 CREATE TABLE IF NOT EXISTS ticket (
   ticket_Id INT PRIMARY KEY AUTO_INCREMENT, -- 車票代碼(自動遞增)
-  user_Id VARCHAR(15), -- 使用者ID
+  user_Id int,-- 使用者身分證字號代碼
+  user_Name VARCHAR(15), -- 使用者身分證字號
   train_Id INT, -- 火車代號
   date DATE, -- 乘車日期
   departure_Time TIME, -- 出發時間
@@ -69,7 +71,7 @@ CREATE TABLE IF NOT EXISTS ticket (
   price INT NOT NULL, -- 價格
   book_Time TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 訂位日期
   FOREIGN KEY (user_Id) REFERENCES user(user_Id),
-  FOREIGN KEY (train_Id) REFERENCES traintable(train_Id),
+  FOREIGN KEY (train_Id) REFERENCES trains(train_Id),
   FOREIGN KEY (start_Station_Id) REFERENCES station(station_Id),
   FOREIGN KEY (end_Station_Id) REFERENCES station(station_Id),
   CONSTRAINT unique_userId_and_ticketId UNIQUE (user_Id, ticket_Id)
@@ -80,10 +82,10 @@ CREATE TABLE IF NOT EXISTS ticket (
 -- 預設資料
 
 -- 插入用戶資訊
-INSERT INTO user (user_Id) VALUES
-('A123456789'),
-('B987654321'),
-('C111222333');
+INSERT INTO user (user_Id,user_Name) VALUES
+(101,'A123456789'),
+(102,'B987654321'),
+(103,'C111222333');
 
 -- 插入站點
 INSERT INTO station (station_Name) VALUES
@@ -97,28 +99,28 @@ INSERT INTO direction (direction_Id, direction_Name) VALUES
 ('S', '南');
 
 
--- 插入火車時刻表
-INSERT INTO traintable (train_Id, direction_Id) VALUES
-(1001, 'N'),
-(1002, 'S'),
-(1003, 'S');
+-- 插入火車列表
+INSERT INTO trains (train_Id, direction_Id) VALUES
+(2001, 'N'),
+(2002, 'S'),
+(2003, 'S');
 
 -- 插入站點時刻表
 INSERT INTO stationschedule (schedule_Id, train_Id, station_Id, arrive_Time, depart_Time) VALUES
-(10, 1001, 1, '08:00:00', '08:10:00'),
-(11, 1001, 2, '09:30:00', '09:40:00'),
-(12, 1001, 3, '11:30:00', '11:40:00'),
-(13, 1002, 1, '08:00:00', '08:10:00'),
-(14, 1002, 2, '09:30:00', '09:40:00'),
-(15, 1002, 3, '11:30:00', '11:40:00'),
-(16, 1003, 1, '08:00:00', '08:10:00'),
-(17, 1003, 2, '09:30:00', '09:40:00'),
-(18, 1003, 3, '11:30:00', '11:40:00');
+(10, 2001, 1, '08:00:00', '08:10:00'),
+(11, 2001, 2, '09:30:00', '09:40:00'),
+(12, 2001, 3, '11:30:00', '11:40:00'),
+(13, 2002, 1, '08:00:00', '08:10:00'),
+(14, 2002, 2, '09:30:00', '09:40:00'),
+(15, 2002, 3, '11:30:00', '11:40:00'),
+(16, 2003, 1, '08:00:00', '08:10:00'),
+(17, 2003, 2, '09:30:00', '09:40:00'),
+(18, 2003, 3, '11:30:00', '11:40:00');
 
 -- 可以繼續插入其他時刻表資料
 
 -- 插入車票資訊
-INSERT INTO ticket (user_Id, train_Id, date, departure_Time, arrival_Time, start_Station_Id, end_Station_Id, train_Car_Id, seat_Id, price) VALUES
-('A123456789', 1001, '2024-01-15', '08:00:00', '11:40:00', 1, 3, 1, 'A01', 1000),
-('B987654321', 1002, '2024-01-16', '10:00:00', '13:40:00', 3, 1, 2, 'B02', 1000),
-('C111222333', 1003, '2024-01-17', '12:00:00', '15:40:00', 3, 2, 2, 'B03', 500);
+INSERT INTO ticket (ticket_Id,user_Id, user_Name,train_Id, date, departure_Time, arrival_Time, start_Station_Id, end_Station_Id, train_Car_Id, seat_Id, price) VALUES
+(5001,101,'A123456789', 2001, '2024-01-15', '08:00:00', '11:40:00', 1, 3, 1, 'A01', 1000),
+(5002,102,'B987654321', 2002, '2024-01-16', '10:00:00', '13:40:00', 3, 1, 2, 'B02', 1000),
+(5003,103,'C111222333', 2003, '2024-01-17', '12:00:00', '15:40:00', 3, 2, 2, 'B03', 500);
