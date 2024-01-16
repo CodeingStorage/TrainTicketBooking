@@ -45,11 +45,10 @@ public interface TrainTicketDAO {
 	Optional<Train> findTrainIdByDirectionId(Integer trainId);
 	
 //	站點時刻表-Schedule:	
-//	1. 新增車次ID(後台)
+//	1. 根據車次ID新增時刻表資料(後台)	
+//	2. 根據車次ID修改時刻表資料(後台)
+//	3. 根據車次ID刪除時刻表資料(後台)
 	
-//	2. 根據車次ID修改車次(後台)
-//	3. 根據車次ID刪除車次(後台)
-//	4. 根據行車方向ID查找同一行徑方向的火車資訊
 
 	
 	
