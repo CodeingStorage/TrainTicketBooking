@@ -7,8 +7,11 @@ drop table if exists traintable;
 drop table if exists direction;
 -- 建立用戶資訊 (身分證字號)
 create table if not exists user(
-user_Id varchar(20) primary key-- 身分證字號
+user_Id int primary key -- 101
+user_Name varchar(20)-- 身分證字號
 );
+-- 設置 AUTO_INCREMENT = 101
+alter table user auto_increment = 101;
 
 
 -- 建立站點
@@ -27,8 +30,8 @@ direction_Name varchar(10)-- 行車方向名稱
 
 
 
--- 建立火車時刻表
-create table if not exists traintable(
+-- 建立火車列表
+create table if not exists trains(
   train_Id int not null primary key,
   direction_Id varchar(5),
   FOREIGN KEY (direction_Id) REFERENCES direction(direction_Id)
