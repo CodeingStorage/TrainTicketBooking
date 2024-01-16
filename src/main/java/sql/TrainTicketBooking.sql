@@ -29,7 +29,7 @@ alter table station auto_increment = 501;
 -- 建立火車行車方向
 create table if not exists direction(
 directionId int primary key,-- 行車方向代號
-directionName varchar(10)-- 行車方向名稱
+directionName ENUM('北上', '南下')-- 行車方向名稱
 );
 
 
@@ -100,8 +100,8 @@ INSERT INTO station (stationId,stationName) VALUES
 
 -- 插入火車行車方向
 INSERT INTO direction (directionId, directionName) VALUES
-(1, 'N'),
-(2, 'S');
+(1, '北上'),
+(2, '南下');
 
 
 -- 插入火車列表
