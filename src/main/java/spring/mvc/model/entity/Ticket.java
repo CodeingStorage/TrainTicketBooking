@@ -18,5 +18,6 @@ public class Ticket {
     private int price;
     private Timestamp bookTime;
     
-
+    
+    
 }
