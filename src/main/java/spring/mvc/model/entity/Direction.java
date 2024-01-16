@@ -1,6 +1,6 @@
 package spring.mvc.model.entity;
 
 public class Direction {
-	private String directionId;
-	private String directionName;
+	private String direction_Id;
+	private String direction_Name;
 }
