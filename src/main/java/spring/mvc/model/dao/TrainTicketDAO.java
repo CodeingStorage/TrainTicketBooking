@@ -6,6 +6,7 @@ import java.util.Optional;
 import spring.mvc.model.entity.Direction;
 import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Station;
+import spring.mvc.model.entity.Ticket;
 import spring.mvc.model.entity.Train;
 import spring.mvc.model.entity.User;
 
@@ -55,12 +56,15 @@ public interface TrainTicketDAO {
 	Boolean removeScheduleByTrainId(Integer trainId);
 	
 //	車票-ticket:	
-//1. 新增車票
+//	1. 新增車票
+	void addTicket(Ticket ticket);
 	
-//2. 根據使用者ID與車票ID查找票卷資料
+//	2. 根據使用者ID與車票ID查找票卷資料
+	Optional<Ticket> findTicketByUserIdAndTicketId(Integer userId,Integer ticketId);
 	
-//3. 根據使用者ID與車票ID修改票卷資料
-
-//4. 根據使用者ID與車票ID刪除票卷資料
+//	3. 根據使用者ID與車票ID修改票卷資料
+	Boolean updateTicketByUserIdAndTicketId(Integer userId,Integer ticketId);
 	
+//	4. 根據使用者ID與車票ID刪除票卷資料
+	Boolean removeTicketByUserIdAndTicketId(Integer userId,Integer ticketId);
 }
