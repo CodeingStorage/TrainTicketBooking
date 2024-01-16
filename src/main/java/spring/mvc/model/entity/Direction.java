@@ -10,21 +10,6 @@ public class Direction {
 		this.directionName = directionName;
 	}
 
-	public String getDirectionId() {
-		return directionId;
-	}
-
-	public void setDirectionId(String directionId) {
-		this.directionId = directionId;
-	}
-
-	public String getDirectionName() {
-		return directionName;
-	}
-
-	public void setDirectionName(String directionName) {
-		this.directionName = directionName;
-	}
 
 	@Override
 	public String toString() {
