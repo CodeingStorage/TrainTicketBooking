@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import spring.mvc.model.entity.Direction;
+import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Station;
 import spring.mvc.model.entity.Train;
 import spring.mvc.model.entity.User;
@@ -30,8 +31,7 @@ public interface TrainTicketDAO {
 	Boolean updateStationName(Integer stationId, String newStationName);
 	
 	
-//  行車方向-direction:
-	
+//  行車方向-direction:	
 //	1. 根據行車方向ID查找行車方向名稱	
 	Optional<Direction> findDirectionNameByDirectionId(Integer userId);
 
@@ -46,14 +46,21 @@ public interface TrainTicketDAO {
 	
 //	站點時刻表-Schedule:	
 //	1. 根據車次ID新增時刻表資料(後台)	
-//	2. 根據車次ID修改時刻表資料(後台)
+	void addSchedule(Schedule schedule);
+	
+//	2. 根據車次ID修改時刻表資料(後台)	
+	Boolean updateScheduleByTrainId(Integer trainId, String newSchedule);
+	
 //	3. 根據車次ID刪除時刻表資料(後台)
-	
-
-	
-	
+	Boolean removeScheduleByTrainId(Integer trainId);
 	
 //	車票-ticket:	
+//1. 新增車票
 	
+//2. 根據使用者ID與車票ID查找票卷資料
+	
+//3. 根據使用者ID與車票ID修改票卷資料
+
+//4. 根據使用者ID與車票ID刪除票卷資料
 	
 }
