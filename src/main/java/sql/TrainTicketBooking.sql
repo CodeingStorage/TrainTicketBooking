@@ -1,5 +1,7 @@
 drop table if exists stationSchedule;
+drop table if exists schedule;
 drop table if exists ticket;
+drop table if exists train;
 drop table if exists trains;
 drop table if exists station;
 drop table if exists user;
@@ -33,27 +35,27 @@ directionName varchar(10)-- 行車方向名稱
 
 
 -- 建立火車列表
-create table if not exists trains(
+create table if not exists train(
   trainId int not null primary key,
   directionId int,
   FOREIGN KEY (directionId) REFERENCES direction(directionId)
 );
 
 -- 設置 AUTO_INCREMENT = 2001
-alter table trains auto_increment = 2001;
+alter table train auto_increment = 2001;
 
 -- 建立站點時刻表
-create table if not exists stationSchedule(
+create table if not exists schedule(
   scheduleId int not null primary key ,
   trainId int,
   stationId int,
   arriveTime TIME,
   departTime TIME,
-  FOREIGN KEY (trainId) REFERENCES trains(trainId),
+  FOREIGN KEY (trainId) REFERENCES train(trainId),
   FOREIGN KEY (stationId) REFERENCES station(stationId)
 );
 -- 設置 AUTO_INCREMENT = 10
-alter table stationSchedule auto_increment = 10;
+alter table schedule auto_increment = 10;
 
 
 -- 建立車票資訊
@@ -63,8 +65,8 @@ CREATE TABLE IF NOT EXISTS ticket (
   userName VARCHAR(15), -- 使用者身分證字號
   trainId INT, -- 火車代號
   date DATE, -- 乘車日期
-  departureTime TIME, -- 出發時間
-  arrivalTime TIME, -- 抵達時間
+  departTime TIME, -- 出發時間
+  arrivaTime TIME, -- 抵達時間
   startStationId INT, -- 起始站代號
   endStationId INT, -- 終點站代號
   trainCarId INT, -- 車廂代號   
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS ticket (
   price INT NOT NULL, -- 價格
   bookTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 訂位日期
   FOREIGN KEY (userId) REFERENCES user(userId),
-  FOREIGN KEY (trainId) REFERENCES trains(trainId),
+  FOREIGN KEY (trainId) REFERENCES train(trainId),
   FOREIGN KEY (startStationId) REFERENCES station(stationId),
   FOREIGN KEY (endStationId) REFERENCES station(stationId),
   CONSTRAINT unique_userId_and_ticketId UNIQUE (userId, ticketId)
@@ -103,13 +105,13 @@ INSERT INTO direction (directionId, directionName) VALUES
 
 
 -- 插入火車列表
-INSERT INTO trains (trainId, directionId) VALUES
+INSERT INTO train (trainId, directionId) VALUES
 (2001, '2'),
 (2002, '1');
 
 
 -- 插入站點時刻表
-INSERT INTO stationSchedule (scheduleId, trainId, stationId, arriveTime, departTime) VALUES
+INSERT INTO schedule (scheduleId, trainId, stationId, arriveTime, departTime) VALUES
 (10, 2001, 501, '08:00:00', '08:10:00'),
 (11, 2001, 502, '09:00:00', '09:10:00'),
 (12, 2001, 503, '10:00:00', '10:10:00'),
@@ -121,6 +123,6 @@ INSERT INTO stationSchedule (scheduleId, trainId, stationId, arriveTime, departT
 -- 可以繼續插入其他時刻表資料
 
 -- 插入車票資訊
-INSERT INTO ticket (ticketId,userId, userName,trainId, date, departureTime, arrivalTime, startStationId, endStationId, trainCarId, seatId, price) VALUES
+INSERT INTO ticket (ticketId,userId, userName,trainId, date, departTime, arrivaTime, startStationId, endStationId, trainCarId, seatId, price) VALUES
 (6001,101,'A123456789', 2001, '2024-01-15', '08:10:00', '10:00:00', 501, 503, 1, 'A01', 1000),
 (6002,102,'B987654321', 2002, '2024-01-16', '09:10:00', '10:00:00', 503, 502, 2, 'B02', 500);

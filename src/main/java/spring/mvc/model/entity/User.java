@@ -10,33 +10,41 @@ package spring.mvc.model.entity;
 +-------------------+-----------------
  */
 public class User {
-	private Integer user_Id;
-	private String user_Name;
+	private Integer userId;
+	private String userName;
 	
 	
 	
-	
-	public User(Integer user_Id, String user_Name) {
+	public User(Integer userId, String userName) {
 		super();
-		this.user_Id = user_Id;
-		this.user_Name = user_Name;
+		this.userId = userId;
+		this.userName = userName;
 	}
-	public Integer getUser_Id() {
-		return user_Id;
+
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUser_Id(Integer user_Id) {
-		this.user_Id = user_Id;
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
-	public String getUser_Name() {
-		return user_Name;
+
+	public String getUserName() {
+		return userName;
 	}
-	public void setUser_Name(String user_Name) {
-		this.user_Name = user_Name;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
 	@Override
 	public String toString() {
-		return "User [user_Id=" + user_Id + ", user_Name=" + user_Name + "]";
+		return "User [userId=" + userId + ", userName=" + userName + "]";
 	}
+	
+	
+	
+	
 	
 	
 	

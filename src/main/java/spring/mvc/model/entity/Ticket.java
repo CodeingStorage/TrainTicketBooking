@@ -1,20 +1,22 @@
 package spring.mvc.model.entity;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Ticket {
 	private int ticketId;
-    private String userId;
+	private int userId;
+    private String userName;
     private int trainId;
     private Date date;
-    private String departureTime;
-    private String arrivalTime;
+    private String departTime;
+    private String arrivaTime;
     private int startStationId;
     private int endStationId;
     private int trainCarId;
     private String seatId;
     private int price;
-    private Date bookTime;
+    private Timestamp bookTime;
     
 
 }
