@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import spring.mvc.model.entity.Direction;
 import spring.mvc.model.entity.Station;
+import spring.mvc.model.entity.Train;
 import spring.mvc.model.entity.User;
 
 
@@ -22,32 +23,37 @@ public interface TrainTicketDAO {
 	
 
 //	站點-Station:	
-	
-//1. 根據站點ID查找站點名稱
+	//1. 根據站點ID查找站點名稱
 	Optional<Station> findStationNameByStationId(Integer stationId);
 	
-//2. 根據站點ID修改站點名稱
-	public Boolean updateStationName(Integer stationId, String newStationName);
+//	2. 根據站點ID修改站點名稱
+	Boolean updateStationName(Integer stationId, String newStationName);
 	
 	
 //  行車方向-direction:
 	
-//1. 根據行車方向ID查找行車方向名稱	
+//	1. 根據行車方向ID查找行車方向名稱	
 	Optional<Direction> findDirectionNameByDirectionId(Integer userId);
+
 //  火車車次-Train:
-//1.  新增車次ID(後台)
-//2. 根據車次ID修改車次(後台)
-//3. 根據車次ID刪除車次(後台)
-//4. 根據行車方向ID查找同一行徑方向的火車資訊
+//	1. 新增車次ID(後台)
+	void addTrain(Train train);
+		
+//	2. 刪除車次(後台)
+	Boolean removeTrainId(Integer trainId);
+//	3. 根據行車方向ID查找同一行徑方向的火車資訊
+	Optional<Train> findTrainIdByDirectionId(Integer trainId);
 	
-//1. 新增車次ID(後台)
-//2. 根據車次ID修改車次(後台)
-//3. 根據車次ID刪除車次(後台)
-//4. 根據行車方向ID查找同一行徑方向的火車資訊
+//	站點時刻表-Schedule:	
+//	1. 新增車次ID(後台)
+	
+//	2. 根據車次ID修改車次(後台)
+//	3. 根據車次ID刪除車次(後台)
+//	4. 根據行車方向ID查找同一行徑方向的火車資訊
 
 	
 	
-//	站點時刻表-Schedule:	
+	
 //	車票-ticket:	
 	
 	

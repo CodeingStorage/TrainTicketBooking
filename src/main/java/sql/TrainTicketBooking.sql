@@ -1,4 +1,3 @@
-drop table if exists stationSchedule;
 drop table if exists schedule;
 drop table if exists ticket;
 drop table if exists train;
