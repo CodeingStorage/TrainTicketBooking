@@ -1,30 +1,22 @@
 package spring.mvc.model.entity;
 
+import java.sql.Time;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Schedule {
 
-	private int stationId;
-	private String stationName;
-	public Schedule(int stationId, String stationName) {
-		super();
-		this.stationId = stationId;
-		this.stationName = stationName;
-	}
-	public int getStationId() {
-		return stationId;
-	}
-	public void setStationId(int stationId) {
-		this.stationId = stationId;
-	}
-	public String getStationName() {
-		return stationName;
-	}
-	public void setStationName(String stationName) {
-		this.stationName = stationName;
-	}
-	@Override
-	public String toString() {
-		return "Station [stationId=" + stationId + ", stationName=" + stationName + "]";
-	}
-		
+	private int trainId;
+	private String trainNo;
+	private String departStation;
+	private String arriveStation;
+	private Time departTime;
+	private Time arriveTime;
+	
 	
 }
