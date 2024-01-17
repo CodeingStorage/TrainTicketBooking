@@ -13,7 +13,7 @@ public class TicketDaoTest {
 
 	public static void main(String[] args) throws ParseException {
 
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("/WEB-INF/springmvc-servlet.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("/resources/springmvc-servlet.xml");
 		
 		TicketDaoImpl ticketDaoImpl = ctx.getBean("ticketDaoImpl", TicketDaoImpl.class);
 		
