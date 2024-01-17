@@ -8,9 +8,7 @@ import spring.mvc.model.entity.Ticket;
 
 
 public interface TrainTicketDao {
-//	使用者-User:
-	
-//	1. 新增使用者
+
 
 //	火車站點時刻表-Schedule:	
 //	1. 根據車次ID新增時刻表資料(後台)	
