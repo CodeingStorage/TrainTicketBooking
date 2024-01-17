@@ -11,12 +11,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Schedule {
 
-	private int trainId;
 	private String trainNo;
-	private String departStation;
-	private String arriveStation;
-	private Time departTime;
-	private Time arriveTime;
 	
+	private String departStation;
+	
+	private String arriveStation;
+	
+	private Time departTime;
+	
+	private Time arriveTime;
 	
 }

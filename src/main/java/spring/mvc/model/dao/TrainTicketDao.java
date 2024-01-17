@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Ticket;
-import spring.mvc.model.entity.User;
 
 
 
@@ -12,9 +11,7 @@ public interface TrainTicketDao {
 //	使用者-User:
 	
 //	1. 新增使用者
-	void addUser(User user);
 
-	
 //	火車站點時刻表-Schedule:	
 //	1. 根據車次ID新增時刻表資料(後台)	
 	void addSchedule(Schedule schedule);

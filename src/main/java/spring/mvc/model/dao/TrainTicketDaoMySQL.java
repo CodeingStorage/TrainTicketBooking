@@ -6,16 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Ticket;
-import spring.mvc.model.entity.User;
 
 @Repository
 public class TrainTicketDaoMySQL implements TrainTicketDao {
-
-	@Override
-	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void addSchedule(Schedule schedule) {
