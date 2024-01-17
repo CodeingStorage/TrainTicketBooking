@@ -8,7 +8,7 @@ import spring.mvc.model.entity.User;
 
 
 
-public interface TrainTicketDAO {
+public interface TrainTicketDao {
 //	使用者-User:
 	
 //	1. 新增使用者
@@ -18,19 +18,23 @@ public interface TrainTicketDAO {
 //	火車站點時刻表-Schedule:	
 //	1. 根據車次ID新增時刻表資料(後台)	
 	void addSchedule(Schedule schedule);
-	
-//	2. 根據車次ID修改時刻表資料(後台)	
-	Boolean updateScheduleByTrainId(Integer trainId, String newSchedule);
-	
-//	3. 根據車次ID刪除時刻表資料(後台)
+
+//	2. 根據車次ID刪除時刻表資料(後台)
 	Boolean removeScheduleByTrainId(Integer trainId);
+	
+//	3. 根據車次ID修改時刻表資料(後台)	
+	Boolean updateScheduleByTrainId(Integer trainId, String newSchedule);
+
+// 4. 根據出發站點、抵達站點、出發日期、出發時間查找時刻表
+	
+
 	
 //	車票-ticket:	
 //	1. 新增車票
 	void addTicket(Ticket ticket);
 	
-//	2. 根據使用者ID與車票ID查找票卷資料
-	Optional<Ticket> findTicketByUserIdAndTicketId(Integer userId,Integer ticketId);
+//	2. 根據車票ID查找票卷資料
+	Optional<Ticket> findTicketByUTicketId(Integer ticketId);
 	
 //	3. 根據使用者ID與車票ID修改票卷資料
 	Boolean updateTicketByUserIdAndTicketId(Integer userId,Integer ticketId);
