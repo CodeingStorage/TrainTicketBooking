@@ -1,10 +1,10 @@
 package spring.mvc.model.entity;
 
-public class TrainSchedule {
+public class Schedule {
 
 	private int stationId;
 	private String stationName;
-	public TrainSchedule(int stationId, String stationName) {
+	public Schedule(int stationId, String stationName) {
 		super();
 		this.stationId = stationId;
 		this.stationName = stationName;
@@ -25,7 +25,6 @@ public class TrainSchedule {
 	public String toString() {
 		return "Station [stationId=" + stationId + ", stationName=" + stationName + "]";
 	}
-	
-	
+		
 	
 }
