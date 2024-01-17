@@ -3,9 +3,11 @@ package spring.mvc.model.dao;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Ticket;
 
 @Repository
@@ -23,9 +25,17 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	@Override
 	public Optional<Ticket> findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		String sql ="SELECT userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=?, userId=?";
+		try {
+			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),ticketId,userId);
+			return Optional.of(ticket);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Optional.ofNullable(null);
 	}
+
+	
 
 		
 
