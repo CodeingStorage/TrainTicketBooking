@@ -1,6 +1,5 @@
 package spring.mvc.model.dao;
 
-import java.util.List;
 import java.util.Optional;
 
 import spring.mvc.model.entity.Schedule;
