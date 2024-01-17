@@ -3,6 +3,7 @@ package spring.mvc.model.dao;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,20 +35,38 @@ public class TicketDaoImpl implements TicketDao {
 		}
 		return Optional.ofNullable(null);
 	}
-
-	
-
 		
 
-	@Override
-	public void updateTicketByTicketIdAndUserId(Integer ticketId, String UserId, Ticket ticket) {
-		// TODO Auto-generated method stub
-		
+	public Boolean updateTicketByTicketIdAndUserId(Integer ticketId, String userId, Ticket newTicket) {
+	    String sql = "UPDATE ticket SET userId = ?, trainNo = ?, date = ?, trainCarId = ?, seatId = ?, price = ?, bookTime = ? WHERE ticketId = ? AND userId = ?";
+	    
+	    int rowcount = jdbcTemplate.update(
+	        sql,
+	        newTicket.getUserId(),
+	        newTicket.getTrainNo(),
+	        newTicket.getDate(),
+	        newTicket.getTrainCarId(),
+	        newTicket.getSeatId(),
+	        newTicket.getPrice(),
+	        newTicket.getBookTime(),
+	        ticketId,
+	        userId
+	    );
+	    
+	    // 根據 rowcount 判斷更新是否成功
+	    return rowcount > 0;
 	}
 
 	@Override
-	public void cancelTicket(Integer ticketId, String userId) {
-		// TODO Auto-generated method stub
+	public Boolean cancelTicket(Integer ticketId, String userId) {
+		String sql = "delete from Ticket where ticketId = ? AND userId = ?";
+		try {
+	        jdbcTemplate.update(sql, ticketId, userId);
+	        return true;
+	    } catch (DataAccessException e) {
+	        // 可以在這裡添加日誌或其他處理
+	        return false;
+	    }
 		
 	}
 

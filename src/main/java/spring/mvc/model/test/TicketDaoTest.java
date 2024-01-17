@@ -15,13 +15,8 @@ public class TicketDaoTest {
 
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("/resources/springmvc-servlet.xml");
 		
-		TicketDaoImpl ticketDaoImpl = ctx.getBean("ticketDaoImpl", TicketDaoImpl.class);
 		
-		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6001, "A123456789");
-		if(ticOptional.isPresent()) {
-			System.out.println(ticOptional.get());
-		} else {
-			System.out.println("無");}
+		TicketDaoImpl ticketDaoImpl = ctx.getBean("ticketDaoImpl", TicketDaoImpl.class);
 		
 		
 	/*	
@@ -43,6 +38,34 @@ public class TicketDaoTest {
 		
 		System.out.println(ticket);
 		*/
+		
+		/*
+		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6001, "A123456789");
+		if(ticOptional.isPresent()) {
+			System.out.println(ticOptional.get());
+		} else {
+			System.out.println("無");}
+		*/
+		
+		/*
+		 Ticket newTicket = new Ticket();
+        newTicket.setUserId("A123456789");
+        newTicket.setTrainNo("2002");
+        newTicket.setDate("2024-01-16");
+        newTicket.setTrainCarId("C");
+        newTicket.setSeatId(5);
+        newTicket.setPrice(50);
+        newTicket.setBookTime(Timestamp.valueOf("2024-01-15 13:45:00"));
+
+        // 呼叫 DAO 的更新車票方法
+        Boolean result = ticketDaoImpl.updateTicketByTicketIdAndUserId(6001, "A123456789", newTicket);
+
+        if (result) {
+            System.out.println("更新成功！");
+        } else {
+            System.out.println("更新失敗！");
+        }
+		 */
 		
 		
 	}

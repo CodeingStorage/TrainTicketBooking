@@ -32,6 +32,7 @@ public class ScheduleDaoTest {
 		Time endTime = Time.valueOf("12:00:00");
 		List<Schedule> schedules = scheduleDaoImpl.findAllSchedulesByTime(startTime, endTime);
 		System.out.println(schedules);
+		
 	}
 
 }

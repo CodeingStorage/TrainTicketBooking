@@ -14,10 +14,10 @@ public interface TicketDao {
 	Optional<Ticket>findTicketByTicketIdAndUserId(Integer ticketId, String userId);
 	
 	//根據車票ID與userId更新車票資訊
-	void updateTicketByTicketIdAndUserId(Integer ticketId, String UserId,Ticket ticket);
+	Boolean updateTicketByTicketIdAndUserId(Integer ticketId, String userId,Ticket newTicket);
 	
 	//根據車票ID與userId刪除車票
-	void cancelTicket(Integer ticketId,String userId);
+	Boolean cancelTicket(Integer ticketId,String userId);
 	
 	
 }
