@@ -1,10 +1,10 @@
 package spring.mvc.model.entity;
 
-public class Station {
+public class TrainSchedule {
 
 	private int stationId;
 	private String stationName;
-	public Station(int stationId, String stationName) {
+	public TrainSchedule(int stationId, String stationName) {
 		super();
 		this.stationId = stationId;
 		this.stationName = stationName;
