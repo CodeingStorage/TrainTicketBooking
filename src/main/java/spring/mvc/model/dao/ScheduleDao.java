@@ -12,7 +12,7 @@ public interface ScheduleDao {
 	List<Schedule> findAllSchedules();
 	
 	// 依照班次查詢對應的時刻表
-	Optional<Schedule> findScheduleByTranNo(Integer trainNo);
+	Optional<Schedule> findScheduleByTrainNo(Integer trainNo);
 	
 	// 依照查詢的起始時間，取得時刻表(邏輯：查詢開始時間 < 離開時間 <查詢結束時間)
 	List<Schedule> findAllSchedulesByTime(Time startTime, Time endTime);

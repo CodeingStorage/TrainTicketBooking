@@ -29,7 +29,7 @@ public interface TrainTicketDao {
 	void addTicket(Ticket ticket);
 	
 //	2. 根據車票ID查找票卷資料
-	Optional<Ticket> findTicketByUTicketId(Integer ticketId);
+	Optional<Ticket> findTicketByTicketId(Integer ticketId);
 	
 //	3. 根據使用者ID與車票ID修改票卷資料
 	Boolean updateTicketByUserIdAndTicketId(Integer userId,Integer ticketId);

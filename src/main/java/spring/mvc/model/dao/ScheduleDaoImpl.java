@@ -24,7 +24,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	@Override
-	public Optional<Schedule> findScheduleByTranNo(Integer trainNo) {
+	public Optional<Schedule> findScheduleByTrainNo(Integer trainNo) {
 		String sql = "SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM trainticket.schedule where trainNo=?";
 		try {
 			Schedule schedule = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Schedule.class),trainNo);
