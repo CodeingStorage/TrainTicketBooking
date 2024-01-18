@@ -1,4 +1,4 @@
-package spring.mvc.model.test;
+/*package spring.mvc.model.test;
 
 import java.sql.Time;
 import java.util.List;
@@ -57,11 +57,12 @@ public class ScheduleDaoTest {
 		//} else {
 		//	System.out.println("無");
 		//}
-		/*
+		
 		Time startTime = Time.valueOf("09:00:00");
 		Time endTime = Time.valueOf("12:00:00");
 		List<Schedule> schedules = scheduleDaoImpl.findAllSchedulesByTime(startTime, endTime);
 		System.out.println(schedules);
-		*/
+		
 	}
 
+*/

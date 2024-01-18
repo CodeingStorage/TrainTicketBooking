@@ -24,7 +24,7 @@ public class TicketDaoTest {
 		
 		/*
 		Ticket ticket = new Ticket();
-		
+		ticket.setTicketId(6002);
         ticket.setUserId("A215559874");
         ticket.setTrainNo("2002");
         
@@ -41,8 +41,8 @@ public class TicketDaoTest {
         ticketDaoImpl.addTicket(ticket);
 		
 		System.out.println(ticket);
-		*/
 		
+		*/
 		/*
 		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6003, "F234567891");
 		if(ticOptional.isPresent()) {
@@ -52,7 +52,7 @@ public class TicketDaoTest {
 			}
 		*/
 		
-		/*
+		
 		 Ticket newTicket = new Ticket();
         newTicket.setUserId("A123456789");
         newTicket.setTrainNo("2002");
@@ -61,21 +61,21 @@ public class TicketDaoTest {
         Date date = dateFormat.parse("2024-01-16");
         newTicket.setDate(date);
         
-        newTicket.setTrainCarId("C");
-        newTicket.setSeatId(5);
-        newTicket.setPrice(50);
+        newTicket.setTrainCarId("B");
+        newTicket.setSeatId(30);
+        newTicket.setPrice(1500);
         newTicket.setBookTime(Timestamp.valueOf("2024-01-15 13:45:00"));
 		
         // 呼叫 DAO 的更新車票方法
         Boolean result = ticketDaoImpl.updateTicketByTicketIdAndUserId(6001, "A123456789", newTicket);
         
         if (result) {
-            System.out.println("result");
+            System.out.println(newTicket);
         } else {
             System.out.println("更新失敗！");
 		
         }
-		*/
+		
 		
 		/*
 		// 測試取消車票

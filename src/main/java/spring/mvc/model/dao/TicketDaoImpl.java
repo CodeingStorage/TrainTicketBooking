@@ -22,7 +22,7 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public void addTicket(Ticket ticket) {
 		String sql = "INSERT INTO ticket (ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-           jdbcTemplate.update(sql, ticket.getUserId(), ticket.getTrainNo(), ticket.getDate(), ticket.getTrainCarId(), ticket.getSeatId(), ticket.getPrice(), ticket.getBookTime());     
+           jdbcTemplate.update(sql, ticket.getTicketId(),ticket.getUserId(), ticket.getTrainNo(), ticket.getDate(), ticket.getTrainCarId(), ticket.getSeatId(), ticket.getPrice(), ticket.getBookTime());     
                 
 	
 	}
@@ -45,18 +45,17 @@ public class TicketDaoImpl implements TicketDao {
 		
 		
 	@Override
-	public Boolean updateTicketByTicketIdAndUserId(Integer ticketId, String userId, Ticket newTicket) {
-	    String sql = "UPDATE ticket SET userId = ?, trainNo = ?, date = ?, trainCarId = ?, seatId = ?, price = ?, bookTime = ? WHERE ticketId = ? AND userId = ?";
+	public Boolean updateTicketByTicketIdAndUserId(Integer ticketId, String userId, Ticket ticket) {
+	    String sql = "UPDATE ticket SET trainNo = ?, date = ?, trainCarId = ?, seatId = ?, price = ?, bookTime = ? WHERE ticketId = ? AND userId = ?";
 	    
 	    int rowcount = jdbcTemplate.update(
-	        sql,
-	        newTicket.getUserId(),
-	        newTicket.getTrainNo(),
-	        newTicket.getDate(),
-	        newTicket.getTrainCarId(),
-	        newTicket.getSeatId(),
-	        newTicket.getPrice(),
-	        newTicket.getBookTime(),
+	        sql,	        
+	        ticket.getTrainNo(),
+	        ticket.getDate(),
+	        ticket.getTrainCarId(),
+	        ticket.getSeatId(),
+	        ticket.getPrice(),
+	        ticket.getBookTime(),
 	        ticketId,
 	        userId
 	    );
