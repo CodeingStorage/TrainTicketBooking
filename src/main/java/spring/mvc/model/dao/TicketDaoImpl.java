@@ -78,6 +78,7 @@ public class TicketDaoImpl implements TicketDao {
 	     
 	}
 
+	
 	//豐富/將schedule注入ticket
     private void enrichTicketDetails(Ticket ticket) {
     	String sql="SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM schedule WHERE trainNo=?";

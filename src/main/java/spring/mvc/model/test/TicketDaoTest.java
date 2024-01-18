@@ -43,14 +43,14 @@ public class TicketDaoTest {
 		System.out.println(ticket);
 		*/
 		
-		
+		/*
 		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6003, "F234567891");
 		if(ticOptional.isPresent()) {
 			System.out.println(ticOptional.get());
 		} else {
 			System.out.println("無");
 			}
-		
+		*/
 		
 		/*
 		 Ticket newTicket = new Ticket();
@@ -65,7 +65,7 @@ public class TicketDaoTest {
         newTicket.setSeatId(5);
         newTicket.setPrice(50);
         newTicket.setBookTime(Timestamp.valueOf("2024-01-15 13:45:00"));
-
+		
         // 呼叫 DAO 的更新車票方法
         Boolean result = ticketDaoImpl.updateTicketByTicketIdAndUserId(6001, "A123456789", newTicket);
         

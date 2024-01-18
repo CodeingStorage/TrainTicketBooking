@@ -3,7 +3,7 @@ package spring.mvc.model.dao;
 import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
-
+import org.springframework.dao.DataAccessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,6 +34,21 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		}
 		return Optional.ofNullable(null);
 	}
+	
+	@Override
+	public Boolean updateScheduleByTrainId(Integer trainId, String newSchedule) {
+	    String sql = "UPDATE schedule SET departStation = ?, arriveStation = ?, departTime = ?, arriveTime = ? WHERE trainId = ?";
+	    try {
+	        int rowCount = jdbcTemplate.update(sql, newSchedule, trainId);
+	        return rowCount > 0;
+	    } catch (DataAccessException e) {
+	        // 可以在這裡添加日誌或其他處理
+	        return false;
+	    }
+	}
+
+		
+	
 
 	/**
 	 * SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM trainticket.schedule WHERE departTime BETWEEN '09:00:00' AND '12:00:00'
@@ -43,5 +58,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		String sql = "SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM trainticket.schedule WHERE departTime BETWEEN ? AND ?";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Schedule.class),startTime,endTime);
 	}
+
+	
 
 }

@@ -2,65 +2,91 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>TrainTicketBooking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灣鐵網路訂票</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
 
-<body style="font-family: consolas">
-	<h2>前端介面</h2>
-	<ol>
-		<h2>車票訂購</h2>
-		<li>
-			登入<br />
-			<a href="./ticketbooking/login">
-				./ticketbooking/login
-			</a>
-		</li>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">灣鐵</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="schedule_query/schedule_query.html">列車時刻/車次查詢</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="booking/booking.html">預訂車票</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="ticket_query/ticket_query.html">查詢/修改車票</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="../backend/ticket_info/ticket_info_display.html">後端</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="vh-100">
+        <div class="container d-flex justify-content-around pt-5">
+            <div class="row justify-content-center mt-5">
+                <a href="/frontend/booking/booking.html">
+                    <button class="btn btn-primary custom-button" id="queryBtn"><h1>前往訂票</h1></button>
+                </a>
+            </div>
 
-		<li>
-			功能選擇<br />
-			<a href="./ticketbooking/main">
-				./ticketbooking/main
-			</a>
-		</li>
+            <div class="row justify-content-center mt-5">
+                <a href="/frontend/ticket_query/ticket_query.html">
+                    <button class="btn btn-primary custom-button" id="queryBtn"><h1>訂位查詢/修改</h1></button>
+                </a>
+            </div>
+        </div>
 
-		<li>
-			查詢車次<br />
-			<a href="./ticketbooking/">
 
-			</a>
-		</li>
-		<li>
-			選擇車次<br />
-			<a href="./ticketbooking/choosetrain">
-
-			</a>
-		</li>
-		<li>
-			完成訂位<br />
-			<a href="./ticketbooking/display">
-			</a>
-		</li>
-	<h2>車票訂購</h2>
-		<li>
-			登入<br />
-			<a href="./ticketbooking/login">
-				./ticketbooking/login
-			</a>
-		</li>	
-		
-	</ol>
-	<ol>
-		<h3>後端介面</h3>
-		<li>
-			查詢車次<br />
-			<a href="./ticketquery">
-				h
-			</a>
-		</li>
-	</ol>
-
+    </div>
 
 </body>
 
+<footer>
+    <div class="text-center position-relative bottom-0 start-50 translate-middle-x w-100" id="footer">
+        <p class="p-1 mb-0">&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+</footer>
+
 </html>
+
+<style>
+    /* 自定義按鈕樣式，設置寬度和高度 */
+
+    .custom-button {
+        width: 500px;
+        height: 200px;
+        font-size: 24px;
+        /* 可自行調整字體大小 */
+    }
+
+    #queryBtn {
+        background-color: #9e9a98 !important;
+        border: none;
+    }
+
+    #queryBtn:hover {
+        background-color: #db5009 !important;
+    }
+
+    #footer {
+        background-color: #db5009 !important;
+        border: none;
+    }
+</style>
