@@ -1,4 +1,5 @@
 package spring.mvc.model.test;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,13 +14,13 @@ public class TicketDaoTest {
 
 	public static void main(String[] args) throws ParseException {
 
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("/WEB-INF/springmvc-servlet.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("springmvc-servlet.xml");
 		
 		
 		TicketDaoImpl ticketDaoImpl = ctx.getBean("ticketDaoImpl", TicketDaoImpl.class);
 		
 		
-	/*	
+		
 		Ticket ticket = new Ticket();
         ticket.setUserId("A215559874");
         ticket.setTrainNo("2002");
@@ -37,7 +38,7 @@ public class TicketDaoTest {
         ticketDaoImpl.addTicket(ticket);
 		
 		System.out.println(ticket);
-		*/
+		
 		
 		/*
 		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6001, "A123456789");
