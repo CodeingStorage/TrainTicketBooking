@@ -27,4 +27,8 @@ public class Ticket {
     
     private Date bookTime;
     
+    //關聯屬性
+    private Schedule schedule;
+    
+    
 }

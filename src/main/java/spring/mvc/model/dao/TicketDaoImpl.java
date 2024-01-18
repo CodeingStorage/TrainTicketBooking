@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.example.entity.Tran;
+
 import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Ticket;
 
@@ -26,7 +28,7 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	@Override
 	public Optional<Ticket> findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
-		String sql ="SELECT userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=?, userId=?";
+		String sql ="SELECT userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
 		try {
 			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),ticketId,userId);
 			return Optional.of(ticket);
@@ -67,10 +69,17 @@ public class TicketDaoImpl implements TicketDao {
 	        // 可以在這裡添加日誌或其他處理
 	        return false;
 	    }
+	    
+	    
+	 
 	}
 
-	
-
+	//豐富/將schedule注入ticket
+    private void enrichTicketDetails(Ticket ticket) {
+    	String sql="SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM schedule WHERE trainNo=?";
+    	Schedule schedule = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Schedule.class), ticket.getTrainNo());
+		ticket.setSchedule(schedule);
+    }
 	
 
 }
