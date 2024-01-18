@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -30,12 +31,18 @@ public class TicketDaoImpl implements TicketDao {
 		String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
 		try {
 			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),ticketId,userId);
-			return Optional.of(ticket);
-		} catch (Exception e) {
-			e.printStackTrace();
+			if (ticket != null) {
+				enrichTicketDetails(ticket);
+			}
+			return Optional.ofNullable(ticket);
+
+		} catch (EmptyResultDataAccessException e) {
+			return Optional.empty();
 		}
-		return Optional.ofNullable(null);
 	}
+	
+		
+		
 		
 	@Override
 	public Boolean updateTicketByTicketIdAndUserId(Integer ticketId, String userId, Ticket newTicket) {

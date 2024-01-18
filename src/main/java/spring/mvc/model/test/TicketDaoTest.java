@@ -43,13 +43,14 @@ public class TicketDaoTest {
 		System.out.println(ticket);
 		*/
 		
-		/*
+		
 		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6003, "F234567891");
 		if(ticOptional.isPresent()) {
 			System.out.println(ticOptional.get());
 		} else {
-			System.out.println("無");}
-		*/
+			System.out.println("無");
+			}
+		
 		
 		/*
 		 Ticket newTicket = new Ticket();
