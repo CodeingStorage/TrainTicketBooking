@@ -68,9 +68,7 @@ public class TicketDaoImpl implements TicketDao {
 	        // 可以在這裡添加日誌或其他處理
 	        return false;
 	    }
-	    
-	    
-	 
+	     
 	}
 
 	//豐富/將schedule注入ticket

@@ -76,12 +76,23 @@ public class TicketDaoTest {
         }
 		*/
 		
+		/*
+		// 測試取消車票
+        Boolean result = ticketDaoImpl.cancelTicket(6004, "A215559874");
+
+        // 手動檢查結果
+        if (result) {
+            System.out.println("取消車票成功！");
+        } else {
+            System.out.println("取消車票失敗！");
+        }
+    }
 		
-		
-		
-		
+		*/
 		
 	}
-
+		
 }
+
+
 
