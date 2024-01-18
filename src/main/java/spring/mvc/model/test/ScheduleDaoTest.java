@@ -64,5 +64,4 @@ public class ScheduleDaoTest {
 		System.out.println(schedules);
 		
 	}
-
 */
