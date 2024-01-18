@@ -8,10 +8,10 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
+import lombok.Data;
 import spring.mvc.model.entity.Schedule;
 import spring.mvc.model.entity.Ticket;
-
+@Data
 @Repository
 public class TicketDaoImpl implements TicketDao {
 
@@ -20,14 +20,14 @@ public class TicketDaoImpl implements TicketDao {
 	
 	@Override
 	public void addTicket(Ticket ticket) {
-		String sql = "INSERT INTO ticket (userId, trainNo, date, trainCarId, seatId, price, bookTime) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO ticket (ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
            jdbcTemplate.update(sql, ticket.getUserId(), ticket.getTrainNo(), ticket.getDate(), ticket.getTrainCarId(), ticket.getSeatId(), ticket.getPrice(), ticket.getBookTime());     
                 
 	
 	}
 	@Override
 	public Optional<Ticket> findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
-		String sql ="SELECT userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
+		String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
 		try {
 			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),ticketId,userId);
 			return Optional.of(ticket);

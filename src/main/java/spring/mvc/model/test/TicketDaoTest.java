@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import lombok.Data;
 import spring.mvc.model.dao.TicketDaoImpl;
 import spring.mvc.model.entity.Ticket;
 
@@ -20,8 +22,9 @@ public class TicketDaoTest {
 		TicketDaoImpl ticketDaoImpl = ctx.getBean("ticketDaoImpl", TicketDaoImpl.class);
 		
 		
-		
+		/*
 		Ticket ticket = new Ticket();
+		
         ticket.setUserId("A215559874");
         ticket.setTrainNo("2002");
         
@@ -38,10 +41,10 @@ public class TicketDaoTest {
         ticketDaoImpl.addTicket(ticket);
 		
 		System.out.println(ticket);
-		
+		*/
 		
 		/*
-		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6001, "A123456789");
+		Optional<Ticket> ticOptional = ticketDaoImpl.findTicketByTicketIdAndUserId(6003, "F234567891");
 		if(ticOptional.isPresent()) {
 			System.out.println(ticOptional.get());
 		} else {
@@ -52,7 +55,11 @@ public class TicketDaoTest {
 		 Ticket newTicket = new Ticket();
         newTicket.setUserId("A123456789");
         newTicket.setTrainNo("2002");
-        newTicket.setDate("2024-01-16");
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dateFormat.parse("2024-01-16");
+        newTicket.setDate(date);
+        
         newTicket.setTrainCarId("C");
         newTicket.setSeatId(5);
         newTicket.setPrice(50);
@@ -60,13 +67,18 @@ public class TicketDaoTest {
 
         // 呼叫 DAO 的更新車票方法
         Boolean result = ticketDaoImpl.updateTicketByTicketIdAndUserId(6001, "A123456789", newTicket);
-
+        
         if (result) {
-            System.out.println("更新成功！");
+            System.out.println("result");
         } else {
             System.out.println("更新失敗！");
+		
         }
-		 */
+		*/
+		
+		
+		
+		
 		
 		
 	}
