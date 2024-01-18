@@ -36,10 +36,10 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 	
 	@Override
-	public Boolean updateScheduleByTrainId(Integer trainId, String newSchedule) {
-	    String sql = "UPDATE schedule SET departStation = ?, arriveStation = ?, departTime = ?, arriveTime = ? WHERE trainId = ?";
+	public Boolean updateScheduleByTrainNo(String trainNo, Schedule newSchedule) {
+	    String sql = "UPDATE schedule SET departStation = ?, arriveStation = ?, departTime = ?, arriveTime = ? WHERE trainNo = ?";
 	    try {
-	        int rowCount = jdbcTemplate.update(sql, newSchedule, trainId);
+	        int rowCount = jdbcTemplate.update(sql, newSchedule, trainNo);
 	        return rowCount > 0;
 	    } catch (DataAccessException e) {
 	        // 可以在這裡添加日誌或其他處理
