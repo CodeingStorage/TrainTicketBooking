@@ -1,5 +1,7 @@
 package spring.mvc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.bean.TrainTime;
+import com.example.util.TimeTableAPI;
+
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
 
@@ -47,7 +53,11 @@ public class TicketController {
 			model.addAttribute("bookingMessage", "起點終點重複");
 			return "booking";
 		}
-		return departDate; 	
+		List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate);
+		
+		model.addAttribute("trainTimes", trainTimes);		
+		
+		return "booking"; 	
 		
 	}
 	
