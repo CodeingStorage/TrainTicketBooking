@@ -25,7 +25,15 @@ public class TicketController {
 	@GetMapping("/frontend/main")
 	public String main(HttpSession session) {
 		
-		return "frontend/main";
+		return "/TicketController/frontend/main";
 
 	}
+	
+	//訂票頁面
+	@GetMapping("/frontend/booking/booking")
+	public String bookPage(HttpSession session) {
+		return "/TicketController/frontend/booking/booking";
+		
+	}
+	
 }
