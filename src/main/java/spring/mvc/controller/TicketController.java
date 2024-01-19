@@ -5,7 +5,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
@@ -35,5 +37,31 @@ public class TicketController {
 		return "/frontend/booking/booking";
 		
 	}
+	//訂票
+	@PostMapping("/frontend/booking/booking")
+	public String book(@RequestParam("departStation" )String departStation,
+					   @RequestParam("arriveStation" )String arriveStation,
+					   @RequestParam("departTime" )String departTime,
+					   @RequestParam("departDate" )String departDate) {
+		
+		return departDate;
+		
+	}
+	
+	//列車時刻查詢
+	@GetMapping("/frontend/schedule_query/schedule_query")
+	public String trainQueryPage(HttpSession session) {
+		return "/frontend/schedule_query/schedule_query";
+		
+	}
+	
+	//列車時刻查詢
+	@GetMapping("/frontend/ticket_query/ticket_query")
+	public String ticketQueryPage(HttpSession session) {
+		return "/frontend/ticket_query/ticket_query";
+			
+		}
+	
+	//返回主頁
 	
 }

@@ -21,8 +21,8 @@ public class TicketDaoImpl implements TicketDao {
 	
 	@Override
 	public void addTicket(Ticket ticket) {
-		String sql = "INSERT INTO ticket (ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-           jdbcTemplate.update(sql, ticket.getTicketId(),ticket.getUserId(), ticket.getTrainNo(), ticket.getDate(), ticket.getTrainCarId(), ticket.getSeatId(), ticket.getPrice(), ticket.getBookTime());     
+		String sql = "INSERT INTO ticket ( userId, trainNo, date, trainCarId, seatId, price, bookTime) VALUES (?, ?, ?, ?, ?, ?, ?)";
+           jdbcTemplate.update(sql, ticket.getUserId(), ticket.getTrainNo(), ticket.getDate(), ticket.getTrainCarId(), ticket.getSeatId(), ticket.getPrice(), ticket.getBookTime());     
                 
 	
 	}
