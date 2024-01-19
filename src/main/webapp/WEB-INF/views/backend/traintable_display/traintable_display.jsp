@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" isErrorPage="true"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,11 +45,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../ticket_info/ticket_info_display.html">購票紀錄查詢</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="traintable_display_southbound.html">火車時刻表查詢/修改(南下)</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="traintable_display_northbound.html">火車時刻表查詢/修改(北上)</a>
+            <a class="nav-link active" aria-current="page" href="./traintable_display_northbound.html">火車時刻表查詢/修改</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../../frontend/index.html">前端</a>
@@ -63,9 +65,9 @@
       <thead>
         <tr>
           <th>車次</th>
-          <th>高雄</th>
-          <th>台中</th>
           <th>台北</th>
+          <th>台中</th>
+          <th>高雄</th>
         </tr>
       </thead>
       <tbody>

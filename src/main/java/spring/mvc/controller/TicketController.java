@@ -11,7 +11,7 @@ import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
 
 @Controller
-@RequestMapping("/TicketController")
+@RequestMapping("/ticket")
 public class TicketController {
 	
 	@Autowired
@@ -25,14 +25,14 @@ public class TicketController {
 	@GetMapping("/frontend/main")
 	public String main(HttpSession session) {
 		
-		return "/TicketController/frontend/main";
+		return "/frontend/main";
 
 	}
 	
 	//訂票頁面
 	@GetMapping("/frontend/booking/booking")
 	public String bookPage(HttpSession session) {
-		return "/TicketController/frontend/booking/booking";
+		return "/frontend/booking/booking";
 		
 	}
 	
