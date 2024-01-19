@@ -4,11 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
 
@@ -33,18 +33,21 @@ public class TicketController {
 	
 	//訂票頁面
 	@GetMapping("/frontend/booking/booking")
-	public String bookPage(HttpSession session) {
+	public String bookPage(HttpSession session, Model model) {
 		return "/frontend/booking/booking";
 		
 	}
 	//訂票
 	@PostMapping("/frontend/booking/booking")
 	public String book(@RequestParam("departStation" )String departStation,
-					   @RequestParam("arriveStation" )String arriveStation,
-					   @RequestParam("departTime" )String departTime,
-					   @RequestParam("departDate" )String departDate) {
-		
-		return departDate;
+					   @RequestParam("arriveStation" )String arriveStation,					   
+					   @RequestParam("departDate" )String departDate, Model model) throws Exception {
+
+		if (departStation.equals(arriveStation)) {
+			model.addAttribute("bookingMessage", "起點終點重複");
+			return "booking";
+		}
+		return departDate; 	
 		
 	}
 	
