@@ -1,21 +1,18 @@
 package spring.mvc.controller;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
-import spring.mvc.model.entity.Schedule;
 
 @Controller
-@RequestMapping("/TrainTicketOrder")
-public class TicketBookingController {
+@RequestMapping("/TicketController")
+public class TicketController {
 	
 	@Autowired
 	private  ScheduleDao scheduleDaoImpl;
@@ -24,9 +21,11 @@ public class TicketBookingController {
 	private  TicketDao ticketDaoImpl;
 
 		
-	//新增車票
-	
-	
-	
-	
+	//前往首頁
+	@GetMapping("/frontend/main")
+	public String main(HttpSession session) {
+		
+		return "frontend/main";
+
+	}
 }
