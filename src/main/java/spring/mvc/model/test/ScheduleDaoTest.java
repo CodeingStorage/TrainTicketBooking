@@ -64,4 +64,32 @@ public class ScheduleDaoTest {
 		System.out.println(schedules);
 		
 	}
+	
+	@GetMapping("/")
+	@ResponseBody
+	private List<Schedule> findSch() {
+		List<Schedule> schedules = scheduleDaoImpl.findAllSchedules();
+		System.out.println(schedules);
+		
+		return schedules ;
+		}
+	
+	@GetMapping("/123")
+	private String  findSch1(Model model) {
+		List<Schedule> schedules = scheduleDaoImpl.findAllSchedules();
+		
+		model.addAttribute("schedules",schedules);
+		return "123";
+	}
+	
+	import java.util.List;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import spring.mvc.model.entity.Schedule;
+	
 */
+
+

@@ -45,13 +45,13 @@
     <div class="vh-100">
         <div class="container d-flex justify-content-around pt-5">
             <div class="row justify-content-center mt-5">
-                <a href="/frontend/booking/booking.html">
+                <a href="/frontend/booking/booking.jsp">
                     <button class="btn btn-primary custom-button" id="queryBtn"><h1>前往訂票</h1></button>
                 </a>
             </div>
 
             <div class="row justify-content-center mt-5">
-                <a href="/frontend/ticket_query/ticket_query.html">
+                <a href="/frontend/ticket_query/ticket_query.jsp">
                     <button class="btn btn-primary custom-button" id="queryBtn"><h1>訂位查詢/修改</h1></button>
                 </a>
             </div>

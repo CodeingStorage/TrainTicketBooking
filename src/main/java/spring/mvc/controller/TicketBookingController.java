@@ -14,7 +14,7 @@ import spring.mvc.model.dao.TicketDao;
 import spring.mvc.model.entity.Schedule;
 
 @Controller
-@RequestMapping("/find")
+@RequestMapping("/TrainTicketOrder")
 public class TicketBookingController {
 	
 	@Autowired
@@ -24,23 +24,9 @@ public class TicketBookingController {
 	private  TicketDao ticketDaoImpl;
 
 		
+	//新增車票
 	
-		
 	
-	@GetMapping("/")
-	@ResponseBody
-	private List<Schedule> findSch() {
-		List<Schedule> schedules = scheduleDaoImpl.findAllSchedules();
-		System.out.println(schedules);
-		
-		return schedules ;
-		}
 	
-	@GetMapping("/123")
-	private String  findSch1(Model model) {
-		List<Schedule> schedules = scheduleDaoImpl.findAllSchedules();
-		
-		model.addAttribute("schedules",schedules);
-		return "123";
-	}
+	
 }
