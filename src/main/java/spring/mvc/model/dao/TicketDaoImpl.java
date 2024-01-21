@@ -1,5 +1,7 @@
 package spring.mvc.model.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.example.entity.Tran;
 
 import lombok.Data;
 import spring.mvc.model.entity.Schedule;
@@ -77,6 +85,34 @@ public class TicketDaoImpl implements TicketDao {
 	     
 	}
 
+	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public int addTran(Tran tran) {
+		String sql = "insert into tran(tran_No, departureStation, arrivalStation, date, departureTime, arrivalTime) values(?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, tran.getTranNo(), tran.getDepartureStation(), tran.getArrivalStation(), tran.getDate(), tran.getDepartureTime(), tran.getArrivalTime());
+	
+
+		 KeyHolder keyHolder = new GeneratedKeyHolder();
+	     
+	     int affectedRows = jdbcTemplate.update(connection -> {
+	         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+	         ps.setInt(1, tran.getTranNo());
+	         ps.setString(2, tran.getDepartureStation());
+	         ps.setString(3, tran.getArrivalStation());
+	         ps.setString(4, tran.getDate());
+	         ps.setString(5, tran.getDepartureTime());
+	         ps.setString(6, tran.getArrivalTime());
+	         return ps;
+	     }, keyHolder);
+
+	     if (keyHolder.getKey() != null) {
+	    	 tran.setTranId(keyHolder.getKey().intValue());
+	     }
+
+	     return affectedRows;
+		
+	}
 	
 	//豐富/將schedule注入ticket
     private void enrichTicketDetails(Ticket ticket) {

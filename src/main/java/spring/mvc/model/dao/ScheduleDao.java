@@ -20,4 +20,12 @@ public interface ScheduleDao {
 	// 依照查詢的起始時間，取得時刻表(邏輯：查詢開始時間 < 離開時間 <查詢結束時間)
 	List<Schedule> findAllSchedulesByTime(Time startTime, Time endTime);
 	
+	//新增列車資訊
+	static void addSchedule(Schedule schedule) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
 }
