@@ -5,6 +5,8 @@ import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
@@ -34,6 +36,7 @@ public class TicketController {
 	@Autowired
 	private  TicketDao ticketDao;
 
+	Logger logger = LoggerFactory.getLogger(getClass());
 		
 	//前往首頁
 	@GetMapping("/frontend/main")
@@ -138,8 +141,15 @@ public class TicketController {
 			return "redirect:/mvc/highrail/ticketlist";
 		}
 //列車時刻表----------------------------------------------------------------------------------------------	
+		@GetMapping("/frontend/schedule_query/schedule_query")
+		public String timeTable() {
+
+			return "frontend/schedule_query/schedule_query";
+		}
+
+		
 	//列車時刻查詢
-	@PostMapping("/frontend/schedule_query/schedule_query")
+	@PostMapping("/schedule_query")
 	public String timeTableCheck(@RequestParam("departStation") String departStation,
 			@RequestParam("arriveStation") String arriveStation, @RequestParam("deparDate") String deparDate,
 			Model model)  throws Exception {
@@ -165,4 +175,12 @@ public class TicketController {
 	
 	//返回主頁
 	
+	
+	// 找出所有時刻表
+	@GetMapping("/backend/traintable_display/traintable_display")
+	public String findAllSchedules(HttpSession session, Model model) {		
+		List<Schedule> schedule = scheduleDao.findAllSchedules();
+		model.addAttribute("schedule", schedule);
+		return "/backend/traintable_display/traintable_display";
+	}
 }

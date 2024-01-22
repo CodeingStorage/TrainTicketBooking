@@ -39,10 +39,81 @@
       </nav>
 
     <div class="vh-100">
+        
+
         <div class="d-flex flex-column mx-auto" style="height:1000px;width:1000px">
             <h4 class="m-5 fw-bold">訂票完成!</h4>
             <div class="mx-auto border-1 border shadow d-flex justify-content-evenly" style="height:400px;width:900px">
-                
+                <main class="main_contents">
+                    <div class="container">
+                        <h1>
+                            <span id="ctl00_ContentPlaceHolder1_lblBooking">一般訂票</span></h1>
+                        <span id="ctl00_ContentPlaceHolder1_lblMsg" style="color:Red;"></span>
+                        <section>
+                            <div class="newtitle">
+                                <span id="ctl00_ContentPlaceHolder1_lblDistance">去程</span>：<span id="ctl00_ContentPlaceHolder1_Field_fromStationName">嘉義</span>-<span id="ctl00_ContentPlaceHolder1_Field_toStationName">竹崎</span>(<span id="ctl00_ContentPlaceHolder1_Field_DayOfWeek">2024-01-23 / 星期二</span>)</div>
+                            <table class="nowrap" id="Outbound">
+                                <tbody>
+                                    <tr>
+                                        <th width="6%">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundSel">選擇</span></th>
+                                        <th width="14%">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundTranClassName">車種</span></th>
+                                        <th width="14%" class="Zhushan OutZhushanNewYear">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundTrainCode">車次</span></th>
+                                        <th width="14%">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundSeat">座位種類</span></th>
+                                        <th class="Zhushan OutZhushanNewYear" width="12%">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundDepartureTime">出發時間</span></th>
+                                        <th class="Zhushan OutZhushanNewYear" width="12%">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundArrivalTime">到達時間</span></th>
+                                        <!--2022.11.23 eric 祝山線不顯示【剩餘座位】 新增class="Zhushan"-->
+                                        <th width="15%" class="Zhushan">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutBoundRemain">剩餘座位/票數</span></th>
+                                        <!--2023.11.29 Gail 增加"備註"欄位，且只有元旦+祝山線時顯示 class="memo OutZhushanNewYear" -->
+                                        <th width="13%" class="OutMemo" style="display: none;">
+                                            <span id="ctl00_ContentPlaceHolder1_lblOutMemo">備註</span></th>
+                                    </tr>
+                                    
+                                            <tr id="trOutbound00" onclick="OutBoundSel(this.id)">
+                                                <td>
+                                                    <input type="radio" id="Field_Outbound00" value="1" name="Field_Outbound"></td>
+                                                <td>
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_TrainClassName">阿里山號</span></td>
+                                                <td class="Zhushan OutZhushanNewYear">
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_TrainCode">1</span></td>
+                                                
+                                                <td>
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_TrainTypeName">對號</span></td>
+                                                <td class="Zhushan OutZhushanNewYear">
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_DepartureTime">09:00</span></td>
+                                                <td class="Zhushan OutZhushanNewYear">
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_ArriveTime">09:40</span></td>
+                                                <!--2022.11.23 eric 祝山線不顯示【剩餘座位】 新增class="Zhushan"-->
+                                                <td class="Zhushan">
+                                                    
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_Remain">3</span>
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Label1">位</span>
+                                                </td>
+                                                <td class="OutMemo" style="display: none;">
+                                                    <span id="ctl00_ContentPlaceHolder1_RepeaterOutbound_ctl00_Field_Memo"></span>
+                                                </td>
+                                            </tr>
+                                        
+                                </tbody>
+                            </table>
+            
+                            <input name="ctl00$ContentPlaceHolder1$Field_OutBoundSel" type="text" id="ctl00_ContentPlaceHolder1_Field_OutBoundSel" style="width: 30px; display: none;">
+                            
+                            <span id="ctl00_ContentPlaceHolder1_CustomValidatorOutBoundSel" class="Red" style="display:none;">您尚未選擇去程出發時間</span>
+                        </section>
+            
+               
+            <!-- InstanceEndEditable -->
+                        
+                        
+                    </div>
+                </main>
 
             </div>
 
