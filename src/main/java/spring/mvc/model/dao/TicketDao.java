@@ -8,7 +8,10 @@ public interface TicketDao {
 
 	
 	//新增車票
-	void addTicket(Ticket ticket);
+	static void addTicket(Ticket ticket) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	//根據車票ID與userId查找車票資訊
 	Optional<Ticket>findTicketByTicketIdAndUserId(Integer ticketId, String userId);

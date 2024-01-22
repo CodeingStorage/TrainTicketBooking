@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import spring.mvc.model.entity.Ticket;
-import com.example.bean.TrainTime;
-import com.example.entity.Ticket;
-import com.example.entity.Tran;
-import com.example.entity.User;
-import com.example.util.TimeTableAPI;
+
+
 
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
@@ -109,15 +106,19 @@ public class TicketController {
 			
 			System.out.println(schedule.getTrainNo());
 			
-			int i;
-			i = (int) (Math.random()*10)+1;
-			Integer iInteger = Integer.valueOf(i);
-			ticket.setCarNo(iInteger);
 			
+			//隨機選擇車廂
 			Random r = new Random();
 			char c = (char)(r.nextInt(5) + 'a');
 			String s = Character.toString(c);
-			ticket.setSiteNo(s);
+			ticket.setTrainCarId(s);
+			
+			//隨機選擇座位
+			int i;
+			i = (int) (Math.random()*10)+1;
+			Integer iInteger = Integer.valueOf(i);
+			ticket.setSeatId(iInteger);
+			
 			
 			ticket.setPrice(Integer.parseInt(price));
 			
@@ -138,10 +139,21 @@ public class TicketController {
 		}
 //列車時刻表----------------------------------------------------------------------------------------------	
 	//列車時刻查詢
-	@GetMapping("/frontend/schedule_query/schedule_query")
-	public String trainQueryPage(HttpSession session) {
-		return "/frontend/schedule_query/schedule_query";
+	@PostMapping("/frontend/schedule_query/schedule_query")
+	public String timeTableCheck(@RequestParam("departStation") String departStation,
+			@RequestParam("arriveStation") String arriveStation, @RequestParam("deparDate") String deparDate,
+			Model model)  throws Exception {
+
+		if (departStation.equals(arriveStation)) {
+
+			model.addAttribute("checkingMessage", "起點終點重複");
+			System.out.println("起點終點重複");
+			return "timetable";
+		} 
 		
+		List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(fromStation, toStation, departureDate);
+		model.addAttribute("trainTimes", trainTimes);
+		return "timetable";
 	}
 	
 	//列車時刻查詢
