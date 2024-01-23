@@ -57,14 +57,15 @@ public class BookingController {
 	@PostMapping("/booking")
 	public String booking(@RequestParam("departStation" )String departStation,
 					   @RequestParam("arriveStation" )String arriveStation,					   
-					   @RequestParam("departDate" )String departDate, Model model) throws Exception {
+					   @RequestParam("departDate" )String departDate, 
+					   @RequestParam("departTime" )String departTime,Model model) throws Exception {
 
 		if (departStation.equals(arriveStation)) {
 			model.addAttribute("bookingMessage", "起點終點重複");
 			return "booking";
 		}
 		//需要API
-		//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate);
+		//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate, departTime);
 		
 		//model.addAttribute("trainTimes", trainTimes);		
 		
@@ -72,8 +73,16 @@ public class BookingController {
 		
 	}
 	//選擇乘車時間
-	
-	
+	//@PostMapping("/booking/chooseTime")
+	//public String chooseTime();
+	//需要API
+			//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate, departTime);
+			
+			//model.addAttribute("trainTimes", trainTimes);		
+			
+			//return "booking"; 
+			
+			
 	// 訂票結果(需要API)
 		@PostMapping("/booking/choosing/result")
 		@ResponseBody
@@ -134,9 +143,9 @@ public class BookingController {
 		}
 		
 		//查詢訂票
-		@GetMapping("/ticket_query/query")
+		@GetMapping("/ticket_query")
 		public String ticketQueryPage(HttpSession session) {
-			return "/frontend/ticket_query";
+			return "/frontend/ticket_query/ticket_query";
 				
 			}
 		

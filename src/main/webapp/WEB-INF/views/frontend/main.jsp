@@ -45,7 +45,7 @@
     <div class="vh-100">
         <div class="container d-flex justify-content-around pt-5">
             <div class="row justify-content-center mt-5">
-                <a href="../booking">
+                <a href="${pageContext.request.contextPath}/mvc/ticket/booking">
                     <button type="button" class="btn btn-primary custom-button" id="queryBtn"><h1>前往訂票</h1></button>
                 </a>
             </div>
