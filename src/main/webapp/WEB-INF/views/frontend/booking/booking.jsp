@@ -50,10 +50,10 @@
       
         <div class="mx-auto border-1 border shadow mt-3">
           
-          <form class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
+          <form method="post" class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
             <div class="col-md-3">
-              <label for="validationCustom04" class="form-label">出發站</label>
-              <select class="form-select" id="validationCustom04" required>
+              <label for="departStation" class="form-label">出發站</label>
+              <select class="form-select" id="departStation" name="departStation" required>
                 <option selected disabled value="">請選擇出發站</option>
                 <option>台北</option>
                 <option>台中</option>
@@ -66,8 +66,8 @@
               </div>
             </div>
             <div class="col-md-3">
-              <label for="validationCustom04" class="form-label">抵達站</label>
-              <select class="form-select" id="validationCustom04" required>
+              <label for="arrivrStation" class="form-label">抵達站</label>
+              <select class="form-select" id="arrivrStation" name="arriveStation" required>
                 <option selected disabled value="">請選擇抵達站</option>
                 <option>台北</option>
                 <option>台中</option>
@@ -79,7 +79,7 @@
             </div>
             <div class="col-md-3">
               <label for="start" class="d-block ">出發日期</label>
-              <input class="mt-2" type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01"
+              <input class="mt-2" type="date" id="departDate" name="departDate" 
                 style="width: 233px; height: 37px;" required />
             </div>
             <div class="mt-3 col-3">
@@ -124,7 +124,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-center align-items-center col-12">              
-              <a href="booking_schedule.html" class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</a>
+              <a href="./booking_schedule" class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</a>
             </div>
 
           </form>
@@ -177,4 +177,14 @@
         }, false)
       })
   })()
+  
+   // 获取当前日期
+    const currentDate = new Date().toISOString().split('T')[0];
+
+    // 获取日期输入框元素
+    const dateInput = document.getElementById('departDate');
+
+    // 设置日期输入框的最小值为当前日期
+    dateInput.setAttribute('min', currentDate);
+  
 </script>

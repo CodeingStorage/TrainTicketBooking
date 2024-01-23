@@ -46,24 +46,24 @@
         <div class="d-flex flex-column mx-auto" style="height: 500px;width:800px">
             <h4 class="mt-5 fw-bold">訂位紀錄查詢及修改</h4>
             <div class="mx-auto border-1 border shadow mt-4" style="height: 500px;width:800px">
-                <form class="row g-3 needs-validation p-4">
+                <form class="row g-3 needs-validation p-4 method="get" action="./ticket_query_present">
                     <div class="mb-3 col-12">
                         <label for="userId" class="form-label">身分證字號</label>
                         <input type="text" class="form-control" id="userId" name="userId" required>
                     </div>
                     <div class="mb-3 col-12">
-                        <label for="ticketNo" class="form-label">訂位代號</label>
-                        <input type="text" class="form-control" id="ticketNo" name="ticketNo" required>
+                        <label for="ticketId" class="form-label">訂位代號</label>
+                        <input type="text" class="form-control" id="ticketId" name="ticketId" required>
                     </div>
                     <div class="mb-3 col-12">
                         <div class="d-flex w-50">
                             <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
-                            <input type="text" class="form-control" id="captcha" name="captcha" required>
+                            <input type="text" class="form-control" id="captcha" name="captcha">
                             <i class="bi bi-arrow-repeat fs-2 ms-2"></i>
                         </div>
                     </div>
                     <div class="mb-3 col-12">
-                        <a href="../ticket_query_present" class="btn btn-primary w-100" type="submit" id="queryBtn">查詢</a>
+                         <button class="btn btn-primary w-100" type="submit" id="queryBtn">查詢</button>
                     </div>
                 </form>
             </div>

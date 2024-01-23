@@ -148,19 +148,19 @@ public class BookingController {
 		
 		// 查詢訂票首頁
 	    @GetMapping("/ticket_query")
-	    public String showTicketQueryPage() {
+	    public String ticketQuery() {
 	        return "frontend/ticket_query/ticket_query";
 	    }
 
 	    // 根據 userId 及 ticketId 查詢訂票
-	    @GetMapping("/ticket_query_result")
+	    @GetMapping("/ticket_query_present")
 	    public String ticketQueryResult(
 	            @RequestParam("ticketId") Integer ticketId,
 	            @RequestParam("userId") String userId,
-	            Model model
-	    ) {
-	        Optional<Ticket> tickets = ticketDao.findTicketByTicketIdAndUserId(ticketId, userId);
-	        model.addAttribute("tickets", tickets);
+	            Model model){
+	     
+	        Optional<Ticket> ticket = ticketDao.findTicketByTicketIdAndUserId(ticketId, userId);
+	        model.addAttribute("ticket", ticket);
 
 	        return "frontend/ticket_query/ticket_query_present";
 	    }
@@ -171,7 +171,7 @@ public class BookingController {
 		public String cancelticket(@RequestParam("ticketId") Integer ticketId, @RequestParam("userId") String userId, HttpSession session) {
 			ticketDao.cancelTicket(ticketId, userId);
 			logger.info("取消訂票");
-			return "redirect:/mvc/highrail/ticketlist";
+			return "redirect:/mvc//ticket/frontend/main";
 		}
 		
 //Schedule------------------------------------------------------------------------------------------------------		

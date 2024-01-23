@@ -14,6 +14,7 @@
 </head>
 
 <body>
+${ticket}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.html">灣鐵</a>
@@ -42,41 +43,51 @@
     </nav>
     
     <div class="container mt-5">
-    <h2 class="mb-4">Ticket Query Result</h2>
-
-    <c:if test="${not empty tickets}">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Ticket ID</th>
-                    <th>User ID</th>
-                    <th>Train ID</th>
-                    <th>Departure Station</th>
-                    <th>Arrival Station</th>
-                    <th>Price</th>
-                    <th>Booking Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="ticket" items="${tickets}">
+        <h2 class="mb-4">Ticket Query Result</h2>
+    
+        <c:if test="${ticket.isPresent()}">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
-                        <td>${ticket.ticketId}</td>
-                        <td>${ticket.userId}</td>
-                        <td>${ticket.trainId}</td>
-                        <td>${ticket.departureStation}</td>
-                        <td>${ticket.arrivalStation}</td>
-                        <td>${ticket.price}</td>
-                        <td>${ticket.bookTime}</td>
+                        <th>車票ID</th>
+                        <th>身分證字號</th>
+                        <th>火車車次</th>
+                        <th>出發站</th>
+                        <th>抵達站</th>
+                        <th>出發時間</th>
+                        <th>抵達時間</th>                        
+                        <th>價格</th>
+                        <th>訂票時間</th>
+                        <th>操作</th> <!-- 修改 Actions 列為操作 -->
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </c:if>
-
-    <c:if test="${empty tickets}">
-        <p class="alert alert-info">No tickets found for the specified criteria.</p>
-    </c:if>
-</div>
+                </thead>
+                <tbody>
+                      
+                        <tr>
+                            <td>${ticket.ticketId}</td>
+                            <td>${ticket.userId}</td>
+                            <td>${ticket.trainNo}</td>
+                            <td>${ticket.schedule.deparStation}</td>
+                            <td>${ticket.schedule.arriveStation}</td>
+                            <td>${ticket.schedule.departTime}</td>
+                            <td>${ticket.schedule.arriveTime}</td>
+                            <td>${ticket.price}</td>
+                            <td>${ticket.bookTime}</td>
+                            <td>
+                                <!-- 使用 Bootstrap 按鈕樣式 -->
+                                <a href="#" class="btn btn-primary">修改</a>
+                                <a href="#" class="btn btn-danger">刪除</a>
+                            </td>
+                        </tr>
+                    
+                </tbody>
+            </table>
+       </c:if>
+    				
+        <c:if test="${empty ticket}">
+            <p class="alert alert-info">No tickets found for the specified criteria.</p>
+        </c:if>
+    </div>
 
     
     
