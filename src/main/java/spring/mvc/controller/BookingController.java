@@ -176,7 +176,7 @@ public class BookingController {
 		
 //Schedule------------------------------------------------------------------------------------------------------		
 
-		//前往搜尋時刻表頁面(前端)
+		//搜尋時刻表頁面(前端)
 		@GetMapping("/schedule_query")
 		public String timeTable() {
 
@@ -209,10 +209,16 @@ public class BookingController {
 			
 			
 			// 找出所有時刻表(後端)
-			@GetMapping("/backend/traintable_display/traintable_display")
-			public String findAllSchedules(HttpSession session, Model model) {		
-				List<Schedule> schedule = scheduleDao.findAllSchedules();
-				model.addAttribute("schedule", schedule);
+			//@GetMapping("/traintable_display")
+			//public String findAllSchedules(HttpSession session, Model model) {		
+			//	List<Schedule> schedule = scheduleDao.findAllSchedules();
+			//	model.addAttribute("schedule", schedule);
+			//	return "/backend/traintable_display/traintable_display";
+			//}
+			
+			@GetMapping("/backend/traintable_display")
+			public String traintable(HttpSession session) {				
 				return "/backend/traintable_display/traintable_display";
+
 			}
 }

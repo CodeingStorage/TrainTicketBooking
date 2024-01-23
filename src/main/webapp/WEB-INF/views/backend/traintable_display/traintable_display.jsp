@@ -84,16 +84,7 @@
           <td>13:00</td>
           <td>14:00</td>
         </tr>
-        <!--<tr th:each="score, state : ${ scores }">
-                <td>0</td>
-                <td th:text="${ticket.id}"></td>
-                <td th:text="${score.name}"></td>
-                <td th:text="${score.chineseScore}"></td>
-                <td th:text="${score.englishScore}"></td>
-                <td th:text="${score.mathScore}"></td>
-                <td th:text="${score.totalScore}"></td>
-                <td th:text="${#numbers.formatDecimal(score.averageScore, 1, 1)}"></td>
-            </tr>-->
+        
       </tbody>
     </table>
   </div>

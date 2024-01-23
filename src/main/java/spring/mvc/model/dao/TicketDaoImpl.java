@@ -27,8 +27,8 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	
 	@Override
-	public Optional<Ticket> findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
-		String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
+	public Optional<Ticket>findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
+		String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId= ? AND userId= ?";
 		try {
 			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),ticketId,userId);
 			if (ticket != null) {
