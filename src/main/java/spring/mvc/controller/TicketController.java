@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import spring.mvc.model.entity.Ticket;
-
-
-
+import spring.mvc.bean.TrainTime;
 import spring.mvc.model.dao.ScheduleDao;
 import spring.mvc.model.dao.TicketDao;
 import spring.mvc.model.entity.Schedule;
@@ -81,7 +79,7 @@ public class TicketController {
 						
 			//從API獲取資訊(need API)
 	        String trainNo = trainTime.getTrainNo();
-	        String departStationName = trainTime.getdepartStationName();
+	        String departStationName = trainTime.getDepartStationName();
 	        String arriveStationName = trainTime.getArriveStationName();
 	        String departDate = trainTime.getDepartDate();
 	        String departTime = trainTime.getDepartTime();
@@ -125,7 +123,7 @@ public class TicketController {
 			
 			ticket.setPrice(Integer.parseInt(price));
 			
-			TicketDao.addTicket(ticket);
+			ticketDao.addTicket(ticket);
 			
 			logger.info("訂票成功");
 			
@@ -141,6 +139,7 @@ public class TicketController {
 			return "redirect:/mvc/highrail/ticketlist";
 		}
 //列車時刻表----------------------------------------------------------------------------------------------	
+		//前往搜尋時刻表頁面(前端)
 		@GetMapping("/frontend/schedule_query/schedule_query")
 		public String timeTable() {
 
@@ -176,7 +175,7 @@ public class TicketController {
 	//返回主頁
 	
 	
-	// 找出所有時刻表
+	// 找出所有時刻表(後端)
 	@GetMapping("/backend/traintable_display/traintable_display")
 	public String findAllSchedules(HttpSession session, Model model) {		
 		List<Schedule> schedule = scheduleDao.findAllSchedules();

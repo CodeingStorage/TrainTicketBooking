@@ -21,10 +21,7 @@ public interface ScheduleDao {
 	List<Schedule> findAllSchedulesByTime(Time startTime, Time endTime);
 	
 	//新增列車資訊
-	static void addSchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
-		
-	}
+	String addSchedule(Schedule schedule); 
 	
 	
 	
