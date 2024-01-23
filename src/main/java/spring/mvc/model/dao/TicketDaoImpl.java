@@ -25,6 +25,7 @@ public class TicketDaoImpl implements TicketDao {
                 
 	
 	}
+	
 	@Override
 	public Optional<Ticket> findTicketByTicketIdAndUserId(Integer ticketId, String userId) {
 		String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket where ticketId=? AND userId=?";
