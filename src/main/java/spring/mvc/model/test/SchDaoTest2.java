@@ -1,5 +1,6 @@
 package spring.mvc.model.test;
 
+import java.sql.Time;
 import java.text.ParseException;
 
 
@@ -21,8 +22,8 @@ public class SchDaoTest2 {
 		Schedule newSchedule = new Schedule();		
 		newSchedule.setDepartStation("台北");
 		newSchedule.setArriveStation("雲林");
-		newSchedule.setDepartTime("13:00:00");		
-		newSchedule.setArriveTime("14:30:00");
+		newSchedule.setDepartTime(Time.valueOf("13:00:00"));
+		newSchedule.setArriveTime(Time.valueOf("14:30:00"));
        	
         // 呼叫 DAO 的更新車票方法
         Boolean result = scheduleDaoImpl.updateScheduleByTrainNo("2001", newSchedule);

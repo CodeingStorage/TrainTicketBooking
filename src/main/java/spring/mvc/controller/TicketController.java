@@ -1,5 +1,6 @@
 package spring.mvc.controller;
 
+import java.sql.Time;
 import java.util.List;
 import java.util.Random;
 
@@ -27,9 +28,7 @@ import spring.mvc.model.entity.Schedule;
 @Controller
 @RequestMapping("/ticket")
 public class TicketController {
-	
-	@Autowired
-	private  ScheduleDao scheduleDao;
+		
 
 	@Autowired
 	private  TicketDao ticketDao;
@@ -46,14 +45,14 @@ public class TicketController {
 //車票 訂/修/刪除(需要API)----------------------------------------------------------------------------------------------	
 	
 	//訂票頁面
-	@GetMapping("/frontend/booking/booking")
+	@GetMapping("/booking/booking")
 	public String bookPage(HttpSession session, Model model) {
-		return "/frontend/booking/booking";
+		return "/booking/booking";
 		
 	}
 	//訂票
-	@PostMapping("/frontend/booking/booking")
-	public String book(@RequestParam("departStation" )String departStation,
+	@PostMapping("/booking/booking")
+	public String booking(@RequestParam("departStation" )String departStation,
 					   @RequestParam("arriveStation" )String arriveStation,					   
 					   @RequestParam("departDate" )String departDate, Model model) throws Exception {
 
@@ -80,10 +79,9 @@ public class TicketController {
 			//從API獲取資訊(need API)
 	        String trainNo = trainTime.getTrainNo();
 	        String departStationName = trainTime.getDepartStationName();
-	        String arriveStationName = trainTime.getArriveStationName();
-	        String departDate = trainTime.getDepartDate();
-	        String departTime = trainTime.getDepartTime();
-	        String arriveTime = trainTime.getArriveTime();
+	        String arriveStationName = trainTime.getArriveStationName();	        
+	        Time departTime = trainTime.getDepartTime();
+	        Time arriveTime = trainTime.getArriveTime();
 	        String price = trainTime.getPrice();
 	        
 	        System.out.println(trainNo);
@@ -138,48 +136,7 @@ public class TicketController {
 			logger.info("取消訂票");
 			return "redirect:/mvc/highrail/ticketlist";
 		}
-//列車時刻表----------------------------------------------------------------------------------------------	
-		//前往搜尋時刻表頁面(前端)
-		@GetMapping("/frontend/schedule_query/schedule_query")
-		public String timeTable() {
-
-			return "frontend/schedule_query/schedule_query";
-		}
-
 		
-	//列車時刻查詢
-	@PostMapping("/schedule_query")
-	public String timeTableCheck(@RequestParam("departStation") String departStation,
-			@RequestParam("arriveStation") String arriveStation, @RequestParam("deparDate") String deparDate,
-			Model model)  throws Exception {
-
-		if (departStation.equals(arriveStation)) {
-
-			model.addAttribute("checkingMessage", "起點終點重複");
-			System.out.println("起點終點重複");
-			return "timetable";
-		} 
 		
-		List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(fromStation, toStation, departureDate);
-		model.addAttribute("trainTimes", trainTimes);
-		return "timetable";
-	}
-	
-	//列車時刻查詢
-	@GetMapping("/frontend/ticket_query/ticket_query")
-	public String ticketQueryPage(HttpSession session) {
-		return "/frontend/ticket_query/ticket_query";
-			
-		}
-	
-	//返回主頁
-	
-	
-	// 找出所有時刻表(後端)
-	@GetMapping("/backend/traintable_display/traintable_display")
-	public String findAllSchedules(HttpSession session, Model model) {		
-		List<Schedule> schedule = scheduleDao.findAllSchedules();
-		model.addAttribute("schedule", schedule);
-		return "/backend/traintable_display/traintable_display";
-	}
+
 }

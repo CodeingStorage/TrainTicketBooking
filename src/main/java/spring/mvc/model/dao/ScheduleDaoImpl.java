@@ -60,7 +60,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 	
 	
-	@Override
+	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public String addSchedule(Schedule schedule) {
 		String sql = "insert into schedule(trainNo, departStation, arriveStation, departTime, arriveTime) values(?, ?, ?, ?, ?)";

@@ -3,6 +3,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Time;
+
 import com.google.gson.Gson;
 
 @Data
@@ -15,12 +17,10 @@ public class TrainTime {
 	private String departStationName;
 	
 	private String arriveStationName;
+		
+	private Time departTime;
 	
-	private String departDate;
-	
-	private String departTime;
-	
-	private String arriveTime;
+	private Time arriveTime;
 	
 	private String price;
 	

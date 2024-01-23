@@ -25,16 +25,6 @@ public class Schedule {
 	
 	private Time arriveTime;
 	
-	public void setDepartTime(String departTime) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        Date parsedDate = sdf.parse(departTime);
-        this.departTime = new Time(parsedDate.getTime());
-    }
-
-    public void setArriveTime(String arriveTime) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-        Date parsedDate = sdf.parse(arriveTime);
-        this.arriveTime = new Time(parsedDate.getTime());
-    }
+	
 	
 }
