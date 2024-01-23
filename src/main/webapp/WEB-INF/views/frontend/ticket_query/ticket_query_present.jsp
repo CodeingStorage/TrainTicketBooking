@@ -40,6 +40,43 @@
             </div>
         </div>
     </nav>
+    
+    <div class="container mt-5">
+    <h2 class="mb-4">Ticket Query Result</h2>
+
+    <c:if test="${not empty tickets}">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>User ID</th>
+                    <th>Train ID</th>
+                    <th>Departure Station</th>
+                    <th>Arrival Station</th>
+                    <th>Price</th>
+                    <th>Booking Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="ticket" items="${tickets}">
+                    <tr>
+                        <td>${ticket.ticketId}</td>
+                        <td>${ticket.userId}</td>
+                        <td>${ticket.trainId}</td>
+                        <td>${ticket.departureStation}</td>
+                        <td>${ticket.arrivalStation}</td>
+                        <td>${ticket.price}</td>
+                        <td>${ticket.bookTime}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:if>
+
+    <c:if test="${empty tickets}">
+        <p class="alert alert-info">No tickets found for the specified criteria.</p>
+    </c:if>
+</div>
 
     
     

@@ -51,7 +51,7 @@
             </div>
 
             <div class="row justify-content-center mt-5">
-                <a href="../ticket_query">
+                <a href="${pageContext.request.contextPath}/mvc/ticket/ticket_query">
                     <button type="button" class="btn btn-primary custom-button" id="queryBtn"><h1>訂位查詢/修改</h1></button>
                 </a>
             </div>

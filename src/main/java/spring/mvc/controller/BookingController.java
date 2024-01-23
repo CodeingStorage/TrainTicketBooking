@@ -2,6 +2,7 @@ package spring.mvc.controller;
 
 import java.sql.Time;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.example.entity.User;
+
 import spring.mvc.model.entity.Ticket;
 import spring.mvc.bean.TrainTime;
 import spring.mvc.model.dao.ScheduleDao;
@@ -142,15 +146,28 @@ public class BookingController {
 			return "success:" + schedule.getTrainNo();
 		}
 		
-		//查詢訂票
-		@GetMapping("/ticket_query")
-		public String ticketQueryPage(HttpSession session) {
-			return "/frontend/ticket_query/ticket_query";
-				
-			}
+		// 查詢訂票首頁
+	    @GetMapping("/ticket_query")
+	    public String showTicketQueryPage() {
+	        return "frontend/ticket_query/ticket_query";
+	    }
+
+	    // 根據 userId 及 ticketId 查詢訂票
+	    @GetMapping("/ticket_query_result")
+	    public String ticketQueryResult(
+	            @RequestParam("ticketId") Integer ticketId,
+	            @RequestParam("userId") String userId,
+	            Model model
+	    ) {
+	        Optional<Ticket> tickets = ticketDao.findTicketByTicketIdAndUserId(ticketId, userId);
+	        model.addAttribute("tickets", tickets);
+
+	        return "frontend/ticket_query/ticket_query_present";
+	    }
+		
 		
 		// 取消訂票
-		@GetMapping("/ticketlist/cancel")
+		@GetMapping("/ticket_query/cancel")
 		public String cancelticket(@RequestParam("ticketId") Integer ticketId, @RequestParam("userId") String userId, HttpSession session) {
 			ticketDao.cancelTicket(ticketId, userId);
 			logger.info("取消訂票");

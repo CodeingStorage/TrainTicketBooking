@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="mb-3 col-12">
-                        <a href="ticket_query_present.html" class="btn btn-primary w-100" type="submit" id="queryBtn">查詢</a>
+                        <a href="../ticket_query_present" class="btn btn-primary w-100" type="submit" id="queryBtn">查詢</a>
                     </div>
                 </form>
             </div>
