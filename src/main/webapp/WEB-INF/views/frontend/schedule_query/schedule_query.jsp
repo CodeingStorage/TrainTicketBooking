@@ -28,22 +28,38 @@
                     <div class="form-group mt-3 col-2">
                         <label for="departStation" class="d-flex justify-content-center">出發站</label>
                         <select class="form-select" id="departStation" name="departStation">
-                            <option selected value="南港">南港</option>
-                            <option value="2">站點二</option>
-                            <option value="3">站點三</option>
-                            <option value="4">站點四</option>
-                            <option value="5">站點四</option>
-                        </select>
+                            <option selected disabled value="">出發站..</option>
+                             <option value="南港">南港</option>
+                             <option value="台北">台北</option>
+                             <option value="板橋">板橋</option>
+                             <option value="桃園">桃園</option>
+                             <option value="新竹">新竹</option>
+                             <option value="苗栗">苗栗</option>
+                             <option value="台中">台中</option>
+                             <option value="彰化">彰化</option>
+                             <option value="雲林">雲林</option>
+                             <option value="嘉義">嘉義</option>
+                             <option value="台南">台南</option>
+                             <option value="左營">左營</option>
+                                  </select>
                     </div>
                     <div class="mt-3 col-2">
                         <label for="arriveStation" class="d-flex justify-content-center">抵達站</label>
                         <select class="form-select" id="arriveStation" name="arriveStation">
-                            <option selected value="高雄">高雄</option>
-                            <option value="4">站點四</option>
-                            <option value="3">站點三</option>
-                            <option value="2">站點二</option>
-                            <option value="1">站點一</option>
-                        </select>
+                            <option selected disabled value="">抵達站..</option>
+                            <option value="南港">南港</option>
+	                        <option value="台北">台北</option>
+	                        <option value="板橋">板橋</option>
+	                        <option value="桃園">桃園</option>
+	                        <option value="新竹">新竹</option>
+	                        <option value="苗栗">苗栗</option>
+	                        <option value="台中">台中</option>
+	                        <option value="彰化">彰化</option>
+	                        <option value="雲林">雲林</option>
+	                        <option value="嘉義">嘉義</option>
+	                        <option value="台南">台南</option>
+	                        <option value="左營">左營</option>
+                         </select>
                     </div>
                     
                     

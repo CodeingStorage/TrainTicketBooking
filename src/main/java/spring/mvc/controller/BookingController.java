@@ -113,7 +113,7 @@ public class BookingController {
 	     	schedule.setDepartTime(departTime);
 	     	schedule.setArriveTime(arriveTime);
 	     	
-			ScheduleDao.addSchedule(schedule);
+			//ScheduleDao.addSchedule(schedule);
 			
 			
 			Ticket ticket = new Ticket();
