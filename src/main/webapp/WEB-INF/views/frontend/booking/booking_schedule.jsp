@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,18 +23,32 @@
             <h4 class="mt-5 fw-bold"> 2.選擇車次</h4>
 
             <div class="mx-auto border-1 border shadow mt-4" style="background-color: #fefefe; height: 550px; width: 550px;">
-                <h5 class="m-3 fw-bold">站點A-站點B</h5>
-                <h6 class="m-3">日期:20xx/xx月/xx日</h6>
+                
+<div style="padding:15px;">
+                    <table class="table table-striped border">
+                       <thead>
+                    <tr>
+                        <th scope="col">車號</th>
+                        <th scope="col">出發站</th>
+                        <th scope="col">到達站</th>                       
+                        <th scope="col">出發時間</th>
+                        <th scope="col">到達時間</th>
+                    </tr>
+                </thead>
+	                <tbody>
+	                	<c:forEach items="${ schedule }" var="schedule">
+	                		<tr>
+		                		<td>${ schedule.trainNo }</td>
+		                		<td>${ schedule.departStation }</td>
+		                		<td>${ schedule.arriveStation }</td>		                		
+		                		<td>${ schedule.departTime }</td>
+		                		<td>${ schedule.arriveTime }</td>
+	                		</tr>
+	                	</c:forEach>
+	                </tbody>
+                </table>
 
-                <c:forEach var="timeSlot" items="${timeSlots}">
-                    <div class="form-check m-2">
-                        <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault${timeSlot.id}"
-                            checked>
-                        <label class="form-check-label" for="flexRadioDefault${timeSlot.id}">
-                            <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">${timeSlot.time}</li>
-                        </label>
-                    </div>
-                </c:forEach>
+            </div>
 
                 <div class="d-flex justify-content-center align-items-center col-12">
                     <a href="booking_confirm.html" class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</a>
@@ -42,7 +59,7 @@
         </div>
     </div>
 
-    <%@ include file="../footer.jsp" %>
+   
 
 </body>
 

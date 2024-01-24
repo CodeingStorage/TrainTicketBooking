@@ -56,13 +56,13 @@ public class BookingController {
 		return "/frontend/booking/booking";
 		
 	}
-	//訂票
-	@PostMapping("/booking")
+	//選擇乘車時間
+	@PostMapping("/booking_schedule")
 	public String booking(@RequestParam("departStation" )String departStation,
 					   @RequestParam("arriveStation" )String arriveStation,					   
 					   @RequestParam("departDate" )Date departDate, 
 					   @RequestParam("departTime" )Time departTime,Model model) throws Exception {
-
+    
 		if (departStation.equals(arriveStation)) {
 			model.addAttribute("bookingMessage", "起點終點重複");
 			return "/frontend/booking/booking";
@@ -70,20 +70,15 @@ public class BookingController {
 		
 		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
 		model.addAttribute("schedule",schedule);
-		return "frontend/booking/booking_schedule"; 	
+		return "/frontend/booking/booking_schedule"; 	
 		
 	}
-	//選擇乘車時間
-	@GetMapping("/booking_schedule")
-	public String chooseSchedulePage() {
+		
 	
-		return "frontend/booking/booking_schedule";
-	}
-	
-	
+	// 訂票結果
 	
 			
-	// 訂票結果
+	
 		
 		
 		

@@ -26,7 +26,11 @@
       
         <div class="mx-auto border-1 border shadow mt-3">
           
-          <form method="post" action="/TrainTicketBooking/mvc/ticket/booking_schedule" class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
+          <form method="post" 
+                action="/TrainTicketBooking/mvc/ticket/booking_schedule" 
+                class="row g-3 needs-validation p-md-2" 
+                style="background-color: rgb(255, 255, 255);" 
+                novalidate>
             <div class="col-md-3">
               <label for="departStation" class="form-label">出發站</label>
               <select class="form-select" id="departStation" name="departStation" required>
@@ -72,47 +76,44 @@
               </div>
             </div>
             <div class="col-md-3">
-              <label for="start" class="d-block ">出發日期</label>
-              <input class="mt-2" type="date" id="departDate" name="departDate" 
-                style="width: 233px; height: 37px;" required />
+              <label for="departDate" class="d-block">出發日期</label>
+              <input class="mt-2" 
+                     type="date" 
+                     id="departDate" name="departDate" 
+                     style="width: 233px; height: 37px;" required />
+              <div class="invalid-feedback">
+                請選擇日期
+              </div>
             </div>
             <div class="mt-3 col-3">
               <h5 class="d-flex justify-content-center">出發時間</h5>
-              <input class="m-1 p-1 border rounded justify-content-center col-11" type="time" id="departTime" name="departTime"
-                min="09:00" max="18:00" required />
+              <input class="m-1 p-1 border rounded justify-content-center col-11" 
+                     type="time" 
+                     id="departTime" 
+                     name="departTime" 
+                      required/>
+              <div class="invalid-feedback">
+                請選擇時間
+              </div>
             </div>
-
-            <div class="col-md-3">
-              
-            </div>
-            <div class="col-md-1">
-             
-            </div>
-           
-            <div class="col-7">
-
-            </div>
-
-            <div class="col-8">
-
-            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-1"></div>
+            <div class="col-7"></div>
+            <div class="col-8"></div>
            	<div class=" col-4">
               <div class="p-3 m-1 d-flex ">
-              <!--   <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
+              <%--   <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
                 <input type="text" class="form-control" id="captcha" name="captcha" required>
-                <i class="bi bi-arrow-repeat fs-2 ms-2"></i>--> 
+                <i class="bi bi-arrow-repeat fs-2 ms-2"></i> --%> 
               </div>
             </div>
             <div class="d-flex justify-content-center align-items-center col-12">              
               <button class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</button>
             </div>
-		 
           </form>
-
         </div>
       </div>
     </div>
-  
 </body>
 <footer>
   <div class="text-center position-relative start-50 translate-middle-x" id="footer">
@@ -148,11 +149,11 @@
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
+          console.log(form.checkValidity());
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
           }
-
           form.classList.add('was-validated')
         }, false)
       })
