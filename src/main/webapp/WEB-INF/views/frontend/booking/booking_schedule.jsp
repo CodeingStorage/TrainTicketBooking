@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sp" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,61 +13,28 @@
 </head>
 
 <body>
+    <%@ include file="../header.jsp" %>
 
-   <%@ include file="../header.jsp" %>
-   
     <div class="vh-100">
-        <div class="d-flex flex-column mx-auto" style=" height: 800px;width:800px ">
+        <div class="d-flex flex-column mx-auto" style="height: 800px; width:800px;">
             <h4 class="mt-5 fw-bold"> 2.選擇車次</h4>
 
-            <div class="mx-auto border-1 border shadow mt-4" style="background-color: #fefefe;height:550px;width:550px">
+            <div class="mx-auto border-1 border shadow mt-4" style="background-color: #fefefe; height: 550px; width: 550px;">
                 <h5 class="m-3 fw-bold">站點A-站點B</h5>
                 <h6 class="m-3">日期:20xx/xx月/xx日</h6>
 
-
-                <div class="form-check m-2 ">
-                    <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">9:00~10:00</li>
-                    </label>
-                </div>
-
-                <div class="form-check m-2">
-                    <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">10:00~11:00 </li>
-                    </label>
-                </div>
-
-                <div class="form-check m-2">
-                    <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault3">
-                        <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">11:00~12:00</li>
-                    </label>
-                </div>
-
-                <div class="form-check m-2">
-                    <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault4">
-                        <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">12:00~13:00</li>
-                    </label>
-                </div>
-
-                <div class="form-check m-2">
-                    <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault5"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault5">
-                        <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">11:00~12:00</li>
-                    </label>
-                </div>
+                <c:forEach var="timeSlot" items="${timeSlots}">
+                    <div class="form-check m-2">
+                        <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault${timeSlot.id}"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault${timeSlot.id}">
+                            <li class="list-group-item shadow-sm p-3 mb-2 bg-body rounded" id="bar">${timeSlot.time}</li>
+                        </label>
+                    </div>
+                </c:forEach>
 
                 <div class="d-flex justify-content-center align-items-center col-12">
-                    <a href="booking_confirm.html" class="btn btn-primary w-50 mt-2 p-3" type="submit"
-                        id="queryBtn">確認車次</a>
+                    <a href="booking_confirm.html" class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</a>
                 </div>
 
             </div>
@@ -78,19 +42,9 @@
         </div>
     </div>
 
-
-
-
-
-<footer>
-    <div class="text-center position-relative  start-50 translate-middle-x" id="footer">
-        <p class="p-1 mb-0">&copy; 2023 Your Website. All rights reserved.</p>
-    </div>
-</footer>
+    <%@ include file="../footer.jsp" %>
 
 </body>
-
-
 
 </html>
 
@@ -98,7 +52,6 @@
     #bar{
         width: 450px;
         background-color: #fff;
-
     }
 
     #queryBtn {

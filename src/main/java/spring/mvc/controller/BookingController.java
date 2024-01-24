@@ -1,6 +1,7 @@
 package spring.mvc.controller;
 
 import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import java.sql.Time;
 
 import spring.mvc.model.entity.Ticket;
 import spring.mvc.bean.TrainTime;
@@ -58,15 +60,15 @@ public class BookingController {
 	@PostMapping("/booking")
 	public String booking(@RequestParam("departStation" )String departStation,
 					   @RequestParam("arriveStation" )String arriveStation,					   
-					   @RequestParam("departDate" )String departDate, 
-					   @RequestParam("departTime" )String departTime,Model model) throws Exception {
+					   @RequestParam("departDate" )Date departDate, 
+					   @RequestParam("departTime" )Time departTime,Model model) throws Exception {
 
 		if (departStation.equals(arriveStation)) {
 			model.addAttribute("bookingMessage", "起點終點重複");
 			return "/frontend/booking/booking";
 		}
 		
-		List<Schedule> schedule = scheduleDao.findSchedulesByStation(departStation, arriveStation);
+		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
 		model.addAttribute("schedule",schedule);
 		return "frontend/booking/booking_schedule"; 	
 		
