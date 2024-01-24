@@ -14,9 +14,9 @@ public class TrainTime {
 
 	private String trainNo;
 	
-	private String departStationName;
+	private String departStation;
 	
-	private String arriveStationName;
+	private String arriveStation;
 		
 	private Time departTime;
 	

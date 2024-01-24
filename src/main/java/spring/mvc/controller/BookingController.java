@@ -1,9 +1,7 @@
 package spring.mvc.controller;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -21,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.example.entity.User;
 
 import spring.mvc.model.entity.Ticket;
 import spring.mvc.bean.TrainTime;
@@ -74,10 +70,17 @@ public class BookingController {
 		
 		//model.addAttribute("trainTimes", trainTimes);		
 		
-		return "booking"; 	
+		return "frontend/booking/booking_schedule"; 	
 		
 	}
 	//選擇乘車時間
+	@PostMapping("/booking_schedule")
+	public String chooseSchedule() {
+		List<Schedule> schedule = scheduleDao.findSchedulesByStation(departStation, arriveStation);
+		model.addAttribute("schedule",schedule);
+		return "booking";
+	}
+	
 	//@PostMapping("/booking/chooseTime")
 	//public String chooseTime();
 	//需要API
@@ -86,10 +89,11 @@ public class BookingController {
 			//model.addAttribute("trainTimes", trainTimes);		
 			
 			//return "booking"; 
-			
+
+	
 			
 	// 訂票結果(需要API)
-		@PostMapping("/booking/choosing/result")
+		@PostMapping("/booking_schedule_result")
 		@ResponseBody
 		@Transactional(propagation = Propagation.REQUIRED)
 		public String result(@RequestBody TrainTime trainTime,
@@ -97,8 +101,8 @@ public class BookingController {
 						
 			//從API獲取資訊(need API)
 	        String trainNo = trainTime.getTrainNo();
-	        String departStationName = trainTime.getDepartStationName();
-	        String arriveStationName = trainTime.getArriveStationName();	        
+	        String departStationName = trainTime.getDepartStation();
+	        String arriveStationName = trainTime.getArriveStation();	        
 	        Time departTime = trainTime.getDepartTime();
 	        Time arriveTime = trainTime.getArriveTime();
 	        String price = trainTime.getPrice();
@@ -113,7 +117,7 @@ public class BookingController {
 	     	schedule.setDepartTime(departTime);
 	     	schedule.setArriveTime(arriveTime);
 	     	
-			//ScheduleDao.addSchedule(schedule);
+			scheduleDao.addSchedule(schedule);
 			
 			
 			Ticket ticket = new Ticket();
@@ -198,9 +202,8 @@ public class BookingController {
 					return "frontend/schedule_query/schedule_query";
 				} 
 				
-				List<Schedule> schedule2 = scheduleDao.findSchedulesByStation(departStation, arriveStation);				
-				String schedule = "123";				
-				model.addAttribute("schedule", schedule2);
+				List<Schedule> schedule = scheduleDao.findSchedulesByStation(departStation, arriveStation);												
+				model.addAttribute("schedule", schedule);
 				return "frontend/schedule_query/schedule_query_present";
 			}
 						

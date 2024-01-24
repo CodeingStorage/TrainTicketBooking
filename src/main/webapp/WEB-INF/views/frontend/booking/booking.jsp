@@ -26,14 +26,23 @@
       
         <div class="mx-auto border-1 border shadow mt-3">
           
-          <form method="post" class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
+          <form method="post" action="/TrainTicketBooking/mvc/ticket/booking_schedule" class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
             <div class="col-md-3">
               <label for="departStation" class="form-label">出發站</label>
               <select class="form-select" id="departStation" name="departStation" required>
                 <option selected disabled value="">請選擇出發站</option>
-                <option>台北</option>
-                <option>台中</option>
-                <option>高雄</option>
+                <option value="南港">南港</option>
+                <option value="台北">台北</option>
+                <option value="板橋">板橋</option>
+                <option value="桃園">桃園</option>
+                <option value="新竹">新竹</option>
+                <option value="苗栗">苗栗</option>
+                <option value="台中">台中</option>
+                <option value="彰化">彰化</option>
+                <option value="雲林">雲林</option>
+                <option value="嘉義">嘉義</option>
+                <option value="台南">台南</option>
+                <option value="左營">左營</option>
                 
 
               </select>
@@ -42,12 +51,21 @@
               </div>
             </div>
             <div class="col-md-3">
-              <label for="arrivrStation" class="form-label">抵達站</label>
-              <select class="form-select" id="arrivrStation" name="arriveStation" required>
+              <label for="arriveStation" class="form-label">抵達站</label>
+              <select class="form-select" id="arriveStation" name="arriveStation" required>
                 <option selected disabled value="">請選擇抵達站</option>
-                <option>台北</option>
-                <option>台中</option>
-                <option>高雄</option>
+                <option value="南港">南港</option>
+                <option value="台北">台北</option>
+                <option value="板橋">板橋</option>
+                <option value="桃園">桃園</option>
+                <option value="新竹">新竹</option>
+                <option value="苗栗">苗栗</option>
+                <option value="台中">台中</option>
+                <option value="彰化">彰化</option>
+                <option value="雲林">雲林</option>
+                <option value="嘉義">嘉義</option>
+                <option value="台南">台南</option>
+                <option value="左營">左營</option>
               </select>
               <div class="invalid-feedback">
                 請選擇抵達站
@@ -60,24 +78,12 @@
             </div>
             <div class="mt-3 col-3">
               <h5 class="d-flex justify-content-center">出發時間</h5>
-              <input class="m-1 p-1 border rounded justify-content-center col-11" type="time" id="appt" name="appt"
+              <input class="m-1 p-1 border rounded justify-content-center col-11" type="time" id="departTime" name="departTime"
                 min="09:00" max="18:00" required />
             </div>
 
             <div class="col-md-3">
-              <label for="validationCustom04" class="form-label">票數</label>
-              <select class="form-select" id="validationCustom04" required>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
+              
             </div>
             <div class="col-md-1">
              
@@ -87,28 +93,26 @@
 
             </div>
 
-
-
             <div class="col-8">
 
             </div>
-            <div class=" col-4">
+           	<div class=" col-4">
               <div class="p-3 m-1 d-flex ">
-                <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
+              <!--   <img src="./img/captcha.jpg" alt="驗證碼" class="me-2">
                 <input type="text" class="form-control" id="captcha" name="captcha" required>
-                <i class="bi bi-arrow-repeat fs-2 ms-2"></i>
+                <i class="bi bi-arrow-repeat fs-2 ms-2"></i>--> 
               </div>
             </div>
             <div class="d-flex justify-content-center align-items-center col-12">              
-              <a href="./booking_schedule" class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</a>
+              <button class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">開始查詢</button>
             </div>
-
+		 
           </form>
 
         </div>
       </div>
     </div>
-  </div>
+  
 </body>
 <footer>
   <div class="text-center position-relative start-50 translate-middle-x" id="footer">
