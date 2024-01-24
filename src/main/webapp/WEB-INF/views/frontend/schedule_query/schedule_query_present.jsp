@@ -34,13 +34,11 @@ ${ schedule }
                 </div>
                 <div style="padding:15px;">
                     <table class="table table-striped border">
-
                        <thead>
                     <tr>
                         <th scope="col">車號</th>
                         <th scope="col">出發站</th>
-                        <th scope="col">到達站</th>
-                        <th scope="col">出發日期</th>
+                        <th scope="col">到達站</th>                       
                         <th scope="col">出發時間</th>
                         <th scope="col">到達時間</th>
                     </tr>

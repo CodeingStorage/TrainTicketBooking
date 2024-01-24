@@ -28,7 +28,7 @@
                     <div class="form-group mt-3 col-2">
                         <label for="departStation" class="d-flex justify-content-center">出發站</label>
                         <select class="form-select" id="departStation" name="departStation">
-                            <option selected value="1">南港</option>
+                            <option selected value="南港">南港</option>
                             <option value="2">站點二</option>
                             <option value="3">站點三</option>
                             <option value="4">站點四</option>
@@ -38,7 +38,7 @@
                     <div class="mt-3 col-2">
                         <label for="arriveStation" class="d-flex justify-content-center">抵達站</label>
                         <select class="form-select" id="arriveStation" name="arriveStation">
-                            <option selected value="5">高雄</option>
+                            <option selected value="高雄">高雄</option>
                             <option value="4">站點四</option>
                             <option value="3">站點三</option>
                             <option value="2">站點二</option>

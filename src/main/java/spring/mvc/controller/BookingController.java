@@ -198,8 +198,9 @@ public class BookingController {
 					return "frontend/schedule_query/schedule_query";
 				} 
 				
-				List<Schedule> schedule = ScheduleDao.findAllSchedulesByStation(departStation, arriveStation);				
-				model.addAttribute("schedule", schedule);
+				List<Schedule> schedule2 = scheduleDao.findSchedulesByStation(departStation, arriveStation);				
+				String schedule = "123";				
+				model.addAttribute("schedule", schedule2);
 				return "frontend/schedule_query/schedule_query_present";
 			}
 						

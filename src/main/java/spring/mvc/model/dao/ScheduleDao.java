@@ -21,16 +21,11 @@ public interface ScheduleDao {
 	List<Schedule> findAllSchedulesByTime(Time startTime, Time endTime);
 	
 	//新增列車資訊
-	static String addSchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	 String addSchedule(Schedule schedule);
 	
 	//根據起始與到達站點搜尋時刻表
-	static List<Schedule> findAllSchedulesByStation(String departStation, String arriveStation) {
-		// TODO Auto-generated method stub
-		return null;
-	} 
+	 List<Schedule> findSchedulesByStation(String departStation, String arriveStation);
+		
 	
 	
 	
