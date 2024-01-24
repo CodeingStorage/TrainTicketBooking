@@ -1,6 +1,7 @@
 package spring.mvc.controller;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,14 +62,20 @@ public class BookingController {
 	@PostMapping("/booking_schedule")
 	public String booking(@RequestParam("departStation" )String departStation,
 					   @RequestParam("arriveStation" )String arriveStation,					   
-					   @RequestParam("departDate" )Date departDate, 
-					   @RequestParam("departTime" )Time departTime,Model model) throws Exception {
+					   @RequestParam(name="departDate" ) String departDate, 
+					   @RequestParam(name ="departTime" ) String departTime,Model model) throws Exception {
     
-		if (departStation.equals(arriveStation)) {
-			model.addAttribute("bookingMessage", "起點終點重複");
-			return "/frontend/booking/booking";
-		}
-		
+//    @DateTimeFormat(pattern = "yyyy-MM-dd") Date
+//		if (departStation.equals(arriveStation)) {
+//			model.addAttribute("bookingMessage", "起點終點重複");
+//			return "/frontend/booking/booking";
+//		}
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
+    Date departDate1 = sdf.parse(departDate);
+    Date departTime1 = sdf2.parse(departTime);
+   
+//		
 		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
 		model.addAttribute("schedule",schedule);
 		return "/frontend/booking/booking_schedule"; 	

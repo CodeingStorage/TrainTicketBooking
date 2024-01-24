@@ -27,7 +27,7 @@
         <div class="mx-auto border-1 border shadow mt-3">
           
           <form method="post" 
-                action="/TrainTicketBooking/mvc/ticket/booking_schedule" 
+                action="${pageContext.request.contextPath}/mvc/ticket/booking_schedule" 
                 class="row g-3 needs-validation p-md-2" 
                 style="background-color: rgb(255, 255, 255);" 
                 novalidate>
