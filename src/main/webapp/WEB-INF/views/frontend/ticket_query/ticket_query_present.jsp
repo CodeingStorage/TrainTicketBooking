@@ -15,13 +15,14 @@
 
 <body>
 ${ticket}
+${ticket.schedule.departTime}
 
     <%@ include file="../header.jsp" %>
     
     <div class="container mt-5">
         <h2 class="mb-4">Ticket Query Result</h2>
     
-        <c:if test="${ticket.isPresent()}">
+        
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -42,12 +43,14 @@ ${ticket}
                             <td>${ticket.ticketId}</td>
                             <td>${ticket.userId}</td>
                             <td>${ticket.trainNo}</td>
-                            <td>${ticket.schedule.deparStation}</td>
+                            <td>${ticket.schedule.departStation}</td>
                             <td>${ticket.schedule.arriveStation}</td>
                             <td>${ticket.schedule.departTime}</td>
                             <td>${ticket.schedule.arriveTime}</td>
                             <td>${ticket.price}</td>
                             <td>${ticket.bookTime}</td>
+                            
+                            
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 <a href="#" class="btn btn-primary">修改</a>
@@ -57,11 +60,9 @@ ${ticket}
                     
                 </tbody>
             </table>
-       </c:if>
-    				
-        <c:if test="${empty ticket}">
-            <p class="alert alert-info">No tickets found for the specified criteria.</p>
-        </c:if>
+       
+   				
+        
     </div>
 
     

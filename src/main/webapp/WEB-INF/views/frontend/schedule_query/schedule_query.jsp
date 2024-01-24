@@ -50,25 +50,11 @@
                         <input class="m-1 p-1 border rounded justify-content-center col-12" type="date" id="start"
                             name="trip-start" value="2018-07-22" min="2018-01-01" required />
                     </div>
-                    <div class="mt-3 col-2">
-                        <h5 class="d-flex justify-content-center">出發時間</h5>
-                        <input class="m-1 p-1 border rounded justify-content-center col-11" type="time" id="appt"
-                            name="appt" min="09:00" max="18:00" required />
-                    </div>
-                    <div class="mt-3 col-2">
-                        <h5 class="d-flex justify-content-center">適用優惠</h5>
-                        <select class="form-select" id="autoSizingSelect">
-                            <option selected value="5">適用優惠</option>
-                            <option value="1">優惠一</option>
-                            <option value="2">優惠二</option>
-                            <option value="3">優惠三</option>
-                            <option value="4">優惠四</option>
-                            <option value="5">優惠五</option>
-                        </select>
-                    </div>
+                    
+                    
 
                     <div class="d-flex justify-content-center align-items-center col-12">
-                        <a href="schedule_query_present.html" class="btn btn-primary w-50 m-2" type="submit" id="queryBtn">開始查詢</a>
+                        <a href="/schedule_query_present" class="btn btn-primary w-50 m-2" type="submit" id="queryBtn">開始查詢</a>
                     </div>
                 </form>
             </div>

@@ -158,8 +158,8 @@ public class BookingController {
 	            @RequestParam("ticketId") Integer ticketId,
 	            @RequestParam("userId") String userId,
 	            Model model){
-	     
-	        Optional<Ticket> ticket = ticketDao.findTicketByTicketIdAndUserId(ticketId, userId);
+	     //Optional : 使用.get()取得參數
+	        Ticket ticket = ticketDao.findTicketByTicketIdAndUserId(ticketId, userId).get();
 	        model.addAttribute("ticket", ticket);
 
 	        return "frontend/ticket_query/ticket_query_present";
@@ -185,10 +185,10 @@ public class BookingController {
 
 				
 			//列車時刻查詢(前端)
-			@PostMapping("/schedule_query")
+			@PostMapping("/schedule_query_present")
 			public String scheduleQuery(@RequestParam("departStation") String departStation,
 					@RequestParam("arriveStation") String arriveStation, 
-					@RequestParam("departTime") Time departTime, @RequestParam("arriveTime") Time arriveTime,
+					@RequestParam("departDate") Time departDate,
 					Model model)  throws Exception {
 
 				if (departStation.equals(arriveStation)) {
@@ -200,7 +200,7 @@ public class BookingController {
 				
 				//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departTime);
 				//model.addAttribute("trainTimes", trainTimes);
-				return "schedule_query";
+				return "frontend/schedule_query/schedule_query_present";
 			}
 						
 			
