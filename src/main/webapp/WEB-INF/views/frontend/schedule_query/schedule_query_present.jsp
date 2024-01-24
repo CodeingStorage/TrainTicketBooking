@@ -16,6 +16,7 @@
 </head>
 
 <body>
+${ schedule }
    <%@ include file="../header.jsp" %>
 
     <div class="vh-100">
@@ -24,51 +25,37 @@
                 style="background-color: #fefefe;height:550px;width:1000px">
                 <div class="row">
                     <div class="col">
-                <h5 class="m-3 fw-bold">站點A-站點B</h5>
+                
                 </div>
                 <div class="col">
-                <h6 class="m-3">日期:20xx/xx月/xx日</h6>
+               
                 </div>
                 
                 </div>
                 <div style="padding:15px;">
                     <table class="table table-striped border">
 
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">出發時間</th>
-                                <th scope="col">抵達時間</th>
-                                <th scope="col">車次</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>9:00</td>
-                                <td>10:00</td>
-                                <td>0125</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>10:00</td>
-                                <td>11:00</td>
-                                <td>0125</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>9:00</td>
-                                <td>10:00</td>
-                                <td>0125</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>9:00</td>
-                                <td>10:00</td>
-                                <td>0125</td>
-                            </tr>
-                        </tbody>
-                </div>
+                       <thead>
+                    <tr>
+                        <th scope="col">車號</th>
+                        <th scope="col">出發站</th>
+                        <th scope="col">到達站</th>
+                        <th scope="col">出發日期</th>
+                        <th scope="col">出發時間</th>
+                        <th scope="col">到達時間</th>
+                    </tr>
+                </thead>
+	                <tbody>
+	                	<c:forEach items="${ schedule }" var="schedule">
+	                		<tr>
+		                		<td>${ schedule.trainNo }</td>
+		                		<td>${ schedule.departStation }</td>
+		                		<td>${ schedule.arriveStation }</td>		                		
+		                		<td>${ schedule.departTime }</td>
+		                		<td>${ schedule.arriveTime }</td>
+	                		</tr>
+	                	</c:forEach>
+	                </tbody>
                 </table>
 
             </div>

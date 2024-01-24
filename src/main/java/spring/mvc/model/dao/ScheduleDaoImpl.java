@@ -60,6 +60,12 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 	
 	
+	public List<Schedule> findAllSchedulesByStation(String departStation, String arriveStation) {
+		String sql = "SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM trainticket.schedule WHERE departStation = ? AND arriveStation = ?";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Schedule.class),departStation,arriveStation);
+	}
+	
+	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public String addSchedule(Schedule schedule) {

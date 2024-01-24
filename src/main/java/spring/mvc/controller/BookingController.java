@@ -1,5 +1,6 @@
 package spring.mvc.controller;
 
+import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
@@ -187,19 +188,18 @@ public class BookingController {
 			//列車時刻查詢(前端)
 			@PostMapping("/schedule_query_present")
 			public String scheduleQuery(@RequestParam("departStation") String departStation,
-					@RequestParam("arriveStation") String arriveStation, 
-					@RequestParam("departDate") Time departDate,
+					@RequestParam("arriveStation") String arriveStation,					
 					Model model)  throws Exception {
 
 				if (departStation.equals(arriveStation)) {
 
 					model.addAttribute("checkingMessage", "起點終點重複");
 					System.out.println("起點終點重複");
-					return "timetable";
+					return "frontend/schedule_query/schedule_query";
 				} 
 				
-				//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departTime);
-				//model.addAttribute("trainTimes", trainTimes);
+				List<Schedule> schedule = ScheduleDao.findAllSchedulesByStation(departStation, arriveStation);				
+				model.addAttribute("schedule", schedule);
 				return "frontend/schedule_query/schedule_query_present";
 			}
 						

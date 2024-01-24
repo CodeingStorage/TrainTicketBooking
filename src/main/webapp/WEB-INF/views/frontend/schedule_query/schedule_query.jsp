@@ -24,11 +24,11 @@
         <h4 class="fw-bold mx-auto mt-5">列車時刻/車次查詢</h4>
         <div class="" style="background-color: #F9F9F9 !important;height: 200px;">
             <div class="mx-auto mt-3 w-75 h-75" style="background-color: rgb(255, 255, 255);">
-                <form class="row gx-3 d-flex justify-content-center align-items-center border shadow">
-                    <div class="mt-3 col-2">
-                        <h5 class="d-flex justify-content-center">出發站</h5>
-                        <select class="form-select" id="autoSizingSelect">
-                            <option selected value="1">站點一</option>
+                <form method="post" action="/TrainTicketBooking/mvc/ticket/schedule_query_present" class="row gx-3 d-flex justify-content-center align-items-center border shadow">
+                    <div class="form-group mt-3 col-2">
+                        <label for="departStation" class="d-flex justify-content-center">出發站</label>
+                        <select class="form-select" id="departStation" name="departStation">
+                            <option selected value="1">南港</option>
                             <option value="2">站點二</option>
                             <option value="3">站點三</option>
                             <option value="4">站點四</option>
@@ -36,32 +36,28 @@
                         </select>
                     </div>
                     <div class="mt-3 col-2">
-                        <h5 class="d-flex justify-content-center">抵達站</h5>
-                        <select class="form-select" id="autoSizingSelect">
-                            <option selected value="5">站點五</option>
+                        <label for="arriveStation" class="d-flex justify-content-center">抵達站</label>
+                        <select class="form-select" id="arriveStation" name="arriveStation">
+                            <option selected value="5">高雄</option>
                             <option value="4">站點四</option>
                             <option value="3">站點三</option>
                             <option value="2">站點二</option>
                             <option value="1">站點一</option>
                         </select>
                     </div>
-                    <div class="mt-3 col-2">
-                        <h5 class="d-flex justify-content-center">出發日期</h5>
-                        <input class="m-1 p-1 border rounded justify-content-center col-12" type="date" id="start"
-                            name="trip-start" value="2018-07-22" min="2018-01-01" required />
-                    </div>
+                    
                     
                     
 
                     <div class="d-flex justify-content-center align-items-center col-12">
-                        <a href="/schedule_query_present" class="btn btn-primary w-50 m-2" type="submit" id="queryBtn">開始查詢</a>
+                        <button class="btn btn-primary w-50 m-2" type="submit" id="queryBtn">開始查詢</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-</div>
+
 </body>
 <footer>
     <div class="text-center position-relative  start-50 translate-middle-x" id="footer">

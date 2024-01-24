@@ -24,6 +24,12 @@ public interface ScheduleDao {
 	static String addSchedule(Schedule schedule) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//根據起始與到達站點搜尋時刻表
+	static List<Schedule> findAllSchedulesByStation(String departStation, String arriveStation) {
+		// TODO Auto-generated method stub
+		return null;
 	} 
 	
 	
