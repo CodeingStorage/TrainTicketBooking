@@ -25,6 +25,9 @@ public interface ScheduleDao {
 	
 	//根據起始與到達站點搜尋時刻表
 	 List<Schedule> findSchedulesByStation(String departStation, String arriveStation);
+
+
+	List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation, Time startTime);
 		
 	
 	

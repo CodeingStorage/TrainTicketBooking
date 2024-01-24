@@ -1,6 +1,5 @@
 package spring.mvc.model.dao;
 
-import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.List;
@@ -65,33 +64,44 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Schedule.class),departStation,arriveStation);
 	}
 	
-	
-	
-	@Transactional(propagation = Propagation.REQUIRED)
-	public String addSchedule(Schedule schedule) {
-		String sql = "insert into schedule(trainNo, departStation, arriveStation, departTime, arriveTime) values(?, ?, ?, ?, ?)";
-		jdbcTemplate.update(sql, schedule.getTrainNo(), schedule.getDepartStation(), schedule.getArriveStation(), schedule.getDepartTime(), schedule.getArriveTime());
-	
-
-		 KeyHolder keyHolder = new GeneratedKeyHolder();
-	     
-	     	 jdbcTemplate.update(connection -> {
-	         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-	         ps.setString(1, schedule.getTrainNo());
-	         ps.setString(2, schedule.getDepartStation());
-	         ps.setString(3, schedule.getArriveStation());	  
-	         ps.setTime(4, schedule.getDepartTime());
-	         ps.setTime(5, schedule.getArriveTime());
-	         return ps;
-	     }, keyHolder);
-
-	     if (keyHolder.getKey() != null) {
-	    	 schedule.setTrainNo(keyHolder.getKey().toString());
-	     }
-
-	     return schedule.getTrainNo();
-		
+	@Override
+	public List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation,Time deparTime) {
+		String sql = "SELECT trainNo, departStation, arriveStation, departTime, arriveTime FROM trainticket.schedule WHERE departStation = ? AND arriveStation = ? AND departTime > ?";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Schedule.class),departStation,arriveStation,deparTime);
 	}
+
+	@Override
+	public String addSchedule(Schedule schedule) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	//@Transactional(propagation = Propagation.REQUIRED)
+	//public String addSchedule(Schedule schedule) {
+	//	String sql = "insert into schedule(trainNo, departStation, arriveStation, departTime, arriveTime) values(?, ?, ?, ?, ?)";
+	//	jdbcTemplate.update(sql, schedule.getTrainNo(), schedule.getDepartStation(), schedule.getArriveStation(), schedule.getDepartTime(), schedule.getArriveTime());
+	//
+//
+	//	 KeyHolder keyHolder = new GeneratedKeyHolder();
+	//     
+	//     	 jdbcTemplate.update(connection -> {
+	//         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+	//         ps.setString(1, schedule.getTrainNo());
+	//         ps.setString(2, schedule.getDepartStation());
+	//         ps.setString(3, schedule.getArriveStation());	  
+	//         ps.setTime(4, schedule.getDepartTime());
+	//         ps.setTime(5, schedule.getArriveTime());
+	//         return ps;
+	//     }, keyHolder);
+//
+	//     if (keyHolder.getKey() != null) {
+	//    	 schedule.setTrainNo(keyHolder.getKey().toString());
+	//     }
+//
+	//     return schedule.getTrainNo();
+	//	
+	//}
 	
 
 }

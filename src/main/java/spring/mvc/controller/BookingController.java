@@ -77,71 +77,13 @@ public class BookingController {
 	
 		return "frontend/booking/booking_schedule";
 	}
-	@PostMapping("/booking_schedule")
-	public String chooseSchedule(@RequestBody) {
+	
+	
+	
+			
+	// 訂票結果
 		
-	}
-	
-	
-			
-	// 訂票結果(需要API)
-		@PostMapping("/booking_schedule_result")
-		@ResponseBody
-		@Transactional(propagation = Propagation.REQUIRED)
-		public String result(@RequestBody Schedule schedule,
-							Model model, HttpSession session) {
-						
-			//從API獲取資訊(need API)
-	        //String trainNo = trainTime.getTrainNo();
-	        //String departStationName = trainTime.getDepartStation();
-	        //String arriveStationName = trainTime.getArriveStation();	        
-	        //Time departTime = trainTime.getDepartTime();
-	        //Time arriveTime = trainTime.getArriveTime();
-	        //String price = trainTime.getPrice();
-	        
-	        //System.out.println(trainNo);
-			
-	        //schedule
-	     	Schedule schedule = new Schedule();
-	     	schedule.getTrainNo();
-	     	schedule.setDepartStation(departStation);
-	     	schedule.setArriveStation(arriveStation);	     	
-	     	schedule.setDepartTime(departTime);
-	     	schedule.setArriveTime(arriveTime);
-	     	
-			scheduleDao.addSchedule(schedule);
-			
-			
-			Ticket ticket = new Ticket();
-			
-			ticket.setUserId(ticket.getUserId());
-			
-			ticket.setTrainNo(schedule.getTrainNo());
-			
-			System.out.println(schedule.getTrainNo());
-			
-			
-			//隨機選擇車廂
-			Random r = new Random();
-			char c = (char)(r.nextInt(5) + 'a');
-			String s = Character.toString(c);
-			ticket.setTrainCarId(s);
-			
-			//隨機選擇座位
-			int i;
-			i = (int) (Math.random()*10)+1;
-			Integer iInteger = Integer.valueOf(i);
-			ticket.setSeatId(iInteger);
-			
-			
-			ticket.setPrice(Integer.parseInt(price));
-			
-			ticketDao.addTicket(ticket);
-			
-			logger.info("訂票成功");
-			
-			return "success:" + schedule.getTrainNo();
-		}
+		
 		
 		// 查詢訂票首頁
 	    @GetMapping("/ticket_query")
