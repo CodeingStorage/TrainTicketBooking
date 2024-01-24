@@ -52,7 +52,7 @@ public class BookingController {
 	
 	//訂票頁面
 	@GetMapping("/booking")
-	public String bookPage(HttpSession session, Model model) {
+	public String bookPage(HttpSession session) {
 		return "/frontend/booking/booking";
 		
 	}

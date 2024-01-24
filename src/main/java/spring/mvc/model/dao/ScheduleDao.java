@@ -27,7 +27,7 @@ public interface ScheduleDao {
 	 List<Schedule> findSchedulesByStation(String departStation, String arriveStation);
 
 
-	List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation, Time startTime);
+	List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation, Time departTime);
 		
 	
 	
