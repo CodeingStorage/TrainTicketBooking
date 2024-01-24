@@ -14,8 +14,6 @@
 </head>
 
 <body>
-${ticket}
-${ticket.schedule.departTime}
 
     <%@ include file="../header.jsp" %>
     

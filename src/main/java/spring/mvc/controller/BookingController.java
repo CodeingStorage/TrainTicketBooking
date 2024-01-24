@@ -63,57 +63,49 @@ public class BookingController {
 
 		if (departStation.equals(arriveStation)) {
 			model.addAttribute("bookingMessage", "起點終點重複");
-			return "booking";
+			return "/frontend/booking/booking";
 		}
-		//需要API
-		//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate, departTime);
 		
-		//model.addAttribute("trainTimes", trainTimes);		
-		
+		List<Schedule> schedule = scheduleDao.findSchedulesByStation(departStation, arriveStation);
+		model.addAttribute("schedule",schedule);
 		return "frontend/booking/booking_schedule"; 	
 		
 	}
 	//選擇乘車時間
+	@GetMapping("/booking_schedule")
+	public String chooseSchedulePage() {
+	
+		return "frontend/booking/booking_schedule";
+	}
 	@PostMapping("/booking_schedule")
-	public String chooseSchedule() {
-		List<Schedule> schedule = scheduleDao.findSchedulesByStation(departStation, arriveStation);
-		model.addAttribute("schedule",schedule);
-		return "booking";
+	public String chooseSchedule(@RequestBody) {
+		
 	}
 	
-	//@PostMapping("/booking/chooseTime")
-	//public String chooseTime();
-	//需要API
-			//List<TrainTime> trainTimes = TimeTableAPI.getTrainTimes(departStation, arriveStation, departDate, departTime);
-			
-			//model.addAttribute("trainTimes", trainTimes);		
-			
-			//return "booking"; 
-
 	
 			
 	// 訂票結果(需要API)
 		@PostMapping("/booking_schedule_result")
 		@ResponseBody
 		@Transactional(propagation = Propagation.REQUIRED)
-		public String result(@RequestBody TrainTime trainTime,
+		public String result(@RequestBody Schedule schedule,
 							Model model, HttpSession session) {
 						
 			//從API獲取資訊(need API)
-	        String trainNo = trainTime.getTrainNo();
-	        String departStationName = trainTime.getDepartStation();
-	        String arriveStationName = trainTime.getArriveStation();	        
-	        Time departTime = trainTime.getDepartTime();
-	        Time arriveTime = trainTime.getArriveTime();
-	        String price = trainTime.getPrice();
+	        //String trainNo = trainTime.getTrainNo();
+	        //String departStationName = trainTime.getDepartStation();
+	        //String arriveStationName = trainTime.getArriveStation();	        
+	        //Time departTime = trainTime.getDepartTime();
+	        //Time arriveTime = trainTime.getArriveTime();
+	        //String price = trainTime.getPrice();
 	        
-	        System.out.println(trainNo);
+	        //System.out.println(trainNo);
 			
 	        //schedule
 	     	Schedule schedule = new Schedule();
 	     	schedule.getTrainNo();
-	     	schedule.setDepartStation(departStationName);
-	     	schedule.setArriveStation(arriveStationName);	     	
+	     	schedule.setDepartStation(departStation);
+	     	schedule.setArriveStation(arriveStation);	     	
 	     	schedule.setDepartTime(departTime);
 	     	schedule.setArriveTime(arriveTime);
 	     	
