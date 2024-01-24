@@ -34,8 +34,8 @@ public class TimeAPI {
         List<NameValuePair> params = new ArrayList<>();
         Map<String,String> headers = new HashMap<>();
         params.add(new BasicNameValuePair("grant_type", "client_credentials"));
-        params.add(new BasicNameValuePair("client_id", "XXXXXXXXXX-XXXXXXXX-XXXX-XXXX")); //your clientId
-        params.add(new BasicNameValuePair("client_secret", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")); //your clientSecret
+        params.add(new BasicNameValuePair("client_id", "srimp12336691-65a26846-4347-4d40")); //your clientId
+        params.add(new BasicNameValuePair("client_secret", "769a1d78-5c88-4646-97e5-e50fc8a13b63")); //your clientSecret
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         String tokenInfo = postJsonString(tokenUrl, params);
