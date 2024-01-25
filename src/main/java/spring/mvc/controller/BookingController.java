@@ -81,7 +81,9 @@ public class BookingController {
 		return "/frontend/booking/booking_schedule"; 	
 		
 	}
-		
+	
+	//輸入基本資訊
+	@PostMapping("/booking_info")
 	
 	// 訂票結果
 	
@@ -115,7 +117,7 @@ public class BookingController {
 		public String cancelticket(@RequestParam("ticketId") Integer ticketId, @RequestParam("userId") String userId, HttpSession session) {
 			ticketDao.cancelTicket(ticketId, userId);
 			logger.info("取消訂票");
-			return "redirect:/mvc//ticket/frontend/main";
+			return "redirect:/mvc/ticket/frontend/main";
 		}
 		
 //Schedule------------------------------------------------------------------------------------------------------		
@@ -162,6 +164,12 @@ public class BookingController {
 			@GetMapping("/backend/traintable_display")
 			public String traintable(HttpSession session) {				
 				return "/backend/traintable_display/traintable_display";
+
+			}
+			
+			@GetMapping("/backend/ticket_info_display")
+			public String ticketinfo(HttpSession session) {				
+				return "/backend/ticket_info_display/ticket_info_display";
 
 			}
 }

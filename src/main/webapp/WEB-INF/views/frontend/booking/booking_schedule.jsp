@@ -44,6 +44,12 @@ ${ schedule }
 		                		<td>${ schedule.arriveStation }</td>		                		
 		                		<td>${ schedule.departTime }</td>
 		                		<td>${ schedule.arriveTime }</td>
+		                		 <input id="schedule_${ schedule.trainNo }" type="hidden" value='${schedule.getJson()}' />
+                        <td>
+							<button class="btn btn-primary" onclick="sendData('${ schedule.trainNo }')" id="">
+								訂票
+							</button>
+						</td>
 	                		</tr>
 	                	</c:forEach>
 	                </tbody>
@@ -51,9 +57,9 @@ ${ schedule }
 
             </div>
 
-                <div class="d-flex justify-content-center align-items-center col-12">
+                <%-- <div class="d-flex justify-content-center align-items-center col-12">
                     <a href="booking_confirm.html" class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</a>
-                </div>
+                </div>--%>
 
             </div>
 
@@ -86,3 +92,25 @@ ${ schedule }
         border: none;
     }
 </style>
+<%--<script>
+function sendData(trainNo) {
+
+	   let tran = document.getElementById('schedule_'+trainNo).value;
+
+    $.ajax({
+        url: '/TrianTicketBooking/mvc/ticket/booking_result',
+        type: 'POST',
+        contentType: 'application/json',
+        data: tran,
+        success: function(response) {
+            console.log('成功:', response);
+            window.location = '/TrainTicketBooking/mvc/ticket/backend/ticketinfo_display';
+        },
+        error: function(error) {
+           
+            console.error('失敗:', error);
+        }
+    });
+ }
+
+</script>--%>

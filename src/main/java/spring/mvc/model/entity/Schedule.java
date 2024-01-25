@@ -4,6 +4,9 @@ import java.sql.Time;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.google.gson.Gson;
+
 import java.text.ParseException;
 
 import lombok.AllArgsConstructor;
@@ -25,6 +28,9 @@ public class Schedule {
 	
 	private Time arriveTime;
 	
+	public String getJson() {
+		return new Gson().toJson(this);
+	}
 	
 	
 }
