@@ -75,7 +75,7 @@ public class BookingController {
     Date departDate1 = sdf.parse(departDate);
     Date departTime1 = sdf2.parse(departTime);
    
-//		
+//		把departTime從Time改成String
 		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
 		model.addAttribute("schedule",schedule);
 		return "/frontend/booking/booking_schedule"; 	
