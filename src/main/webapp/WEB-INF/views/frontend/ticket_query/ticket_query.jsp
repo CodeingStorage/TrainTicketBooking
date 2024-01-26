@@ -33,11 +33,11 @@
                         <input type="text" class="form-control" id="ticketId" name="ticketId" required>
                     </div>
                     <div class="mb-3 col-12">
-                        <div class="d-flex w-50">
-                            <img src=".../img/captcha.jpg" alt="驗證碼" class="me-2">
+                       <%--  <div class="d-flex w-50">
+                            <img src="/ticket_query/captcha.jpg" alt="驗證碼" class="me-2">
                             <input type="text" class="form-control" id="captcha" name="captcha">
                             <i class="bi bi-arrow-repeat fs-2 ms-2"></i>
-                        </div>
+                        </div>--%>
                     </div>
                     <div class="mb-3 col-12">
                          <button class="btn btn-primary w-100" type="submit" id="queryBtn">查詢</button>
