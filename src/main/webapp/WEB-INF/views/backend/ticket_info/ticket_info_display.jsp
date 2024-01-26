@@ -34,60 +34,53 @@
 </head>
 
 <body>
+${ tickets }
  <%@ include file="../backend_header.jsp" %>
 
     <h2 class="m-3 pt-2">購票紀錄</h2>
     <div style="padding: 20px;">
     <table id="myTable" class="table table-bordered table-striped table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>訂位代號</th>
-                <th>車號</th>
-                <th>出發站</th>
-                <th>抵達站</th>
-                <th>出發日期</th>
-                <th>出發時間</th>               
-                <th>數量</th>
-                <th>價格</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>A123456789</td>
-                <td>6001</td>
-                <th>2003</th>
-                <td>台北</td>
-                <td>桃園</td>
-                <td>2008-10-16</td>
-                <td>10:00</td>                
-                <td>1</td>
-                <td>150元</td>
-            </tr>
-            <tr>
-                <td>A98765432</td>
-                <td>6003</td>
-                <th>2004</th>
-                <td>嘉義</td>
-                <td>苗栗</td>
-                <td>2051-10-16</td>
-                <td>10:00</td>               
-                <td>1</td>
-                <td>150元</td>
-            </tr>
-           <%--<tr th:each="score, state : ${ scores }">
-                <td>0</td>
-                <td th:text="${ticket.id}"></td>
-                <td th:text="${score.name}"></td>
-                <td th:text="${score.chineseScore}"></td>
-                <td th:text="${score.englishScore}"></td>
-                <td th:text="${score.mathScore}"></td>
-                <td th:text="${score.totalScore}"></td>
-                <td th:text="${#numbers.formatDecimal(score.averageScore, 1, 1)}"></td>
-            </tr>--%>
-            
-        </tbody>
-    </table>
+      <thead>
+                    <tr>
+                        <th>車票Id</th>
+                        <th>身分證字號</th>
+                        <th>車次</th>
+                        <th>乘車時間</th>
+                        <th>出發站點</th>
+                        <th>抵達站點</th>                       
+                        <th>出發時間</th>                                             
+                        <th>抵達時間</th>                       
+                        <th>車廂</th>                       
+                        <th>座位</th>                       
+                        <th>價格</th>                       
+                        <th>訂票時間</th>                       
+                        <th>操作</th> <!-- 修改 Actions 列為操作 -->
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${ tickets }" var="tickets">                     
+                        <tr>
+                            <td>${tickets.ticketId}</td>
+                            <td>${tickets.userId}</td>
+                            <td>${tickets.schedule.trainNo}</td>                            
+                            <td>${tickets.date}</td>                            
+                            <td>${tickets.schedule.departStation}</td>
+                            <td>${tickets.schedule.arriveStation}</td>
+                            <td>${tickets.schedule.departTime}</td>                            
+                            <td>${tickets.schedule.arriveTime}</td>                           
+                            <td>${tickets.trainCarId}</td>
+                            <td>${tickets.seatId}</td>
+                            <td>${tickets.price}</td>
+                            <td>${tickets.bookTime}</td>
+                            <td>
+                                <!-- 使用 Bootstrap 按鈕樣式 -->
+                                
+                                <button type="button"  onClick="cancelticket(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+         </table>       
 </div>
 </body>
 

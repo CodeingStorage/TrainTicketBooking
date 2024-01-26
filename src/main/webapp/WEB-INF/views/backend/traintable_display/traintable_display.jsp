@@ -19,7 +19,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <!-- 引入 DataTables 創造出多種排序功能之表單-->
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('.table').DataTable({
@@ -30,6 +30,17 @@
       });
     });
   </script>
+  
+	<script type="text/javascript">
+				function cancelticket(ticketId) {
+					var result = confirm("確定刪除訂票？");
+					if (result) {
+						window.location.href='./backend/traintable_display/cancel?ticketId=' + ticketId;
+					} else {
+					}
+					
+			}
+				</script>
 
 </head>
 
@@ -40,30 +51,32 @@
   <div style="padding: 20px;">
     <table id="myTable" class="table table-bordered table-striped table-hover">
       <thead>
-        <tr>
-          <th>車次</th>
-          <th>台北</th>
-          <th>台中</th>
-          <th>高雄</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2001</td>
-          <td>9:00</td>
-          <td>10:00</td>
-          <td>11:00</td>
-
-        </tr>
-        <tr>
-          <td>2002</td>
-          <td>12:00</td>
-          <td>13:00</td>
-          <td>14:00</td>
-        </tr>
-        
-      </tbody>
-    </table>
+                    <tr>
+                        <th>車次</th>
+                        <th>出發站點</th>
+                        <th>抵達站點</th>
+                        <th>出發時間</th>
+                        <th>抵達時間</th>                       
+                        <th>操作</th> <!-- 修改 Actions 列為操作 -->
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${ schedule }" var="schedule">                     
+                        <tr>
+                            <td>${schedule.trainNo}</td>
+                            <td>${schedule.departStation}</td>
+                            <td>${schedule.arriveStation}</td>
+                            <td>${schedule.departTime}</td>
+                            <td>${schedule.arriveStation}</td>
+                            <td>
+                                <!-- 使用 Bootstrap 按鈕樣式 -->
+                                
+                                <button type="button"  onClick="cancelticket(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+         </table>       
   </div>
 </body>
 

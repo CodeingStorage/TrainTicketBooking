@@ -1,5 +1,6 @@
 package spring.mvc.model.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import spring.mvc.model.entity.Ticket;
@@ -10,8 +11,8 @@ public interface TicketDao {
 	//新增車票0
 	 void addTicket(Ticket ticket);
 	
-	 //找出所有車票
-	 
+	//找出所有車票
+	 List<Ticket>findAllTickets();
 	
 	//根據車票ID與userId查找車票資訊0
 	Optional<Ticket>findTicketByTicketIdAndUserId(Integer ticketId, String userId);

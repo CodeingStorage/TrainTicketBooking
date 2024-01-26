@@ -1,5 +1,6 @@
 package spring.mvc.model.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,7 +83,21 @@ public class TicketDaoImpl implements TicketDao {
 	     
 	}
 
-		
+	
+	@Override
+	public List<Ticket> findAllTickets() {
+	    String sql ="SELECT ticketId, userId, trainNo, date, trainCarId, seatId, price, bookTime FROM trainticket.ticket";        
+	    List<Ticket> tickets = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Ticket.class));
+	    
+	    for (Ticket ticket : tickets) {
+	        enrichTicketDetails(ticket);
+	    }
+	    
+	    return tickets;
+	}
+
+	
+	
 	
 	//豐富/將schedule注入ticket
     private void enrichTicketDetails(Ticket ticket) {
@@ -90,6 +105,7 @@ public class TicketDaoImpl implements TicketDao {
     	Schedule schedule = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Schedule.class), ticket.getTrainNo());
 		ticket.setSchedule(schedule);
     }
-	
+
+		
 
 }

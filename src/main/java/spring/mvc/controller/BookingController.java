@@ -197,11 +197,18 @@ public class BookingController {
 	 model.addAttribute("schedule", schedule);
 	 return "/backend/traintable_display/traintable_display";
 	 }
-
+	 
+	 //新增時刻表(form)
+	 
+	 //修改時刻表(form)
+	 
+	 //刪除時刻表
 	 
 	 //列出所有車票
 	@GetMapping("/backend/ticket_info_display")
 	public String ticketinfo(HttpSession session,Model model) {
+		List<Ticket> tickets = ticketDao.findAllTickets();
+		 model.addAttribute("tickets", tickets);
 		return "/backend/ticket_info/ticket_info_display";
 
 	}
