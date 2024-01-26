@@ -67,13 +67,7 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public Boolean cancelTicket(Integer ticketId, String userId) {
 	    String sql = "DELETE FROM TICKET WHERE ticketId = ? AND userId = ?";
-	    try {
-	        int rowCount = jdbcTemplate.update(sql, ticketId, userId);
-	        return rowCount == 1;
-	    } catch (DataAccessException e) {
-	        // 可以在這裡添加日誌或其他處理
-	        return false;
-	    }
+	    return jdbcTemplate.update(sql, ticketId, userId) == 1;
 	     
 	}
 
