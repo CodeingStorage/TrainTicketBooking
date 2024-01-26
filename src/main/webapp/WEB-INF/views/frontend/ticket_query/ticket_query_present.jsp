@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript">
+				function cancelticket(ticketId) {
+					var result = confirm("確定刪除訂票？");
+					if (result) {
+						window.location.href='./ticket_query_present/cancel?ticketId=' + ticketId;
+					} else {
+					}
+					
+			}
+				</script>
 </head>
 
 <body>
@@ -18,7 +29,7 @@
     <%@ include file="../header.jsp" %>
     
     <div class="container mt-5">
-        <h2 class="mb-4">Ticket Query Result</h2>
+        <h2 class="mb-4">查詢結果</h2>
     
         
             <table class="table table-bordered">
@@ -51,8 +62,8 @@
                             
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
-                                <a href="#" class="btn btn-primary">修改</a>
-                                <a href="#" class="btn btn-danger">刪除</a>
+                                
+                                <button onClick="cancelticket(${ ticket.ticketId }) type="button"  class="btn btn-primary" id="deleteBtn">刪除</button>
                             </td>
                         </tr>
                     
@@ -67,3 +78,21 @@
     
 </body>
 </html>
+<style>
+    /* 自定義按鈕樣式，設置寬度和高度 */
+   
+
+    #deleteBtn {
+        background-color: #9e9a98 !important;
+        border: none;
+    }
+
+    #deleteBtn:hover {
+        background-color: #db5009 !important;
+    }
+
+    #footer {
+        background-color: #db5009 !important;
+        border: none;
+    }
+</style>

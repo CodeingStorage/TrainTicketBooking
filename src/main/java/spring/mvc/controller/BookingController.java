@@ -115,7 +115,7 @@ public class BookingController {
 		public String cancelticket(@RequestParam("ticketId") Integer ticketId, @RequestParam("userId") String userId, HttpSession session) {
 			ticketDao.cancelTicket(ticketId, userId);
 			logger.info("取消訂票");
-			return "redirect:/mvc//ticket/frontend/main";
+			return "redirect:/mvc/ticket/frontend/main";
 		}
 		
 //Schedule------------------------------------------------------------------------------------------------------		
