@@ -70,6 +70,13 @@ public class TicketDaoImpl implements TicketDao {
 	    return jdbcTemplate.update(sql, ticketId, userId) == 1;
 	     
 	}
+	
+	@Override
+	public Boolean cancelTicketByTicketId(Integer ticketId) {
+	    String sql = "DELETE FROM TICKET WHERE ticketId = ?";
+	    return jdbcTemplate.update(sql, ticketId) == 1;
+	     
+	}
 
 		
 	

@@ -16,7 +16,7 @@
 				function cancelticket(ticketId) {
 					var result = confirm("確定刪除訂票？");
 					if (result) {
-						window.location.href='./ticket_query_present/cancel?ticketId=' + ticketId;
+						window.location.href='./ticket_query/cancel?ticketId=' + ticketId;
 					} else {
 					}
 					
@@ -63,7 +63,7 @@
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
-                                <button onClick="cancelticket(${ ticket.ticketId }) type="button"  class="btn btn-primary" id="deleteBtn">刪除</button>
+                                <button type="button"  onClick="cancelticket(${ ticket.ticketId })" class="btn btn-primary" id="deleteBtn">刪除</button>
                             </td>
                         </tr>
                     

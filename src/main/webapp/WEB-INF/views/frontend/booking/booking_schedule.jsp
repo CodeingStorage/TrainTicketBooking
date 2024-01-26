@@ -16,7 +16,6 @@
 </head>
 
 <body>
-${ schedule }
     <%@ include file="../header.jsp" %>
 
     <div class="vh-100">

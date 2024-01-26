@@ -20,5 +20,8 @@ public interface TicketDao {
 	//根據車票ID與userId刪除車票0
 	Boolean cancelTicket(Integer ticketId,String userId);
 	
+	//根據車票ID刪除車票0
+	Boolean cancelTicketByTicketId(Integer ticketId);
+	
 	
 }
