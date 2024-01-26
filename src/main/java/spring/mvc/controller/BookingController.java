@@ -82,6 +82,21 @@ public class BookingController {
 		
 	}
 		
+	//取票人資訊
+	
+	@PostMapping("/booking_confirm")
+	public String bookingInfo(@RequestParam("userId") String userId,HttpSession session,Model model) {
+		 
+		
+		
+		
+		Ticket ticket = ticketDao.addTicket(ticketId, userId);
+	     model.addAttribute("ticket", ticket);
+
+	     return "frontend/booking/booking_confirm";
+		
+	}
+	
 	
 	// 訂票結果
 	

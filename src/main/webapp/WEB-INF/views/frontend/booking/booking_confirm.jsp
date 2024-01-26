@@ -31,8 +31,7 @@
 
                         <label for="inputState" class="form-label mt-3">取票識別碼</label>
                         <select id="inputState" class="form-select">
-                            <option selected>身分證字號</option>
-                            <option>護照/居留證/入出境許可證號碼</option>
+                            <option selected>身分證字號</option>                            
                         </select>
                     </div>
                     <div class="mb-3 col-8">
@@ -41,17 +40,15 @@
                     </div>
 
                     <div class="mb-3 col-6">
-                        <label for="ticketNo" class="form-label">連絡電話</label>
-                        <input type="text" class="form-control" id="ticketNo" name="ticketNo" required>
+                        
                     </div>
                     <div class="mb-3 col-6">
-                        <label for="ticketNo" class="form-label">電子郵件</label>
-                        <input type="text" class="form-control" id="ticketNo" name="ticketNo" required>
+                        
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center col-12">
-                        <a href="booking_complete.html" class="btn btn-primary w-50 mt-5 p-3" type="submit"
-                            id="queryBtn">完成訂票</a>
+                        <button class="btn btn-primary w-50 mt-5 p-3" type="submit"
+                            id="queryBtn">完成訂票</button>
                     </div>
                 </form>
 

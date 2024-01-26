@@ -20,7 +20,7 @@
 
     <div class="vh-100">
         <div class="d-flex flex-column mx-auto" style="height: 800px; width:800px;">
-            <h4 class="mt-5 fw-bold"> 2.選擇車次</h4>
+            <h4 class="mt-5 ms-5 fw-bold">選擇車次</h4>
 
             <div class="mx-auto border-1 border shadow mt-4" style="background-color: #fefefe; height: 550px; width: 550px;">
                 
@@ -51,7 +51,7 @@
             </div>
 
                 <div class="d-flex justify-content-center align-items-center col-12">
-                    <a href="booking_confirm.html" class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</a>
+                    <button class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</button>
                 </div>
 
             </div>
