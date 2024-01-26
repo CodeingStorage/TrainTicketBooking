@@ -9,7 +9,9 @@ public interface TicketDao {
 	
 	//新增車票0
 	 void addTicket(Ticket ticket);
-		
+	
+	 //找出所有車票
+	 
 	
 	//根據車票ID與userId查找車票資訊0
 	Optional<Ticket>findTicketByTicketIdAndUserId(Integer ticketId, String userId);

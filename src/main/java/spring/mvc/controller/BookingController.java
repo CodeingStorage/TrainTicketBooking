@@ -72,6 +72,24 @@ public class BookingController {
 	 * @return
 	 * @throws ParseException 
 	 */
+	
+
+	// 選擇乘車時間
+	@PostMapping("/booking_schedule")
+	public String booking(
+			@RequestParam("departStation") String departStation,
+			@RequestParam("arriveStation") String arriveStation, 
+			@RequestParam("departDate") String departDate,
+			@RequestParam("departTime") String departTime, 
+			Model model) throws Exception {
+
+		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
+		model.addAttribute("schedule", schedule);
+		model.addAttribute("departDate", departDate);
+		return "/frontend/booking/booking_schedule";
+
+	}
+	
 	@PostMapping("/booking")
 	public String book(
 			@RequestParam("book") Integer[] bookList,
@@ -91,22 +109,8 @@ public class BookingController {
 		session.setAttribute("tmpTickets", tmpTickets);
 		return "/frontend/booking/booking_confirm";
 	}
-
-	// 選擇乘車時間
-	@PostMapping("/booking_schedule")
-	public String booking(
-			@RequestParam("departStation") String departStation,
-			@RequestParam("arriveStation") String arriveStation, 
-			@RequestParam("departDate") String departDate,
-			@RequestParam("departTime") String departTime, 
-			Model model) throws Exception {
-
-		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
-		model.addAttribute("schedule", schedule);
-		model.addAttribute("departDate", departDate);
-		return "/frontend/booking/booking_schedule";
-
-	}
+	
+	
 
 	// 取票人資訊
 
@@ -117,7 +121,7 @@ public class BookingController {
 
 		for (Ticket ticket : tmpTickets) {
 			ticket.setUserId(userId);
-			ticket.setSeatId(new Random().nextInt(100));
+			ticket.setSeatId(new Random().nextInt(30));
 			ticket.setPrice(100);
 			Random random = new Random();
 			int randomInt = random.nextInt(26);  // 生成介於 0（包括）到 26（不包括）的隨機整數
@@ -128,7 +132,7 @@ public class BookingController {
 			
 		}
 		model.addAttribute("ticket", tmpTickets);
-		return "frontend/booking/booking_confirm";
+		return "frontend/booking/booking";
 	}
 
 	// 訂票結果
@@ -184,24 +188,20 @@ public class BookingController {
 		return "frontend/schedule_query/schedule_query_present";
 	}
 
-	// 返回主頁
+	
 
-	// 找出所有時刻表(後端)
-	// @GetMapping("/traintable_display")
-	// public String findAllSchedules(HttpSession session, Model model) {
-	// List<Schedule> schedule = scheduleDao.findAllSchedules();
-	// model.addAttribute("schedule", schedule);
-	// return "/backend/traintable_display/traintable_display";
-	// }
+	 //找出所有時刻表(後端)
+	 @GetMapping("/backend/traintable_display")
+	 public String findAllSchedules(HttpSession session, Model model) {
+	 List<Schedule> schedule = scheduleDao.findAllSchedules();
+	 model.addAttribute("schedule", schedule);
+	 return "/backend/traintable_display/traintable_display";
+	 }
 
-	@GetMapping("/backend/traintable_display")
-	public String traintable(HttpSession session) {
-		return "/backend/traintable_display/traintable_display";
-
-	}
-
+	 
+	 //列出所有車票
 	@GetMapping("/backend/ticket_info_display")
-	public String ticketinfo(HttpSession session) {
+	public String ticketinfo(HttpSession session,Model model) {
 		return "/backend/ticket_info/ticket_info_display";
 
 	}
