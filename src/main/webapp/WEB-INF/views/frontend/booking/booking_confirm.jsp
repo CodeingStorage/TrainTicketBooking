@@ -17,18 +17,17 @@
 
 <body>
 
+${ tmpTickets }
+
     <%@ include file="../header.jsp" %>
 
     <div class="">
-
-        
         <div class="d-flex flex-column mx-auto" style="height:800px;width:1000px">
             <h4 class="mt-0 mx-5 px-1 fw-bold">取票人資訊</h4>
             <div class="mx-auto border-1 border shadow" style="height:400px;width:900px">
-                <form class="row g-3 needs-validation p-4">
+                <form action="/TrainTicketBooking/mvc/ticket/booking_confirm" method="post"
+                      class="row g-3 needs-validation p-4">
                     <div class="mb-3 col-4">
-
-
                         <label for="inputState" class="form-label mt-3">取票識別碼</label>
                         <select id="inputState" class="form-select">
                             <option selected>身分證字號</option>                            
@@ -38,14 +37,10 @@
                         <label for="userId" class="form-label mt-3">輸入識別碼</label>
                         <input type="text" class="form-control" id="userId" name="userId" required>
                     </div>
-
                     <div class="mb-3 col-6">
-                        
                     </div>
-                    <div class="mb-3 col-6">
-                        
+                    <div class="mb-3 col-6"> 
                     </div>
-
                     <div class="d-flex justify-content-center align-items-center col-12">
                         <button class="btn btn-primary w-50 mt-5 p-3" type="submit"
                             id="queryBtn">完成訂票</button>

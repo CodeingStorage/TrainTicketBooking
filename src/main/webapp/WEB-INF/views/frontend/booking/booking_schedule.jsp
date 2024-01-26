@@ -16,6 +16,7 @@
 </head>
 
 <body>
+${ schedule }
     <%@ include file="../header.jsp" %>
 
     <div class="vh-100">
@@ -23,37 +24,38 @@
             <h4 class="mt-5 ms-5 fw-bold">選擇車次</h4>
 
             <div class="mx-auto border-1 border shadow mt-4" style="background-color: #fefefe; height: 550px; width: 550px;">
-                
-<div style="padding:15px;">
-                    <table class="table table-striped border">
-                       <thead>
-                    <tr>
-                        <th scope="col">車號</th>
-                        <th scope="col">出發站</th>
-                        <th scope="col">到達站</th>                       
-                        <th scope="col">出發時間</th>
-                        <th scope="col">到達時間</th>
-                    </tr>
-                </thead>
-	                <tbody>
-	                	<c:forEach items="${ schedule }" var="schedule">
-	                		<tr>
-		                		<td>${ schedule.trainNo }</td>
-		                		<td>${ schedule.departStation }</td>
-		                		<td>${ schedule.arriveStation }</td>		                		
-		                		<td>${ schedule.departTime }</td>
-		                		<td>${ schedule.arriveTime }</td>
-	                		</tr>
-	                	</c:forEach>
-	                </tbody>
-                </table>
-
-            </div>
-
-                <div class="d-flex justify-content-center align-items-center col-12">
-                    <button class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</button>
-                </div>
-
+                 <form action="/TrainTicketBooking/mvc/ticket/booking" method="post">
+                     <input type="hidden" value="${ departDate }" name="departDate" />
+				     <div style="padding:15px;">
+	                    <table class="table table-striped border">
+	                        <thead>
+			                    <tr>
+			                        <th scope="col">選擇</th>
+			                        <th scope="col">車號</th>
+			                        <th scope="col">出發站</th>
+			                        <th scope="col">到達站</th>                       
+			                        <th scope="col">出發時間</th>
+			                        <th scope="col">到達時間</th>
+			                    </tr>
+			                </thead>
+				            <tbody>
+				                	<c:forEach items="${ schedule }" var="schedule">
+				                		<tr>
+				                		    <td><input type='radio' value="${ schedule.trainNo }" name="book"></td>
+					                		<td>${ schedule.trainNo }</td>
+					                		<td>${ schedule.departStation }</td>
+					                		<td>${ schedule.arriveStation }</td>		                		
+					                		<td>${ schedule.departTime }</td>
+					                		<td>${ schedule.arriveTime }</td>
+				                		</tr>
+				                	</c:forEach>
+				            </tbody>
+			           </table>
+                    </div>
+	                <div class="d-flex justify-content-center align-items-center col-12">
+	                    <button class="btn btn-primary w-50 mt-2 p-3" type="submit" id="queryBtn">確認車次</button>
+	                </div>
+ 				</form>
             </div>
 
         </div>
