@@ -34,30 +34,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="../ticket_info/ticket_info_display.html">灣鐵後端</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../ticket_info/ticket_info_display.html">購票紀錄查詢</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./traintable_display_northbound.html">火車時刻表查詢/修改</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../../frontend/index.html">前端</a>
-          </li>
-       
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
+ <%@ include file="../backend_header.jsp" %>
 
   <h2 class="m-3 pt-2">火車時刻表查詢/修改</h2>
   <div style="padding: 20px;">

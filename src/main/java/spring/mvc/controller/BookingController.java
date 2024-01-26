@@ -164,4 +164,10 @@ public class BookingController {
 				return "/backend/traintable_display/traintable_display";
 
 			}
+			
+			@GetMapping("/backend/ticket_info_display")
+			public String ticketinfo(HttpSession session) {				
+				return "/backend/ticket_info/ticket_info_display";
+
+			}
 }
