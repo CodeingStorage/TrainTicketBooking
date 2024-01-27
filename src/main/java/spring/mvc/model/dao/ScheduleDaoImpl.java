@@ -71,9 +71,10 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	@Override
-	public String addSchedule(Schedule schedule) {
-		// TODO Auto-generated method stub
-		return null;
+	public void addSchedule(Schedule schedule) {
+		String sql = "INSERT INTO schedule (trainNo, departStation, arriveStation, departTime, arriveTime) values(?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, schedule.getTrainNo(), schedule.getDepartStation(), schedule.getArriveStation(), schedule.getDepartTime(), schedule.getArriveTime());
+		
 	}
 	
 	

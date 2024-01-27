@@ -21,7 +21,7 @@ public interface ScheduleDao {
 	List<Schedule> findAllSchedulesByTime(Time startTime, Time endTime);
 	
 	//新增列車資訊
-	 String addSchedule(Schedule schedule);
+	 void addSchedule(Schedule schedule);
 	
 	//根據起始與到達站點搜尋時刻表
 	 List<Schedule> findSchedulesByStation(String departStation, String arriveStation);

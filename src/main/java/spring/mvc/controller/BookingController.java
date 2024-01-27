@@ -199,6 +199,25 @@ public class BookingController {
 	 }
 	 
 	 //新增時刻表(form)
+	 @PostMapping("/backend/traintable_display")
+	 public String addSchedule(@RequestParam("departStation") String departStation,
+				@RequestParam("arriveStation") String arriveStation, 
+				@RequestParam("departTime") String departTime,
+				@RequestParam("arriveTime") String arriveTime,				 
+				Model model) throws Exception {
+		 	
+		 Schedule schedule=new Schedule();
+		 schedule.getDepartStation();
+		 schedule.getArriveStation();
+		 schedule.getDepartTime();
+		 schedule.getArriveTime();
+		 
+			
+			scheduleDao.addSchedule(schedule);
+			
+			return "/backend/traintable_display";
+
+		}
 	 
 	 //修改時刻表(form)
 	 
