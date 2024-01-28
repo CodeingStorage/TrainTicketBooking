@@ -98,6 +98,7 @@ public class BookingController {
 
 	}
 	
+	// 取票人資訊
 	@PostMapping("/booking")
 	public String book(
 			@RequestParam("book") Integer[] bookList,
@@ -120,7 +121,7 @@ public class BookingController {
 	
 	
 
-	// 取票人資訊
+	
 
 	@PostMapping("/booking_confirm")
 	public String bookingConfirm(@RequestParam("userId") String userId, HttpSession session, Model model) {
@@ -140,11 +141,26 @@ public class BookingController {
 			
 		}
 		model.addAttribute("ticket", tmpTickets);
-		return "frontend/booking/booking";
+		return "frontend/booking/booking_complete";
 	}
 
 	// 訂票結果
+	 @GetMapping("/booking_complete")
+	    public String showTicketConfirmation(Model model, HttpSession session) {
+	        List<Ticket> bookedTickets = (List<Ticket>) session.getAttribute("tmpTickets");
+	        
+	        if (bookedTickets != null && !bookedTickets.isEmpty()) {
+	            model.addAttribute("bookedTickets", bookedTickets);
+	            // 清除會話屬性，以避免在刷新時再次顯示相同的車票
+	            session.removeAttribute("tmpTickets");
+	            return "/frontend/booking/booking_complete";  // 根據需要調整路徑
+	        } else {
+	            // 處理找不到車票的情況
+	            return "redirect:/";  // 重定向到首頁或其他合適的頁面
+	        }
+	    }
 
+	 
 	// 查詢訂票首頁
 	@GetMapping("/ticket_query")
 	public String ticketQuery() {

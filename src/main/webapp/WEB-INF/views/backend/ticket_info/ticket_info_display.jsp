@@ -34,7 +34,6 @@
 </head>
 
 <body>
-${ tickets }
  <%@ include file="../backend_header.jsp" %>
 
     <h2 class="m-3 pt-2">購票紀錄</h2>

@@ -25,7 +25,7 @@ ${ tmpTickets }
         <div class="d-flex flex-column mx-auto" style="height:800px;width:1000px">
             <h4 class="mt-0 mx-5 px-1 fw-bold">取票人資訊</h4>
             <div class="mx-auto border-1 border shadow" style="height:400px;width:900px">
-                <form action="/TrainTicketBooking/mvc/ticket/booking_confirm" method="post"
+                <form action="/TrainTicketBooking/mvc/ticket/booking_complete" method="get"
                       class="row g-3 needs-validation p-4">
                     <div class="mb-3 col-4">
                         <label for="inputState" class="form-label mt-3">取票識別碼</label>
