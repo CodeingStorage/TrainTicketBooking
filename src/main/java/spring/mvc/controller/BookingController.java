@@ -207,8 +207,7 @@ public class BookingController {
 	 return "/backend/traintable_display/traintable_display";
 	 }
 	 
-	 //新增時刻表	 
-	 //@PostMapping("/backend/traintable_display")
+	 //新增時刻表	 	 
 	 @PostMapping(value = "/backend/traintable_display", produces = "text/plain;charset=utf-8")
 	 @ResponseBody
 	 
@@ -254,7 +253,7 @@ public class BookingController {
 	        }
 	    }
 
-	    @PostMapping(value = "/backend/traintable_display_update", produces = "text/plain;charset=utf-8")
+	    @PostMapping(value = "/backend/traintable_display_update/update/{trainNo}", produces = "text/plain;charset=utf-8")
 	    @ResponseBody
 	    public String updateScheduleByTrainNo(@RequestParam("updateTrainNo") String updateTrainNo,
 	                                          @RequestParam("updateDepartStation") String updateDepartStation,

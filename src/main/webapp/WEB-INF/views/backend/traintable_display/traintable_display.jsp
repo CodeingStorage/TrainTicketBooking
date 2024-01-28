@@ -164,7 +164,7 @@
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
                                 <button type="button"  onClick="cancelschedule(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
-                                <button type="button" onClick="showUpdateForm('${schedule.trainNo}')" class="btn btn-primary" id="updateBtn">修改</button>
+                                <button type="button"  onclick="location.href='./traintable_display_update?trainNo=${schedule.trainNo}'" class="btn btn-primary" id="updateBtn">修改</button>
 
                             </td>
                         </tr>
