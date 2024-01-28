@@ -240,34 +240,54 @@ public class BookingController {
 		}
 	 	
 	// 修改時刻表(form)
-	 @PostMapping("/backend/traintable_display_update")
+	 @GetMapping("/backend/traintable_display_update")
+	    public String showUpdateForm(@RequestParam("trainNo") String trainNo, Model model) {
+	        Optional<Schedule> existingSchedule = scheduleDao.findScheduleByTrainNo(trainNo);
+
+	        if (existingSchedule.isPresent()) {
+	            Schedule schedule = existingSchedule.get();
+	            model.addAttribute("schedule", schedule);
+	            return "traintable_display_update"; // 返回表單的視圖名稱
+	        } else {
+	            // 如果找不到相應的時刻表，你可能希望執行其他處理邏輯，比如顯示錯誤消息
+	            return "error"; // 請根據實際需求更改
+	        }
+	    }
+
+	    @PostMapping(value = "/backend/traintable_display_update", produces = "text/plain;charset=utf-8")
+	    @ResponseBody
+	    public String updateScheduleByTrainNo(@RequestParam("updateTrainNo") String updateTrainNo,
+	                                          @RequestParam("updateDepartStation") String updateDepartStation,
+	                                          @RequestParam("updateArriveStation") String updateArriveStation,
+	                                          @RequestParam("updateDepartTime") String updateDepartTime,
+	                                          @RequestParam("updateArriveTime") String updateArriveTime) throws Exception {
+
+	        Optional<Schedule> existingSchedule = scheduleDao.findScheduleByTrainNo(updateTrainNo);
+
+	        if (existingSchedule.isPresent()) {
+	            Schedule scheduleToUpdate = existingSchedule.get();
+	            scheduleToUpdate.setDepartStation(updateDepartStation);
+	            scheduleToUpdate.setArriveStation(updateArriveStation);
+
+	            Date updateDepartDate = sdf2.parse(updateDepartTime);
+	            Date updateArriveDate = sdf2.parse(updateArriveTime);
+
+	            scheduleToUpdate.setDepartTime(new Time(updateDepartDate.getTime()));
+	            scheduleToUpdate.setArriveTime(new Time(updateArriveDate.getTime()));
+
+	            boolean isUpdated = scheduleDao.updateScheduleByTrainNo(updateTrainNo, scheduleToUpdate);
+
+	            if (isUpdated) {
+	                return String.format("時刻表更新成功 (車次 = %s)", updateTrainNo);
+	            } else {
+	                return String.format("時刻表更新失敗 (車次 = %s)", updateTrainNo);
+	            }
+	        } else {
+	            return String.format("找不到車次為 %s 的時刻表，無法進行更新", updateTrainNo);
+	        }
+	    }
+	
 	 
-	 public String updateScheduleByTrainNo(@RequestParam("updateTrainNo") String updateTrainNo,
-	                                       @RequestParam("updateDepartStation") String updateDepartStation,
-	                                       @RequestParam("updateArriveStation") String updateArriveStation,
-	                                       @RequestParam("updateDepartTime") String updateDepartTime,
-	                                       @RequestParam("updateArriveTime") String updateArriveTime,
-	                                       Model model) throws Exception {
-	     // 根據 updateTrainNo 查找原有的時刻表
-	     Optional<Schedule> existingSchedule = scheduleDao.findScheduleByTrainNo(updateTrainNo);
-
-	     // 如果找到了相應的時刻表，進行更新
-	     if (existingSchedule.isPresent()) {
-	         Schedule scheduleToUpdate = existingSchedule.get();
-	         scheduleToUpdate.setDepartStation(updateDepartStation);
-	         scheduleToUpdate.setArriveStation(updateArriveStation);
-
-	         Date updateDepartDate = sdf2.parse(updateDepartTime);
-	         Date updateArriveDate = sdf2.parse(updateArriveTime);
-
-	         scheduleToUpdate.setDepartTime(new Time(updateDepartDate.getTime()));
-	         scheduleToUpdate.setArriveTime(new Time(updateArriveDate.getTime()));
-
-	         // 調用 DAO 更新時刻表
-	         boolean isUpdated = scheduleDao.updateScheduleByTrainNo(updateTrainNo, scheduleToUpdate);
-
-	        return:"redirect:/backend/traintable_display"
-	 }
 	 
 	 //刪除時刻表
 	 
