@@ -48,6 +48,98 @@
  <%@ include file="../backend_header.jsp" %>
 
   <h2 class="m-3 pt-2">火車時刻表查詢/修改</h2>
+  
+  <form method="post" 
+                action="${pageContext.request.contextPath}/mvc/ticket/backend/traintable_display" 
+                class="row g-3 needs-validation p-md-2" 
+                style="background-color: rgb(255, 255, 255);" 
+                novalidate
+                >
+                <div class="col-md-2">
+                        <label for="trainNo" class="form-label">輸入車次</label>
+                        <input type="text" class="form-control" id="trainNo" name="trainNo" required>
+                    </div>
+            <div class="col-md-2">
+              <label for="departStation" class="form-label">出發站</label>
+              <select class="form-select" id="departStation" name="departStation" required>
+                <option selected disabled value="">請選擇出發站</option>
+                <option value="南港">南港</option>
+                <option value="台北">台北</option>
+                <option value="板橋">板橋</option>
+                <option value="桃園">桃園</option>
+                <option value="新竹">新竹</option>
+                <option value="苗栗">苗栗</option>
+                <option value="台中">台中</option>
+                <option value="彰化">彰化</option>
+                <option value="雲林">雲林</option>
+                <option value="嘉義">嘉義</option>
+                <option value="台南">台南</option>
+                <option value="左營">左營</option>
+                
+
+              </select>
+              <div class="invalid-feedback">
+                請選擇出發站
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label for="arriveStation" class="form-label">抵達站</label>
+              <select class="form-select" id="arriveStation" name="arriveStation" required>
+                <option selected disabled value="">請選擇抵達站</option>
+                <option value="南港">南港</option>
+                <option value="台北">台北</option>
+                <option value="板橋">板橋</option>
+                <option value="桃園">桃園</option>
+                <option value="新竹">新竹</option>
+                <option value="苗栗">苗栗</option>
+                <option value="台中">台中</option>
+                <option value="彰化">彰化</option>
+                <option value="雲林">雲林</option>
+                <option value="嘉義">嘉義</option>
+                <option value="台南">台南</option>
+                <option value="左營">左營</option>
+              </select>
+              <div class="invalid-feedback">
+                請選擇抵達站
+              </div>
+            </div>
+            <div class="mt-3 col-2">
+              <h5 class="d-flex justify-content-center">出發時間</h5>
+              <input class="m-1 p-1 border rounded justify-content-center col-11" 
+                     type="time" 
+                     id="departTime" 
+                     name="departTime" 
+                      required/>
+              <div class="invalid-feedback">
+                請選擇出發時間
+              </div>
+            </div>
+            <div class="mt-3 col-2">
+              <h5 class="d-flex justify-content-center">抵達時間</h5>
+              <input class="m-1 p-1 border rounded justify-content-center col-11" 
+                     type="time" 
+                     id="arriveTime" 
+                     name="arriveTime" 
+                      required/>
+              <div class="invalid-feedback">
+                請選擇抵達時間
+              </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-1"></div>
+            <div class="col-7"></div>
+            <div class="col-8"></div>
+           	<div class=" col-4">
+              <div class="p-3 m-1 d-flex ">
+              
+              </div>
+            </div>
+            <div class="d-flex justify-content-center align-items-center col-12">              
+              <button class="btn btn-primary w-25 p-3" type="submit" id="queryBtn">新增車次</button>
+            </div>
+          </form>
+  
+  
   <div style="padding: 20px;">
     <table id="myTable" class="table table-bordered table-striped table-hover">
       <thead>
@@ -67,7 +159,7 @@
                             <td>${schedule.departStation}</td>
                             <td>${schedule.arriveStation}</td>
                             <td>${schedule.departTime}</td>
-                            <td>${schedule.arriveStation}</td>
+                            <td>${schedule.arriveTime}</td>
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
@@ -81,3 +173,39 @@
 </body>
 
 </html>
+<script>
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          console.log(form.checkValidity());
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+  
+  $(document).ready(function () {
+    // 監聽出發時間的變化
+    $('#departTime').on('input', function () {
+      // 獲取出發時間的值
+      var departTimeValue = $(this).val();
+
+      // 將抵達時間的最小值設為出發時間
+      $('#arriveTime').attr('min', departTimeValue);
+
+      // 清空抵達時間的值，以便用戶重新選擇
+      $('#arriveTime').val('');
+    });
+  });
+  
+</script>

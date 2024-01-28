@@ -1,9 +1,10 @@
 package spring.mvc.model.entity;
 
-import java.sql.Time;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Time;
 import java.text.ParseException;
 
 import lombok.AllArgsConstructor;

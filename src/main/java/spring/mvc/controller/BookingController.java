@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.scheduling.annotation.Schedules;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,8 +43,11 @@ import spring.mvc.model.entity.Schedule;
 @Controller
 @RequestMapping("/ticket")
 public class BookingController {
+	
+	private static List<Map<String, Object>> schedules = new CopyOnWriteArrayList<>();
 
-	SimpleDateFormat sfd = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm");
 	
 	@Autowired
 	private TicketDao ticketDao;
@@ -101,7 +108,7 @@ public class BookingController {
 			for(Integer tranNo: bookList) {
 				Ticket tmpTicket = new Ticket();
 				tmpTicket.setTrainNo(String.valueOf(tranNo));
-				tmpTicket.setDate(sfd.parse(departDate));
+				tmpTicket.setDate(sdf.parse(departDate));
 				tmpTickets.add(tmpTicket);
 			}
 		}
@@ -155,11 +162,12 @@ public class BookingController {
 	}
 
 	// 取消訂票
-	@GetMapping("/ticket_query/cancel")
+	@GetMapping(value = "/ticket_query/cancel{bookingId}", produces = "text/plain;charset=utf-8")
+	@ResponseBody
 	public String cancelticketByTicketId(@RequestParam("ticketId") Integer ticketId, HttpSession session) {
 		ticketDao.cancelTicketByTicketId(ticketId);
 		logger.info("取消訂票");
-		return "redirect:/mvc/ticket/frontend/main";
+		return String.format("取消訂票成功 (車票號碼 = %d)", ticketId);
 	}
 
 //Schedule------------------------------------------------------------------------------------------------------		
@@ -198,24 +206,40 @@ public class BookingController {
 	 return "/backend/traintable_display/traintable_display";
 	 }
 	 
-	 //新增時刻表(form)
-	 @PostMapping("/backend/traintable_display")
-	 public String addSchedule(@RequestParam("departStation") String departStation,
+	 //新增時刻表	 
+	 //@PostMapping("/backend/traintable_display")
+	 @PostMapping(value = "/backend/traintable_display", produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	 
+	 public String addSchedule(@RequestParam("trainNo") String trainNo,
+			 	@RequestParam("departStation") String departStation,
 				@RequestParam("arriveStation") String arriveStation, 
 				@RequestParam("departTime") String departTime,
 				@RequestParam("arriveTime") String arriveTime,				 
 				Model model) throws Exception {
+		//
+		boolean isScheduled = schedules.stream()
+									   .anyMatch(schedule -> schedule.get("trainNo").equals(trainNo));
+		if(isScheduled) {
+				return String.format("車次已存在 ( 車次 = %s )",trainNo);
+			}
 		 	
 		 Schedule schedule=new Schedule();
-		 schedule.getDepartStation();
-		 schedule.getArriveStation();
-		 schedule.getDepartTime();
-		 schedule.getArriveTime();
+		 schedule.setTrainNo(trainNo);
+		 schedule.setDepartStation(departStation);
+		 schedule.setArriveStation(arriveStation);
+		 
+		 Date departDate = sdf2.parse(departTime);
+		 Date arriveDate = sdf2.parse(arriveTime);
+
+		  schedule.setDepartTime(new Time(departDate.getTime()));
+		  schedule.setArriveTime(new Time(arriveDate.getTime()));
+		 
 		 
 			
 			scheduleDao.addSchedule(schedule);
 			
-			return "/backend/traintable_display";
+			return String.format("時刻表新增成功");
 
 		}
 	 
