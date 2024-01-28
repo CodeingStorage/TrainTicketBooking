@@ -12,7 +12,7 @@ public interface ScheduleDao {
 	List<Schedule> findAllSchedules();
 	
 	// 依照班次查詢對應的時刻表
-	Optional<Schedule> findScheduleByTrainNo(Integer trainNo);
+	Optional<Schedule> findScheduleByTrainNo(String trainNo);
 	
 	//根據車次ID修改時刻表資料(後台)	
 	Boolean updateScheduleByTrainNo(String trainNo, Schedule newSchedule);
@@ -29,7 +29,7 @@ public interface ScheduleDao {
 //注意 : 把departTime從Time改成String
 	List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation, String departTime);
 		
-	
+	//根據車次刪除時刻表
 	Boolean cancelScheduleByTrainNo(String trainNo);
 	
 }

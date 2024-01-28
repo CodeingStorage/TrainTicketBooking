@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -209,7 +210,7 @@ public class BookingController {
 	 //新增時刻表	 
 	 //@PostMapping("/backend/traintable_display")
 	 @PostMapping(value = "/backend/traintable_display", produces = "text/plain;charset=utf-8")
-	@ResponseBody
+	 @ResponseBody
 	 
 	 public String addSchedule(@RequestParam("trainNo") String trainNo,
 			 	@RequestParam("departStation") String departStation,
@@ -237,8 +238,36 @@ public class BookingController {
 			return String.format("時刻表新增成功");
 
 		}
+	 	
+	// 修改時刻表(form)
+	 @PostMapping("/backend/traintable_display_update")
 	 
-	 //修改時刻表(form)
+	 public String updateScheduleByTrainNo(@RequestParam("updateTrainNo") String updateTrainNo,
+	                                       @RequestParam("updateDepartStation") String updateDepartStation,
+	                                       @RequestParam("updateArriveStation") String updateArriveStation,
+	                                       @RequestParam("updateDepartTime") String updateDepartTime,
+	                                       @RequestParam("updateArriveTime") String updateArriveTime,
+	                                       Model model) throws Exception {
+	     // 根據 updateTrainNo 查找原有的時刻表
+	     Optional<Schedule> existingSchedule = scheduleDao.findScheduleByTrainNo(updateTrainNo);
+
+	     // 如果找到了相應的時刻表，進行更新
+	     if (existingSchedule.isPresent()) {
+	         Schedule scheduleToUpdate = existingSchedule.get();
+	         scheduleToUpdate.setDepartStation(updateDepartStation);
+	         scheduleToUpdate.setArriveStation(updateArriveStation);
+
+	         Date updateDepartDate = sdf2.parse(updateDepartTime);
+	         Date updateArriveDate = sdf2.parse(updateArriveTime);
+
+	         scheduleToUpdate.setDepartTime(new Time(updateDepartDate.getTime()));
+	         scheduleToUpdate.setArriveTime(new Time(updateArriveDate.getTime()));
+
+	         // 調用 DAO 更新時刻表
+	         boolean isUpdated = scheduleDao.updateScheduleByTrainNo(updateTrainNo, scheduleToUpdate);
+
+	        return:"redirect:/backend/traintable_display"
+	 }
 	 
 	 //刪除時刻表
 	 

@@ -164,12 +164,15 @@
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
                                 <button type="button"  onClick="cancelschedule(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
+                                <button type="button"  onClick="updateschedule(${ schedule.trainNo })" class="btn btn-primary" id="updateBtn">修改</button>
+
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
          </table>       
   </div>
+  
 </body>
 
 </html>
@@ -231,5 +234,13 @@
           }
       });
   });
+  //前往修改頁面
+  function updateschedule(trainNo) {
+      
+      var targetUrl = "${pageContext.request.contextPath}/mvc/ticket/backend/traintable_display_update";
+      
+      // 進行轉跳
+      window.location.href = targetUrl;
+  }
   
 </script>
