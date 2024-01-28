@@ -243,8 +243,8 @@ public class BookingController {
 	 //刪除時刻表
 	 
 	 @GetMapping(value = "/backend/traintable_display/cancel{trainNo}", produces = "text/plain;charset=utf-8")
-		@ResponseBody
-		public String cancelScheduleByTrainNo(@RequestParam("trainNo") String trainNo, HttpSession session) {
+	 @ResponseBody
+	 public String cancelScheduleByTrainNo(@RequestParam("trainNo") String trainNo, HttpSession session) {
 			scheduleDao.cancelScheduleByTrainNo(trainNo);
 			logger.info("取消時刻表");
 			return String.format("時刻表取消成功 (車次 = %s)", trainNo);
