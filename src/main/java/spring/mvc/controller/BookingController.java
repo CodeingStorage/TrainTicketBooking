@@ -217,12 +217,7 @@ public class BookingController {
 				@RequestParam("departTime") String departTime,
 				@RequestParam("arriveTime") String arriveTime,				 
 				Model model) throws Exception {
-		//
-		boolean isScheduled = schedules.stream()
-									   .anyMatch(schedule -> schedule.get("trainNo").equals(trainNo));
-		if(isScheduled) {
-				return String.format("車次已存在 ( 車次 = %s )",trainNo);
-			}
+
 		 	
 		 Schedule schedule=new Schedule();
 		 schedule.setTrainNo(trainNo);
@@ -246,6 +241,14 @@ public class BookingController {
 	 //修改時刻表(form)
 	 
 	 //刪除時刻表
+	 
+	 @GetMapping(value = "/backend/traintable_display/cancel{trainNo}", produces = "text/plain;charset=utf-8")
+		@ResponseBody
+		public String cancelScheduleByTrainNo(@RequestParam("trainNo") String trainNo, HttpSession session) {
+			scheduleDao.cancelScheduleByTrainNo(trainNo);
+			logger.info("取消時刻表");
+			return String.format("時刻表取消成功 (車次 = %s)", trainNo);
+		}
 	 
 	 //列出所有車票
 	@GetMapping("/backend/ticket_info_display")

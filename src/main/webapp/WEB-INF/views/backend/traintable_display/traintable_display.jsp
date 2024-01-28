@@ -32,10 +32,10 @@
   </script>
   
 	<script type="text/javascript">
-				function cancelticket(ticketId) {
-					var result = confirm("確定刪除訂票？");
+				function cancelschedule(trainNo) {
+					var result = confirm("確定刪除車次?？");
 					if (result) {
-						window.location.href='./backend/traintable_display/cancel?ticketId=' + ticketId;
+						window.location.href='./traintable_display/cancel?trainNo=' + trainNo;
 					} else {
 					}
 					
@@ -163,7 +163,7 @@
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
-                                <button type="button"  onClick="cancelticket(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
+                                <button type="button"  onClick="cancelschedule(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -206,6 +206,30 @@
       // 清空抵達時間的值，以便用戶重新選擇
       $('#arriveTime').val('');
     });
+  });
+  
+  //車號重複-------------------------------------------------------------------------------
+  $(document).ready(function () {
+      $("#trainNo").blur(function () {
+          var trainNo = $(this).val();
+          if (trainNo.trim() !== "") {
+              // 使用Ajax發送請求到後端檢查是否重複
+              $.ajax({
+                  type: "GET",
+                  url: "/backend/checkTrainNo",  // 將此URL替換為實際的後端檢查車號的端點
+                  data: { trainNo: trainNo },
+                  success: function (response) {
+                      if (response === "duplicate") {
+                          alert("車號重複，請輸入其他車號");
+                          $("#trainNo").val("");  // 清空輸入
+                      }
+                  },
+                  error: function (xhr, status, error) {
+                      console.error("發生錯誤：" + error);
+                  }
+              });
+          }
+      });
   });
   
 </script>

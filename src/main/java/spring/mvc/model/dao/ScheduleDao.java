@@ -30,6 +30,6 @@ public interface ScheduleDao {
 	List<Schedule> findSchedulesByStationAndTime(String departStation, String arriveStation, String departTime);
 		
 	
-	
+	Boolean cancelScheduleByTrainNo(String trainNo);
 	
 }
