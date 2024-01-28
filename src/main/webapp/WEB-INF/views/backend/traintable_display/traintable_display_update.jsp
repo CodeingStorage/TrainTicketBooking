@@ -11,13 +11,14 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
 <body>
-${schedule.trainNo}
+
 <form method="post" action="${pageContext.request.contextPath}/mvc/ticket/backend/traintable_display_update/update"
       class="row g-3 needs-validation p-md-2" style="background-color: rgb(255, 255, 255);" novalidate>
     <!-- 這裡添加輸入欄位，注意名稱要和 Controller 中的 @RequestParam 一致 -->
     <div class="col-md-2">
         <label for="updateTrainNo" class="form-label">車次</label>
-        <input type="text" class="form-control" id="updateTrainNo" name="updateTrainNo" required>
+         <input type="hidden" id="updateTrainNo" name="updateTrainNo" value="${schedule.trainNo}">
+         ${schedule.trainNo}
     </div>
      <div class="col-md-2">
               <label for="updateDepartStation" class="form-label">出發站</label>
