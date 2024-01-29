@@ -143,7 +143,7 @@ public class BookingController {
 				
 			}
 			Optional<Ticket> lastTicket= ticketDao.findLastTicketIdByUserId(userId);
-			model.addAttribute("ticket", lastTicket);
+			model.addAttribute("ticket", lastTicket.get());
 			return "frontend/booking/booking_complete";
 		}
 

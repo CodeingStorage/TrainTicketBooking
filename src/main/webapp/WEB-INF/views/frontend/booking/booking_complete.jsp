@@ -17,18 +17,46 @@
 
 <body>
    <%@ include file="../header.jsp" %>
-	<p>1 ${ ticket }</p>	
-	<p>2 ${ schedule }</p>
-	<p>3 ${bookedTickets}</p>
-	<p>4 ${tmpTickets}</p>
-	<p>5 ${scheduleMap}</p>
-	<p>6 ${lastTicket}</p>
+	
 		
-    <div class="vh-100">
+      <div class="vh-100">
         <div class="d-flex flex-column mx-auto" style="height:1000px;width:1000px">
             <h4 class="m-5 fw-bold">訂票完成!</h4>
-             
+            <div class="mx-auto border-1 border shadow d-flex justify-content-evenly" style="height:400px;width:900px">
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">車票號碼</th>
+      <th scope="col">身分證字號</th>
+      <th scope="col">車次</th>
+      <th scope="col">乘車日期</th>
+      <th scope="col">車廂</th>
+      <th scope="col">座位號碼</th>
+      <th scope="col">價格</th>
+      <th scope="col">訂票時間</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>${ticket.ticketId}</td>
+        <td>${ticket.userId}</td>
+        <td>${ticket.trainNo}</td>
+        <td>${ticket.date}</td>
+        <td>${ticket.trainCarId}</td>
+        <td>${ticket.seatId}</td>
+        <td>${ticket.price}</td>
+        <td>${ticket.bookTime}</td>
+  </tr>
+  </tbody>
+</table>
+    
+       
+        
             
+        
+    
+
+            </div>
 
 
 
@@ -38,6 +66,8 @@
 
 
     </div>
+
+
 
 
 </body>
