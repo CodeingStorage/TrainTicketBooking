@@ -17,7 +17,7 @@
 
 <body>
 
-${ tmpTickets }
+
 
     <%@ include file="../header.jsp" %>
 

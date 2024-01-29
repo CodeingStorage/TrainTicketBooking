@@ -77,6 +77,11 @@
     
     
 </body>
+<footer>
+    <div class="text-center position-relative  start-50 translate-middle-x" id="footer">
+        <p class="p-1 mb-0">&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+</footer>
 </html>
 <style>
     /* 自定義按鈕樣式，設置寬度和高度 */

@@ -74,7 +74,7 @@
                             <td>
                                 <!-- 使用 Bootstrap 按鈕樣式 -->
                                 
-                                <button type="button"  onClick="cancelticket(${ schedule.trainNo })" class="btn btn-primary" id="deleteBtn">刪除</button>
+                                
                             </td>
                         </tr>
                     </c:forEach>
@@ -82,5 +82,10 @@
          </table>       
 </div>
 </body>
+<footer>
+    <div class="text-center position-relative  start-50 translate-middle-x" id="footer">
+        <p class="p-1 mb-0">&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+</footer>
 
 </html>

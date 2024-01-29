@@ -24,7 +24,7 @@
                         <a class="nav-link active " aria-current="page" href="/TrainTicketBooking/mvc/ticket/booking">預訂車票</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="/TrainTicketBooking/mvc/ticket/ticket_query">查詢/修改車票</a>
+                        <a class="nav-link active " aria-current="page" href="/TrainTicketBooking/mvc/ticket/ticket_query">查詢車票</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active " aria-current="page" href="/TrainTicketBooking/mvc/ticket/backend/traintable_display">後端</a>

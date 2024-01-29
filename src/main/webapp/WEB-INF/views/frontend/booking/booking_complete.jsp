@@ -23,6 +23,7 @@
         <div class="d-flex flex-column mx-auto" style="height:1000px;width:1000px">
             <h4 class="m-5 fw-bold">訂票完成!</h4>
             <div class="mx-auto border-1 border shadow d-flex justify-content-evenly" style="height:400px;width:900px">
+   <div class="container ">
     <table class="table table-bordered table-sm ">
   <thead>
     <tr>
@@ -49,6 +50,7 @@
   </tr>
   </tbody>
 </table>
+</div>
     
        
         
@@ -71,5 +73,10 @@
 
 
 </body>
+<footer>
+    <div class="text-center position-relative  start-50 translate-middle-x" id="footer">
+        <p class="p-1 mb-0">&copy; 2023 Your Website. All rights reserved.</p>
+    </div>
+</footer>
 
 </html>
