@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <!-- 引入 DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    
     <!-- 引入 jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- 引入 DataTables 創造出多種排序功能之表單-->
@@ -35,7 +36,7 @@
 
 <body>
  <%@ include file="../backend_header.jsp" %>
-
+<div class="vh-100">
     <h2 class="m-3 pt-2">購票紀錄</h2>
     <div style="padding: 20px;">
     <table id="myTable" class="table table-bordered table-striped table-hover">
@@ -53,7 +54,7 @@
                         <th>座位</th>                       
                         <th>價格</th>                       
                         <th>訂票時間</th>                       
-                        <th>操作</th> <!-- 修改 Actions 列為操作 -->
+                         <!-- 修改 Actions 列為操作 -->
                     </tr>
                 </thead>
                 <tbody>
@@ -71,15 +72,15 @@
                             <td>${tickets.seatId}</td>
                             <td>${tickets.price}</td>
                             <td>${tickets.bookTime}</td>
-                            <td>
-                                <!-- 使用 Bootstrap 按鈕樣式 -->
+                            
                                 
                                 
-                            </td>
+                            
                         </tr>
                     </c:forEach>
                 </tbody>
          </table>       
+</div>
 </div>
 </body>
 <footer>
