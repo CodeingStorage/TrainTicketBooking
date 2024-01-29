@@ -26,5 +26,8 @@ public interface TicketDao {
 	//根據車票ID刪除車票0
 	Boolean cancelTicketByTicketId(Integer ticketId);
 	
+	//根據UserId找出最後一張票的ID
+	Optional<Ticket>findLastTicketIdByUserId(String userId);
+	
 	
 }

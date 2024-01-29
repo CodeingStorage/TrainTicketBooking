@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -67,98 +68,87 @@ public class BookingController {
 	// 訂/修/刪除(需要API)--------------------------------------------------------------------
 
 	// 訂票頁面
-	@GetMapping("/booking")
-	public String bookPage(HttpSession session) {
-		return "/frontend/booking/booking";
-	}
+		@GetMapping("/booking")
+		public String bookPage(HttpSession session) {
+			return "/frontend/booking/booking";
+		}
 
-	/**
-	 * /TrainTicketBooking/mvc/ticket/book
-	 * 
-	 * @param bookList
-	 * @param session
-	 * @return
-	 * @throws ParseException 
-	 */
-	
-
-	// 選擇乘車時間
-	@PostMapping("/booking_schedule")
-	public String booking(
-			@RequestParam("departStation") String departStation,
-			@RequestParam("arriveStation") String arriveStation, 
-			@RequestParam("departDate") String departDate,
-			@RequestParam("departTime") String departTime, 
-			Model model) throws Exception {
-
-		List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
-		model.addAttribute("schedule", schedule);
-		model.addAttribute("departDate", departDate);
-		return "/frontend/booking/booking_schedule";
-
-	}
-	
-	// 取票人資訊
-	@PostMapping("/booking")
-	public String book(
-			@RequestParam("book") Integer[] bookList,
-			@RequestParam("departDate") String departDate,
-			HttpSession session) throws ParseException {
+		/**
+		 * /TrainTicketBooking/mvc/ticket/book
+		 * 
+		 * @param bookList
+		 * @param session
+		 * @return
+		 * @throws ParseException 
+		 */
 		
-		List<Ticket> tmpTickets = new ArrayList<>();
-		if(bookList!=null) {
-			for(Integer tranNo: bookList) {
-				Ticket tmpTicket = new Ticket();
-				tmpTicket.setTrainNo(String.valueOf(tranNo));
-				tmpTicket.setDate(sdf.parse(departDate));
-				tmpTickets.add(tmpTicket);
-			}
+
+		// 選擇乘車時間
+		@PostMapping("/booking_schedule")
+		public String booking(
+				@RequestParam("departStation") String departStation,
+				@RequestParam("arriveStation") String arriveStation, 
+				@RequestParam("departDate") String departDate,
+				@RequestParam("departTime") String departTime, 
+				Model model) throws Exception {
+
+			List<Schedule> schedule = scheduleDao.findSchedulesByStationAndTime(departStation, arriveStation, departTime);
+			model.addAttribute("schedule", schedule);
+			model.addAttribute("departDate", departDate);
+			return "/frontend/booking/booking_schedule";
+
 		}
 		
-		session.setAttribute("tmpTickets", tmpTickets);
-		return "/frontend/booking/booking_confirm";
-	}
-	
-	
-
-	
-
-	@PostMapping("/booking_confirm")
-	public String bookingConfirm(@RequestParam("userId") String userId, HttpSession session, Model model) {
-
-		List<Ticket> tmpTickets = (List<Ticket>) session.getAttribute("tmpTickets");
-
-		for (Ticket ticket : tmpTickets) {
-			ticket.setUserId(userId);
-			ticket.setSeatId(new Random().nextInt(30));
-			ticket.setPrice(100);
-			Random random = new Random();
-			int randomInt = random.nextInt(26);  // 生成介於 0（包括）到 26（不包括）的隨機整數
-			char randomChar = (char) ('A' + randomInt);  // 將隨機整數轉換為對應的大寫字母
-			String trainCarId = String.valueOf(randomChar);
-			ticket.setTrainCarId(trainCarId);			
-			ticketDao.addTicket(ticket);
+		@PostMapping("/booking")
+		public String book(
+				@RequestParam("book") Integer[] bookList,
+				@RequestParam("departDate") String departDate,
+				HttpSession session) throws ParseException {
 			
+			List<Ticket> tmpTickets = new ArrayList<>();
+			if(bookList!=null) {
+				for(Integer tranNo: bookList) {
+					Ticket tmpTicket = new Ticket();
+					tmpTicket.setTrainNo(String.valueOf(tranNo));
+					tmpTicket.setDate(sdf.parse(departDate));
+					tmpTickets.add(tmpTicket);
+				}
+			}
+			
+			session.setAttribute("tmpTickets", tmpTickets);
+			return "/frontend/booking/booking_confirm";
 		}
-		model.addAttribute("ticket", tmpTickets);
-		return "frontend/booking/booking_complete";
-	}
+		
+		
 
-	// 訂票結果
-	 @GetMapping("/booking_complete")
-	    public String showTicketConfirmation(Model model, HttpSession session) {
-	        List<Ticket> bookedTickets = (List<Ticket>) session.getAttribute("tmpTickets");
-	        
-	        if (bookedTickets != null && !bookedTickets.isEmpty()) {
-	            model.addAttribute("bookedTickets", bookedTickets);
-	            // 清除會話屬性，以避免在刷新時再次顯示相同的車票
-	            session.removeAttribute("tmpTickets");
-	            return "/frontend/booking/booking_complete";  // 根據需要調整路徑
-	        } else {
-	            // 處理找不到車票的情況
-	            return "redirect:/";  // 重定向到首頁或其他合適的頁面
-	        }
-	    }
+		// 取票人資訊
+
+		@PostMapping("/booking_confirm")
+		public String bookingConfirm(@RequestParam("userId") String userId, HttpSession session, Model model) {
+
+			List<Ticket> tmpTickets = (List<Ticket>) session.getAttribute("tmpTickets");
+
+			for (Ticket ticket : tmpTickets) {
+				ticket.setUserId(userId);
+				ticket.setSeatId(new Random().nextInt(30));
+				ticket.setPrice(100);
+				Random random = new Random();
+				int randomInt = random.nextInt(26);  // 生成介於 0（包括）到 26（不包括）的隨機整數
+				char randomChar = (char) ('A' + randomInt);  // 將隨機整數轉換為對應的大寫字母
+				String trainCarId = String.valueOf(randomChar);
+				ticket.setTrainCarId(trainCarId);			
+				ticketDao.addTicket(ticket);
+				
+				
+				
+			}
+			Optional<Ticket> lastTicket= ticketDao.findLastTicketIdByUserId(userId);
+			model.addAttribute("ticket", lastTicket);
+			return "frontend/booking/booking_complete";
+		}
+
+		// 訂票結果
+		
 
 	 
 	// 查詢訂票首頁

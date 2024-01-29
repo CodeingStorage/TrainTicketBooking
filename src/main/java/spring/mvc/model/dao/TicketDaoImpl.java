@@ -96,7 +96,17 @@ public class TicketDaoImpl implements TicketDao {
 	    return tickets;
 	}
 
-	
+	@Override
+	public Optional<Ticket> findLastTicketIdByUserId(String userId) {
+		String sql="SELECT * FROM trainticket.ticket where userId = ? order by ticketId desc limit 1";
+		try {
+			Ticket ticket = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Ticket.class),userId);
+			return Optional.of(ticket);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Optional.ofNullable(null);
+	}
 	
 	
 	//豐富/將schedule注入ticket
@@ -105,6 +115,8 @@ public class TicketDaoImpl implements TicketDao {
     	Schedule schedule = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Schedule.class), ticket.getTrainNo());
 		ticket.setSchedule(schedule);
     }
+
+	
 
 		
 

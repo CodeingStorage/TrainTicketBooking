@@ -20,35 +20,15 @@
 	<p>1 ${ ticket }</p>	
 	<p>2 ${ schedule }</p>
 	<p>3 ${bookedTickets}</p>
+	<p>4 ${tmpTickets}</p>
+	<p>5 ${scheduleMap}</p>
+	<p>6 ${lastTicket}</p>
 		
     <div class="vh-100">
         <div class="d-flex flex-column mx-auto" style="height:1000px;width:1000px">
             <h4 class="m-5 fw-bold">訂票完成!</h4>
-            <div class="mx-auto border-1 border shadow d-flex justify-content-evenly" style="height:400px;width:900px">
-                 <c:forEach var="ticket" items="${bookedTickets}">
-                    <div>
-                    <tr>
-                        <!-- 根據需要顯示 ticket 的相關資訊 -->
-                        <td>${ticket.ticketId}</td>
-                            <td>${ticket.userId}</td>
-                            <td>${ticket.schedule.trainNo}</td>                            
-                            <td>${ticket.date}</td>                            
-                            <td>${ticket.schedule.departStation}</td>
-                            <td>${ticket.schedule.arriveStation}</td>
-                            <td>${ticket.schedule.departTime}</td>                            
-                            <td>${ticket.schedule.arriveTime}</td>                           
-                            <td>${ticket.trainCarId}</td>
-                            <td>${ticket.seatId}</td>
-                            <td>${ticket.price}</td>
-                            <td>${ticket.bookTime}</td>
-                            <td>
-                            </tr>
-                        
-                        <!-- 其他車票資訊 -->
-                    </div>
-                </c:forEach>
-
-            </div>
+             
+            
 
 
 
