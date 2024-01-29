@@ -133,7 +133,7 @@ public class BookingController {
 				ticket.setSeatId(new Random().nextInt(30));
 				ticket.setPrice(100);
 				Random random = new Random();
-				int randomInt = random.nextInt(26);  // 生成介於 0（包括）到 26（不包括）的隨機整數
+				int randomInt = random.nextInt(6);  // 生成介於 0（包括）到 26（不包括）的隨機整數
 				char randomChar = (char) ('A' + randomInt);  // 將隨機整數轉換為對應的大寫字母
 				String trainCarId = String.valueOf(randomChar);
 				ticket.setTrainCarId(trainCarId);			
