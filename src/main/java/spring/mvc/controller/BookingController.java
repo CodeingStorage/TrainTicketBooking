@@ -168,7 +168,7 @@ public class BookingController {
 		return "frontend/ticket_query/ticket_query_present";
 	}
 
-	// 取消訂票
+	// 刪除訂票
 	@GetMapping(value = "/ticket_query/cancel{bookingId}", produces = "text/plain;charset=utf-8")
 	@ResponseBody
 	public String cancelticketByTicketId(@RequestParam("ticketId") Integer ticketId, HttpSession session) {

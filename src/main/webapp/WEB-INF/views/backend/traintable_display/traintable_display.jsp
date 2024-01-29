@@ -35,7 +35,7 @@
 				function cancelschedule(trainNo) {
 					var result = confirm("確定刪除" + trainNo + "車次?");
 					if (result) {
-						window.location.href='./traintable_display/';
+						window.location.href='./traintable_display/cancel?trainNo='+ trainNo;
 					} else {
 					}
 					
