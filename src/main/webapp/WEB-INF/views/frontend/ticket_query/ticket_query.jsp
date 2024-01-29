@@ -21,7 +21,7 @@
   
     <div class="vh-100">
         <div class="d-flex flex-column mx-auto" style="height: 500px;width:800px">
-            <h4 class="mt-5 fw-bold">訂位紀錄查詢及修改</h4>
+            <h4 class="mt-5 fw-bold">訂位紀錄查詢</h4>
             <div class="mx-auto border-1 border shadow mt-4" style="height: 500px;width:800px">
                 <form class="row g-3 needs-validation p-4 method="get" action="./ticket_query_present">
                     <div class="mb-3 col-12">
@@ -29,7 +29,7 @@
                         <input type="text" class="form-control" id="userId" name="userId" required>
                     </div>
                     <div class="mb-3 col-12">
-                        <label for="ticketId" class="form-label">訂位代號</label>
+                        <label for="ticketId" class="form-label">車票號碼</label>
                         <input type="text" class="form-control" id="ticketId" name="ticketId" required>
                     </div>
                     <div class="mb-3 col-12">

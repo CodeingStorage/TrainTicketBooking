@@ -27,7 +27,7 @@
 <body>
 
     <%@ include file="../header.jsp" %>
-    
+    <div class="vh-100">
     <div class="container mt-5">
         <h2 class="mb-4">查詢結果</h2>
     
@@ -75,7 +75,7 @@
     </div>
 
     
-    
+    </div>
 </body>
 <footer>
     <div class="text-center position-relative  start-50 translate-middle-x" id="footer">
