@@ -25,7 +25,7 @@
 </head>
 
 <body>
-
+${ticket}
     <%@ include file="../header.jsp" %>
     <div class="vh-100">
     <div class="container mt-5">
@@ -38,6 +38,7 @@
                         <th>車票ID</th>
                         <th>身分證字號</th>
                         <th>火車車次</th>
+                        <th>乘車日期</th>
                         <th>出發站</th>
                         <th>抵達站</th>
                         <th>出發時間</th>
@@ -52,6 +53,7 @@
                             <td>${ticket.ticketId}</td>
                             <td>${ticket.userId}</td>
                             <td>${ticket.trainNo}</td>
+                            <td>${ticket.date}</td>
                             <td>${ticket.schedule.departStation}</td>
                             <td>${ticket.schedule.arriveStation}</td>
                             <td>${ticket.schedule.departTime}</td>
