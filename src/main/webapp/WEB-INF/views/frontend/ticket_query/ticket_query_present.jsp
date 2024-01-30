@@ -25,7 +25,7 @@
 </head>
 
 <body>
-${ticket}
+
     <%@ include file="../header.jsp" %>
     <div class="vh-100">
     <div class="container mt-5">

@@ -131,7 +131,7 @@ public class BookingController {
 			for (Ticket ticket : tmpTickets) {
 				ticket.setUserId(userId);
 				ticket.setSeatId(new Random().nextInt(30));
-				ticket.setPrice(100);
+				ticket.setPrice(1200);
 				Random random = new Random();
 				int randomInt = random.nextInt(6);  // 生成介於 0（包括）到 26（不包括）的隨機整數
 				char randomChar = (char) ('A' + randomInt);  // 將隨機整數轉換為對應的大寫字母

@@ -27,7 +27,10 @@
                 <form method="post" action="/TrainTicketBooking/mvc/ticket/schedule_query_present" class="row gx-3 d-flex justify-content-center align-items-center border shadow">
                     <div class="form-group mt-3 col-2">
                         <label for="departStation" class="d-flex justify-content-center">出發站</label>
-                        <select class="form-select" id="departStation" name="departStation">
+                        <select class="form-select" id="departStation" name="departStation" required>
+                        <div class="invalid-feedback">
+                請選擇出發站
+              </div>
                             <option selected disabled value="">出發站..</option>
                              <option value="南港">南港</option>
                              <option value="台北">台北</option>
@@ -42,10 +45,11 @@
                              <option value="台南">台南</option>
                              <option value="左營">左營</option>
                                   </select>
+                                  
                     </div>
                     <div class="mt-3 col-2">
                         <label for="arriveStation" class="d-flex justify-content-center">抵達站</label>
-                        <select class="form-select" id="arriveStation" name="arriveStation">
+                        <select class="form-select" id="arriveStation" name="arriveStation" required>
                             <option selected disabled value="">抵達站..</option>
                             <option value="南港">南港</option>
 	                        <option value="台北">台北</option>
@@ -60,6 +64,9 @@
 	                        <option value="台南">台南</option>
 	                        <option value="左營">左營</option>
                          </select>
+                         <div class="invalid-feedback">
+                請選擇抵達站
+              </div>
                     </div>
                     
                     
